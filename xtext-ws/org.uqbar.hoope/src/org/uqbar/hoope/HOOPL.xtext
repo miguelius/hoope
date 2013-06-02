@@ -1,0 +1,43 @@
+grammar org.uqbar.hoope.HOOPL with org.eclipse.xtext.common.Terminals
+
+generate hOOPL "http://www.uqbar.org/hoope/HOOPL"
+
+HOOPL:
+	Object
+;
+
+Object:
+		'object' name=ID '{'
+			    features+=Feature*
+		'}' 
+;
+
+Feature:
+	Property | Operation
+;
+	
+Property:
+	  name=ID ('=' (INT | STRING)  )?
+;
+
+Operation:
+	(annotations+=Annotation)* name=ID '{'
+		sentence += (Mutator | SendMessage)*
+	'}'
+;
+
+Annotation:
+	'@'ID ( '(' (INT | STRING | ID) ')' )?	
+;
+
+Mutator:
+	name=ID '(' (INT | STRING | ID) ')'
+;
+
+SendMessage:
+	name=(ID | 'self') message=(ID | Primitive)
+;
+
+Primitive:
+	'subir' | 'bajar' | 'derecha' | 'izquierda' 
+;
