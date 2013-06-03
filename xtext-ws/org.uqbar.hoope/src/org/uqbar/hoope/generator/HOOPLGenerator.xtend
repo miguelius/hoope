@@ -8,9 +8,9 @@ import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import com.google.inject.Inject
-import org.uqbar.hoope.hOOPL.Object
-import org.uqbar.hoope.hOOPL.Property
-import org.uqbar.hoope.hOOPL.Operation
+import org.uqbar.hoope.hoopl.Object
+import org.uqbar.hoope.hoopl.Property
+import org.uqbar.hoope.hoopl.Operation
 
 /**
  * Generates code from your model files on save.
@@ -32,6 +32,14 @@ class HOOPLGenerator implements IGenerator {
 	
 	def compile(Property p) '''
 		int «p.name»;
+		
+		int get«p.name.toFirstUpper»() {
+			return «p.name»;
+		}
+		
+		void set«p.name.toFirstUpper»(int value) {
+			this.«p.name» = value;
+		}
 	''' 
 	
 	def compile(Operation op) '''

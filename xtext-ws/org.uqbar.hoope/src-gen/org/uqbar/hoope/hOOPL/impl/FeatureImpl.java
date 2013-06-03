@@ -1,6 +1,6 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.impl;
+package org.uqbar.hoope.hoopl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.uqbar.hoope.hOOPL.Feature;
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
+import org.uqbar.hoope.hoopl.Feature;
+import org.uqbar.hoope.hoopl.HooplPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.uqbar.hoope.hOOPL.HOOPLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.uqbar.hoope.hOOPL.impl.FeatureImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.uqbar.hoope.hoopl.impl.FeatureImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -65,7 +65,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   @Override
   protected EClass eStaticClass()
   {
-    return HOOPLPackage.Literals.FEATURE;
+    return HooplPackage.Literals.FEATURE;
   }
 
   /**
@@ -88,7 +88,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HOOPLPackage.FEATURE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, HooplPackage.FEATURE__NAME, oldName, name));
   }
 
   /**
@@ -101,7 +101,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case HOOPLPackage.FEATURE__NAME:
+      case HooplPackage.FEATURE__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -117,7 +117,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case HOOPLPackage.FEATURE__NAME:
+      case HooplPackage.FEATURE__NAME:
         setName((String)newValue);
         return;
     }
@@ -134,7 +134,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case HOOPLPackage.FEATURE__NAME:
+      case HooplPackage.FEATURE__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -151,7 +151,7 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
   {
     switch (featureID)
     {
-      case HOOPLPackage.FEATURE__NAME:
+      case HooplPackage.FEATURE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);

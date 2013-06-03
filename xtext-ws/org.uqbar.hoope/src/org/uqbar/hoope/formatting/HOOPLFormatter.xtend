@@ -16,7 +16,7 @@ import org.eclipse.xtext.formatting.impl.FormattingConfig
  * 
  * Also see {@link org.eclipse.xtext.xtext.XtextFormattingTokenSerializer} as an example
  */
-class HOOPLFormatter extends AbstractDeclarativeFormatter {
+public class HOOPLFormatter extends AbstractDeclarativeFormatter {
 
 //	@Inject extension HOOPLGrammarAccess
 	

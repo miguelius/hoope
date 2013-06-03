@@ -1,6 +1,6 @@
 /**
  */
-package org.uqbar.hoope.hOOPL;
+package org.uqbar.hoope.hoopl;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.uqbar.hoope.hOOPL.HOOPLPackage
+ * @see org.uqbar.hoope.hoopl.HooplPackage
  * @generated
  */
-public interface HOOPLFactory extends EFactory
+public interface HooplFactory extends EFactory
 {
   /**
    * The singleton instance of the factory.
@@ -20,16 +20,7 @@ public interface HOOPLFactory extends EFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  HOOPLFactory eINSTANCE = org.uqbar.hoope.hOOPL.impl.HOOPLFactoryImpl.init();
-
-  /**
-   * Returns a new object of class '<em>HOOPL</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>HOOPL</em>'.
-   * @generated
-   */
-  HOOPL createHOOPL();
+  HooplFactory eINSTANCE = org.uqbar.hoope.hoopl.impl.HooplFactoryImpl.init();
 
   /**
    * Returns a new object of class '<em>Object</em>'.
@@ -68,6 +59,15 @@ public interface HOOPLFactory extends EFactory
   Operation createOperation();
 
   /**
+   * Returns a new object of class '<em>Sentence</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Sentence</em>'.
+   * @generated
+   */
+  Sentence createSentence();
+
+  /**
    * Returns a new object of class '<em>Mutator</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -92,6 +92,6 @@ public interface HOOPLFactory extends EFactory
    * @return the package supported by this factory.
    * @generated
    */
-  HOOPLPackage getHOOPLPackage();
+  HooplPackage getHooplPackage();
 
-} //HOOPLFactory
+} //HooplFactory

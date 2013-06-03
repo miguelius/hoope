@@ -25,7 +25,7 @@ public class HOOPLParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrPar
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "HOOPL";
+		return "Object";
 	}
 	
 	public HOOPLGrammarAccess getGrammarAccess() {

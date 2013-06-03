@@ -1,6 +1,6 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.impl;
+package org.uqbar.hoope.hoopl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -10,14 +10,14 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.uqbar.hoope.hOOPL.Feature;
-import org.uqbar.hoope.hOOPL.HOOPL;
-import org.uqbar.hoope.hOOPL.HOOPLFactory;
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
-import org.uqbar.hoope.hOOPL.Mutator;
-import org.uqbar.hoope.hOOPL.Operation;
-import org.uqbar.hoope.hOOPL.Property;
-import org.uqbar.hoope.hOOPL.SendMessage;
+import org.uqbar.hoope.hoopl.Feature;
+import org.uqbar.hoope.hoopl.HooplFactory;
+import org.uqbar.hoope.hoopl.HooplPackage;
+import org.uqbar.hoope.hoopl.Mutator;
+import org.uqbar.hoope.hoopl.Operation;
+import org.uqbar.hoope.hoopl.Property;
+import org.uqbar.hoope.hoopl.SendMessage;
+import org.uqbar.hoope.hoopl.Sentence;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +25,7 @@ import org.uqbar.hoope.hOOPL.SendMessage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
+public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
 {
   /**
    * Creates the default factory implementation.
@@ -33,21 +33,21 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public static HOOPLFactory init()
+  public static HooplFactory init()
   {
     try
     {
-      HOOPLFactory theHOOPLFactory = (HOOPLFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.uqbar.org/hoope/HOOPL"); 
-      if (theHOOPLFactory != null)
+      HooplFactory theHooplFactory = (HooplFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.uqbar.org/hoope/HOOPL"); 
+      if (theHooplFactory != null)
       {
-        return theHOOPLFactory;
+        return theHooplFactory;
       }
     }
     catch (Exception exception)
     {
       EcorePlugin.INSTANCE.log(exception);
     }
-    return new HOOPLFactoryImpl();
+    return new HooplFactoryImpl();
   }
 
   /**
@@ -56,7 +56,7 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public HOOPLFactoryImpl()
+  public HooplFactoryImpl()
   {
     super();
   }
@@ -71,13 +71,13 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case HOOPLPackage.HOOPL: return createHOOPL();
-      case HOOPLPackage.OBJECT: return createObject();
-      case HOOPLPackage.FEATURE: return createFeature();
-      case HOOPLPackage.PROPERTY: return createProperty();
-      case HOOPLPackage.OPERATION: return createOperation();
-      case HOOPLPackage.MUTATOR: return createMutator();
-      case HOOPLPackage.SEND_MESSAGE: return createSendMessage();
+      case HooplPackage.OBJECT: return createObject();
+      case HooplPackage.FEATURE: return createFeature();
+      case HooplPackage.PROPERTY: return createProperty();
+      case HooplPackage.OPERATION: return createOperation();
+      case HooplPackage.SENTENCE: return createSentence();
+      case HooplPackage.MUTATOR: return createMutator();
+      case HooplPackage.SEND_MESSAGE: return createSendMessage();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -88,18 +88,7 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public HOOPL createHOOPL()
-  {
-    HOOPLImpl hoopl = new HOOPLImpl();
-    return hoopl;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public org.uqbar.hoope.hOOPL.Object createObject()
+  public org.uqbar.hoope.hoopl.Object createObject()
   {
     ObjectImpl object = new ObjectImpl();
     return object;
@@ -143,6 +132,17 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Sentence createSentence()
+  {
+    SentenceImpl sentence = new SentenceImpl();
+    return sentence;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Mutator createMutator()
   {
     MutatorImpl mutator = new MutatorImpl();
@@ -165,9 +165,9 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public HOOPLPackage getHOOPLPackage()
+  public HooplPackage getHooplPackage()
   {
-    return (HOOPLPackage)getEPackage();
+    return (HooplPackage)getEPackage();
   }
 
   /**
@@ -177,9 +177,9 @@ public class HOOPLFactoryImpl extends EFactoryImpl implements HOOPLFactory
    * @generated
    */
   @Deprecated
-  public static HOOPLPackage getPackage()
+  public static HooplPackage getPackage()
   {
-    return HOOPLPackage.eINSTANCE;
+    return HooplPackage.eINSTANCE;
   }
 
-} //HOOPLFactoryImpl
+} //HooplFactoryImpl

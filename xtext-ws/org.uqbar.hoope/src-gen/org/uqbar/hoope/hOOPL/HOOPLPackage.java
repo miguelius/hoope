@@ -1,6 +1,6 @@
 /**
  */
-package org.uqbar.hoope.hOOPL;
+package org.uqbar.hoope.hoopl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -18,11 +18,11 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.uqbar.hoope.hOOPL.HOOPLFactory
+ * @see org.uqbar.hoope.hoopl.HooplFactory
  * @model kind="package"
  * @generated
  */
-public interface HOOPLPackage extends EPackage
+public interface HooplPackage extends EPackage
 {
   /**
    * The package name.
@@ -30,7 +30,7 @@ public interface HOOPLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNAME = "hOOPL";
+  String eNAME = "hoopl";
 
   /**
    * The package namespace URI.
@@ -46,7 +46,7 @@ public interface HOOPLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  String eNS_PREFIX = "hOOPL";
+  String eNS_PREFIX = "hoopl";
 
   /**
    * The singleton instance of the package.
@@ -54,36 +54,17 @@ public interface HOOPLPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  HOOPLPackage eINSTANCE = org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl.init();
+  HooplPackage eINSTANCE = org.uqbar.hoope.hoopl.impl.HooplPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.HOOPLImpl <em>HOOPL</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.ObjectImpl <em>Object</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getHOOPL()
+   * @see org.uqbar.hoope.hoopl.impl.ObjectImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getObject()
    * @generated
    */
-  int HOOPL = 0;
-
-  /**
-   * The number of structural features of the '<em>HOOPL</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int HOOPL_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.ObjectImpl <em>Object</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.ObjectImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getObject()
-   * @generated
-   */
-  int OBJECT = 1;
+  int OBJECT = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -92,7 +73,7 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT__NAME = HOOPL_FEATURE_COUNT + 0;
+  int OBJECT__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -101,7 +82,7 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT__FEATURES = HOOPL_FEATURE_COUNT + 1;
+  int OBJECT__FEATURES = 1;
 
   /**
    * The number of structural features of the '<em>Object</em>' class.
@@ -110,17 +91,17 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OBJECT_FEATURE_COUNT = HOOPL_FEATURE_COUNT + 2;
+  int OBJECT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.FeatureImpl <em>Feature</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.FeatureImpl <em>Feature</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.FeatureImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getFeature()
+   * @see org.uqbar.hoope.hoopl.impl.FeatureImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getFeature()
    * @generated
    */
-  int FEATURE = 2;
+  int FEATURE = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -141,14 +122,14 @@ public interface HOOPLPackage extends EPackage
   int FEATURE_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.PropertyImpl <em>Property</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.PropertyImpl <em>Property</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.PropertyImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getProperty()
+   * @see org.uqbar.hoope.hoopl.impl.PropertyImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 3;
+  int PROPERTY = 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -160,23 +141,41 @@ public interface HOOPLPackage extends EPackage
   int PROPERTY__NAME = FEATURE__NAME;
 
   /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__TYPE = FEATURE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Initial</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__INITIAL = FEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 0;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.OperationImpl <em>Operation</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.OperationImpl <em>Operation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.OperationImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getOperation()
+   * @see org.uqbar.hoope.hoopl.impl.OperationImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getOperation()
    * @generated
    */
-  int OPERATION = 4;
+  int OPERATION = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -188,22 +187,13 @@ public interface HOOPLPackage extends EPackage
   int OPERATION__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Annotations</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int OPERATION__ANNOTATIONS = FEATURE_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Sentence</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPERATION__SENTENCE = FEATURE_FEATURE_COUNT + 1;
+  int OPERATION__SENTENCE = FEATURE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Operation</em>' class.
@@ -212,14 +202,42 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
+  int OPERATION_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.MutatorImpl <em>Mutator</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.SentenceImpl <em>Sentence</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.MutatorImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getMutator()
+   * @see org.uqbar.hoope.hoopl.impl.SentenceImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getSentence()
+   * @generated
+   */
+  int SENTENCE = 4;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SENTENCE__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Sentence</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SENTENCE_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.MutatorImpl <em>Mutator</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.uqbar.hoope.hoopl.impl.MutatorImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getMutator()
    * @generated
    */
   int MUTATOR = 5;
@@ -231,7 +249,7 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MUTATOR__NAME = 0;
+  int MUTATOR__NAME = SENTENCE__NAME;
 
   /**
    * The number of structural features of the '<em>Mutator</em>' class.
@@ -240,14 +258,14 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MUTATOR_FEATURE_COUNT = 1;
+  int MUTATOR_FEATURE_COUNT = SENTENCE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.uqbar.hoope.hOOPL.impl.SendMessageImpl <em>Send Message</em>}' class.
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.SendMessageImpl <em>Send Message</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.uqbar.hoope.hOOPL.impl.SendMessageImpl
-   * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getSendMessage()
+   * @see org.uqbar.hoope.hoopl.impl.SendMessageImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getSendMessage()
    * @generated
    */
   int SEND_MESSAGE = 6;
@@ -259,7 +277,7 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEND_MESSAGE__NAME = 0;
+  int SEND_MESSAGE__NAME = SENTENCE__NAME;
 
   /**
    * The feature id for the '<em><b>Message</b></em>' attribute.
@@ -268,7 +286,7 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEND_MESSAGE__MESSAGE = 1;
+  int SEND_MESSAGE__MESSAGE = SENTENCE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Send Message</em>' class.
@@ -277,162 +295,162 @@ public interface HOOPLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SEND_MESSAGE_FEATURE_COUNT = 2;
+  int SEND_MESSAGE_FEATURE_COUNT = SENTENCE_FEATURE_COUNT + 1;
 
 
   /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.HOOPL <em>HOOPL</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>HOOPL</em>'.
-   * @see org.uqbar.hoope.hOOPL.HOOPL
-   * @generated
-   */
-  EClass getHOOPL();
-
-  /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.Object <em>Object</em>}'.
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Object <em>Object</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Object</em>'.
-   * @see org.uqbar.hoope.hOOPL.Object
+   * @see org.uqbar.hoope.hoopl.Object
    * @generated
    */
   EClass getObject();
 
   /**
-   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hOOPL.Object#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.Object#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.uqbar.hoope.hOOPL.Object#getName()
+   * @see org.uqbar.hoope.hoopl.Object#getName()
    * @see #getObject()
    * @generated
    */
   EAttribute getObject_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.uqbar.hoope.hOOPL.Object#getFeatures <em>Features</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.uqbar.hoope.hoopl.Object#getFeatures <em>Features</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Features</em>'.
-   * @see org.uqbar.hoope.hOOPL.Object#getFeatures()
+   * @see org.uqbar.hoope.hoopl.Object#getFeatures()
    * @see #getObject()
    * @generated
    */
   EReference getObject_Features();
 
   /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.Feature <em>Feature</em>}'.
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Feature <em>Feature</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Feature</em>'.
-   * @see org.uqbar.hoope.hOOPL.Feature
+   * @see org.uqbar.hoope.hoopl.Feature
    * @generated
    */
   EClass getFeature();
 
   /**
-   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hOOPL.Feature#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.Feature#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.uqbar.hoope.hOOPL.Feature#getName()
+   * @see org.uqbar.hoope.hoopl.Feature#getName()
    * @see #getFeature()
    * @generated
    */
   EAttribute getFeature_Name();
 
   /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.Property <em>Property</em>}'.
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Property <em>Property</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Property</em>'.
-   * @see org.uqbar.hoope.hOOPL.Property
+   * @see org.uqbar.hoope.hoopl.Property
    * @generated
    */
   EClass getProperty();
 
   /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.Operation <em>Operation</em>}'.
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see org.uqbar.hoope.hoopl.Property#getType()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Type();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Property#getInitial <em>Initial</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Initial</em>'.
+   * @see org.uqbar.hoope.hoopl.Property#getInitial()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Initial();
+
+  /**
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Operation <em>Operation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Operation</em>'.
-   * @see org.uqbar.hoope.hOOPL.Operation
+   * @see org.uqbar.hoope.hoopl.Operation
    * @generated
    */
   EClass getOperation();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.uqbar.hoope.hOOPL.Operation#getAnnotations <em>Annotations</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Annotations</em>'.
-   * @see org.uqbar.hoope.hOOPL.Operation#getAnnotations()
-   * @see #getOperation()
-   * @generated
-   */
-  EAttribute getOperation_Annotations();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.uqbar.hoope.hOOPL.Operation#getSentence <em>Sentence</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.uqbar.hoope.hoopl.Operation#getSentence <em>Sentence</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Sentence</em>'.
-   * @see org.uqbar.hoope.hOOPL.Operation#getSentence()
+   * @see org.uqbar.hoope.hoopl.Operation#getSentence()
    * @see #getOperation()
    * @generated
    */
   EReference getOperation_Sentence();
 
   /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.Mutator <em>Mutator</em>}'.
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Sentence <em>Sentence</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Sentence</em>'.
+   * @see org.uqbar.hoope.hoopl.Sentence
+   * @generated
+   */
+  EClass getSentence();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.Sentence#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.uqbar.hoope.hoopl.Sentence#getName()
+   * @see #getSentence()
+   * @generated
+   */
+  EAttribute getSentence_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Mutator <em>Mutator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Mutator</em>'.
-   * @see org.uqbar.hoope.hOOPL.Mutator
+   * @see org.uqbar.hoope.hoopl.Mutator
    * @generated
    */
   EClass getMutator();
 
   /**
-   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hOOPL.Mutator#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.uqbar.hoope.hOOPL.Mutator#getName()
-   * @see #getMutator()
-   * @generated
-   */
-  EAttribute getMutator_Name();
-
-  /**
-   * Returns the meta object for class '{@link org.uqbar.hoope.hOOPL.SendMessage <em>Send Message</em>}'.
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.SendMessage <em>Send Message</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Send Message</em>'.
-   * @see org.uqbar.hoope.hOOPL.SendMessage
+   * @see org.uqbar.hoope.hoopl.SendMessage
    * @generated
    */
   EClass getSendMessage();
 
   /**
-   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hOOPL.SendMessage#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.uqbar.hoope.hOOPL.SendMessage#getName()
-   * @see #getSendMessage()
-   * @generated
-   */
-  EAttribute getSendMessage_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hOOPL.SendMessage#getMessage <em>Message</em>}'.
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.SendMessage#getMessage <em>Message</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Message</em>'.
-   * @see org.uqbar.hoope.hOOPL.SendMessage#getMessage()
+   * @see org.uqbar.hoope.hoopl.SendMessage#getMessage()
    * @see #getSendMessage()
    * @generated
    */
@@ -445,7 +463,7 @@ public interface HOOPLPackage extends EPackage
    * @return the factory that creates the instances of the model.
    * @generated
    */
-  HOOPLFactory getHOOPLFactory();
+  HooplFactory getHooplFactory();
 
   /**
    * <!-- begin-user-doc -->
@@ -462,21 +480,11 @@ public interface HOOPLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.HOOPLImpl <em>HOOPL</em>}' class.
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.ObjectImpl <em>Object</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getHOOPL()
-     * @generated
-     */
-    EClass HOOPL = eINSTANCE.getHOOPL();
-
-    /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.ObjectImpl <em>Object</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.ObjectImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getObject()
+     * @see org.uqbar.hoope.hoopl.impl.ObjectImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getObject()
      * @generated
      */
     EClass OBJECT = eINSTANCE.getObject();
@@ -498,11 +506,11 @@ public interface HOOPLPackage extends EPackage
     EReference OBJECT__FEATURES = eINSTANCE.getObject_Features();
 
     /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.FeatureImpl <em>Feature</em>}' class.
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.FeatureImpl <em>Feature</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.FeatureImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getFeature()
+     * @see org.uqbar.hoope.hoopl.impl.FeatureImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getFeature()
      * @generated
      */
     EClass FEATURE = eINSTANCE.getFeature();
@@ -516,32 +524,40 @@ public interface HOOPLPackage extends EPackage
     EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
 
     /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.PropertyImpl <em>Property</em>}' class.
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.PropertyImpl <em>Property</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.PropertyImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getProperty()
+     * @see org.uqbar.hoope.hoopl.impl.PropertyImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getProperty()
      * @generated
      */
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.OperationImpl <em>Operation</em>}' class.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.OperationImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getOperation()
+     * @generated
+     */
+    EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Initial</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__INITIAL = eINSTANCE.getProperty_Initial();
+
+    /**
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.OperationImpl <em>Operation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.uqbar.hoope.hoopl.impl.OperationImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getOperation()
      * @generated
      */
     EClass OPERATION = eINSTANCE.getOperation();
-
-    /**
-     * The meta object literal for the '<em><b>Annotations</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute OPERATION__ANNOTATIONS = eINSTANCE.getOperation_Annotations();
 
     /**
      * The meta object literal for the '<em><b>Sentence</b></em>' containment reference list feature.
@@ -552,40 +568,42 @@ public interface HOOPLPackage extends EPackage
     EReference OPERATION__SENTENCE = eINSTANCE.getOperation_Sentence();
 
     /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.MutatorImpl <em>Mutator</em>}' class.
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.SentenceImpl <em>Sentence</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.MutatorImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getMutator()
+     * @see org.uqbar.hoope.hoopl.impl.SentenceImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getSentence()
+     * @generated
+     */
+    EClass SENTENCE = eINSTANCE.getSentence();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SENTENCE__NAME = eINSTANCE.getSentence_Name();
+
+    /**
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.MutatorImpl <em>Mutator</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.uqbar.hoope.hoopl.impl.MutatorImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getMutator()
      * @generated
      */
     EClass MUTATOR = eINSTANCE.getMutator();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.SendMessageImpl <em>Send Message</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MUTATOR__NAME = eINSTANCE.getMutator_Name();
-
-    /**
-     * The meta object literal for the '{@link org.uqbar.hoope.hOOPL.impl.SendMessageImpl <em>Send Message</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.uqbar.hoope.hOOPL.impl.SendMessageImpl
-     * @see org.uqbar.hoope.hOOPL.impl.HOOPLPackageImpl#getSendMessage()
+     * @see org.uqbar.hoope.hoopl.impl.SendMessageImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getSendMessage()
      * @generated
      */
     EClass SEND_MESSAGE = eINSTANCE.getSendMessage();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SEND_MESSAGE__NAME = eINSTANCE.getSendMessage_Name();
 
     /**
      * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
@@ -597,4 +615,4 @@ public interface HOOPLPackage extends EPackage
 
   }
 
-} //HOOPLPackage
+} //HooplPackage

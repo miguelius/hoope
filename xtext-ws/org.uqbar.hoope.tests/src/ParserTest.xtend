@@ -6,15 +6,14 @@ import static org.junit.Assert.*
 import com.google.inject.Inject
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
-import org.uqbar.hoope.hOOPL.HOOPL
-import org.uqbar.hoope.hOOPL.Object
+import org.uqbar.hoope.hoopl.Object
 
 @InjectWith(typeof(HOOPLInjectorProvider))
 @RunWith(typeof(XtextRunner))
 class ParserTest {
 
 	@Inject
-	ParseHelper<HOOPL> parser
+	ParseHelper<Object> parser
 	
 	@Test
 	def void parseHOOPL() {
@@ -28,7 +27,7 @@ class ParserTest {
 		}
 	 } ")
 		val rana = hoopl as Object
-		assertEquals(rana.features.head.name, "x")	
-		assertEquals(rana.features.last.name, "salta")	
+		//assertEquals("x", rana.features.head.name)	
+		assertEquals("salta", rana.features.last.name)	
 	}
 }

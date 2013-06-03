@@ -1,13 +1,10 @@
-grammar org.uqbar.hoope.HOOPL with org.eclipse.xtext.common.Terminals
+grammar org.uqbar.hoope.HOOPL with
+	org.eclipse.xtext.xbase.Xbase
 
-generate hOOPL "http://www.uqbar.org/hoope/HOOPL"
-
-HOOPL:
-	Object
-;
+generate hoopl "http://www.uqbar.org/hoope/HOOPL"
 
 Object:
-		'object' name=ID '{'
+		'object' name=ValidID '{'
 			    features+=Feature*
 		'}' 
 ;
@@ -17,25 +14,29 @@ Feature:
 ;
 	
 Property:
-	  name=ID ('=' (INT | STRING)  )?
+	  type=JvmTypeReference name=ValidID ('=' initial=XExpression)?
 ;
 
 Operation:
-	(annotations+=Annotation)* name=ID '{'
-		sentence += (Mutator | SendMessage)*
+	name=ValidID '{'
+		sentence += (Sentence)*
 	'}'
 ;
 
 Annotation:
-	'@'ID ( '(' (INT | STRING | ID) ')' )?	
+	'@'ValidID ( '(' (INT | STRING | ValidID) ')' )?	
+;
+
+Sentence:
+	Mutator | SendMessage
 ;
 
 Mutator:
-	name=ID '(' (INT | STRING | ID) ')'
+	name=ValidID '(' (INT | STRING | ValidID) ')'
 ;
 
 SendMessage:
-	name=(ID | 'self') message=(ID | Primitive)
+	name=(ValidID | 'self') message=(ValidID | Primitive)
 ;
 
 Primitive:

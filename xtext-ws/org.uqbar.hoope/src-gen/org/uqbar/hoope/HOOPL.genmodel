@@ -4,10 +4,9 @@
     editorDirectory="/org.uqbar.hoope.editor/src" modelPluginID="org.uqbar.hoope"
     forceOverwrite="true" modelName="HOOPL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.uqbar.hoope.edit"
-    editorPluginID="org.uqbar.hoope.editor" runtimeVersion="2.8">
-  <genPackages prefix="HOOPL" basePackage="org.uqbar.hoope" disposableProviderFactory="true"
+    editorPluginID="org.uqbar.hoope.editor" runtimeVersion="2.8" usedGenPackages="../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="Hoopl" basePackage="org.uqbar.hoope" disposableProviderFactory="true"
       fileExtensions="hoopl" ecorePackage="HOOPL.ecore#/">
-    <genClasses ecoreClass="HOOPL.ecore#//HOOPL"/>
     <genClasses ecoreClass="HOOPL.ecore#//Object">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//Object/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HOOPL.ecore#//Object/features"/>
@@ -15,16 +14,18 @@
     <genClasses ecoreClass="HOOPL.ecore#//Feature">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//Feature/name"/>
     </genClasses>
-    <genClasses ecoreClass="HOOPL.ecore#//Property"/>
+    <genClasses ecoreClass="HOOPL.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HOOPL.ecore#//Property/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HOOPL.ecore#//Property/initial"/>
+    </genClasses>
     <genClasses ecoreClass="HOOPL.ecore#//Operation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//Operation/annotations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference HOOPL.ecore#//Operation/sentence"/>
     </genClasses>
-    <genClasses ecoreClass="HOOPL.ecore#//Mutator">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//Mutator/name"/>
+    <genClasses ecoreClass="HOOPL.ecore#//Sentence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//Sentence/name"/>
     </genClasses>
+    <genClasses ecoreClass="HOOPL.ecore#//Mutator"/>
     <genClasses ecoreClass="HOOPL.ecore#//SendMessage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//SendMessage/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute HOOPL.ecore#//SendMessage/message"/>
     </genClasses>
   </genPackages>

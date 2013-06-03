@@ -17,7 +17,7 @@ import com.google.inject.Injector;
 public class HOOPLStandaloneSetupGenerated implements ISetup {
 
 	public Injector createInjectorAndDoEMFRegistration() {
-		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
+		org.eclipse.xtext.xbase.XbaseStandaloneSetup.doSetup();
 
 		Injector injector = createInjector();
 		register(injector);
@@ -30,7 +30,7 @@ public class HOOPLStandaloneSetupGenerated implements ISetup {
 	
 	public void register(Injector injector) {
 	if (!EPackage.Registry.INSTANCE.containsKey("http://www.uqbar.org/hoope/HOOPL")) {
-		EPackage.Registry.INSTANCE.put("http://www.uqbar.org/hoope/HOOPL", org.uqbar.hoope.hOOPL.HOOPLPackage.eINSTANCE);
+		EPackage.Registry.INSTANCE.put("http://www.uqbar.org/hoope/HOOPL", org.uqbar.hoope.hoopl.HooplPackage.eINSTANCE);
 	}
 
 		org.eclipse.xtext.resource.IResourceFactory resourceFactory = injector.getInstance(org.eclipse.xtext.resource.IResourceFactory.class);
@@ -38,6 +38,7 @@ public class HOOPLStandaloneSetupGenerated implements ISetup {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("hoopl", resourceFactory);
 		org.eclipse.xtext.resource.IResourceServiceProvider.Registry.INSTANCE.getExtensionToFactoryMap().put("hoopl", serviceProvider);
 		
+
 
 
 	}

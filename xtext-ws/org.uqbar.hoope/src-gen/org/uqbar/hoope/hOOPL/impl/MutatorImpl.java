@@ -1,52 +1,23 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.impl;
-
-import org.eclipse.emf.common.notify.Notification;
+package org.uqbar.hoope.hoopl.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
-import org.uqbar.hoope.hOOPL.Mutator;
+import org.uqbar.hoope.hoopl.HooplPackage;
+import org.uqbar.hoope.hoopl.Mutator;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Mutator</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.uqbar.hoope.hOOPL.impl.MutatorImpl#getName <em>Name</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
  */
-public class MutatorImpl extends MinimalEObjectImpl.Container implements Mutator
+public class MutatorImpl extends SentenceImpl implements Mutator
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -65,113 +36,7 @@ public class MutatorImpl extends MinimalEObjectImpl.Container implements Mutator
   @Override
   protected EClass eStaticClass()
   {
-    return HOOPLPackage.Literals.MUTATOR;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HOOPLPackage.MUTATOR__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case HOOPLPackage.MUTATOR__NAME:
-        return getName();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case HOOPLPackage.MUTATOR__NAME:
-        setName((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case HOOPLPackage.MUTATOR__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case HOOPLPackage.MUTATOR__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-    }
-    return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
+    return HooplPackage.Literals.MUTATOR;
   }
 
 } //MutatorImpl

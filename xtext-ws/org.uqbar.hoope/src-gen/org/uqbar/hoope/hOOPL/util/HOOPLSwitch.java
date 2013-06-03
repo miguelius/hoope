@@ -1,19 +1,19 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.util;
+package org.uqbar.hoope.hoopl.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.uqbar.hoope.hOOPL.Feature;
-import org.uqbar.hoope.hOOPL.HOOPL;
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
-import org.uqbar.hoope.hOOPL.Mutator;
-import org.uqbar.hoope.hOOPL.Operation;
-import org.uqbar.hoope.hOOPL.Property;
-import org.uqbar.hoope.hOOPL.SendMessage;
+import org.uqbar.hoope.hoopl.Feature;
+import org.uqbar.hoope.hoopl.HooplPackage;
+import org.uqbar.hoope.hoopl.Mutator;
+import org.uqbar.hoope.hoopl.Operation;
+import org.uqbar.hoope.hoopl.Property;
+import org.uqbar.hoope.hoopl.SendMessage;
+import org.uqbar.hoope.hoopl.Sentence;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,10 +25,10 @@ import org.uqbar.hoope.hOOPL.SendMessage;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.uqbar.hoope.hOOPL.HOOPLPackage
+ * @see org.uqbar.hoope.hoopl.HooplPackage
  * @generated
  */
-public class HOOPLSwitch<T> extends Switch<T>
+public class HooplSwitch<T> extends Switch<T>
 {
   /**
    * The cached model package
@@ -36,7 +36,7 @@ public class HOOPLSwitch<T> extends Switch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  protected static HOOPLPackage modelPackage;
+  protected static HooplPackage modelPackage;
 
   /**
    * Creates an instance of the switch.
@@ -44,11 +44,11 @@ public class HOOPLSwitch<T> extends Switch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  public HOOPLSwitch()
+  public HooplSwitch()
   {
     if (modelPackage == null)
     {
-      modelPackage = HOOPLPackage.eINSTANCE;
+      modelPackage = HooplPackage.eINSTANCE;
     }
   }
 
@@ -78,29 +78,21 @@ public class HOOPLSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case HOOPLPackage.HOOPL:
+      case HooplPackage.OBJECT:
       {
-        HOOPL hoopl = (HOOPL)theEObject;
-        T result = caseHOOPL(hoopl);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case HOOPLPackage.OBJECT:
-      {
-        org.uqbar.hoope.hOOPL.Object object = (org.uqbar.hoope.hOOPL.Object)theEObject;
+        org.uqbar.hoope.hoopl.Object object = (org.uqbar.hoope.hoopl.Object)theEObject;
         T result = caseObject(object);
-        if (result == null) result = caseHOOPL(object);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HOOPLPackage.FEATURE:
+      case HooplPackage.FEATURE:
       {
         Feature feature = (Feature)theEObject;
         T result = caseFeature(feature);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HOOPLPackage.PROPERTY:
+      case HooplPackage.PROPERTY:
       {
         Property property = (Property)theEObject;
         T result = caseProperty(property);
@@ -108,7 +100,7 @@ public class HOOPLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HOOPLPackage.OPERATION:
+      case HooplPackage.OPERATION:
       {
         Operation operation = (Operation)theEObject;
         T result = caseOperation(operation);
@@ -116,38 +108,31 @@ public class HOOPLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HOOPLPackage.MUTATOR:
+      case HooplPackage.SENTENCE:
       {
-        Mutator mutator = (Mutator)theEObject;
-        T result = caseMutator(mutator);
+        Sentence sentence = (Sentence)theEObject;
+        T result = caseSentence(sentence);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HOOPLPackage.SEND_MESSAGE:
+      case HooplPackage.MUTATOR:
+      {
+        Mutator mutator = (Mutator)theEObject;
+        T result = caseMutator(mutator);
+        if (result == null) result = caseSentence(mutator);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case HooplPackage.SEND_MESSAGE:
       {
         SendMessage sendMessage = (SendMessage)theEObject;
         T result = caseSendMessage(sendMessage);
+        if (result == null) result = caseSentence(sendMessage);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
       default: return defaultCase(theEObject);
     }
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>HOOPL</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>HOOPL</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseHOOPL(HOOPL object)
-  {
-    return null;
   }
 
   /**
@@ -161,7 +146,7 @@ public class HOOPLSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObject(org.uqbar.hoope.hOOPL.Object object)
+  public T caseObject(org.uqbar.hoope.hoopl.Object object)
   {
     return null;
   }
@@ -215,6 +200,22 @@ public class HOOPLSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Sentence</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Sentence</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSentence(Sentence object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Mutator</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -263,4 +264,4 @@ public class HOOPLSwitch<T> extends Switch<T>
     return null;
   }
 
-} //HOOPLSwitch
+} //HooplSwitch

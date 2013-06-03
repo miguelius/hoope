@@ -6,10 +6,11 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.uqbar.org/hoope/HOOPL" 
-       class = "org.uqbar.hoope.hOOPL.HOOPLPackage"
+       class = "org.uqbar.hoope.hoopl.HooplPackage"
        genModel = "org/uqbar/hoope/HOOPL.genmodel" /> 
 	
   </extension>
+
 
 
 

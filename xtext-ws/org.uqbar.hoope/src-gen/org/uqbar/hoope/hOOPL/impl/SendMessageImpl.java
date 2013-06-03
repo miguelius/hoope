@@ -1,16 +1,15 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.impl;
+package org.uqbar.hoope.hoopl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
-import org.uqbar.hoope.hOOPL.SendMessage;
+import org.uqbar.hoope.hoopl.HooplPackage;
+import org.uqbar.hoope.hoopl.SendMessage;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,35 +18,14 @@ import org.uqbar.hoope.hOOPL.SendMessage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.uqbar.hoope.hOOPL.impl.SendMessageImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.uqbar.hoope.hOOPL.impl.SendMessageImpl#getMessage <em>Message</em>}</li>
+ *   <li>{@link org.uqbar.hoope.hoopl.impl.SendMessageImpl#getMessage <em>Message</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class SendMessageImpl extends MinimalEObjectImpl.Container implements SendMessage
+public class SendMessageImpl extends SentenceImpl implements SendMessage
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -86,30 +64,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
   @Override
   protected EClass eStaticClass()
   {
-    return HOOPLPackage.Literals.SEND_MESSAGE;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HOOPLPackage.SEND_MESSAGE__NAME, oldName, name));
+    return HooplPackage.Literals.SEND_MESSAGE;
   }
 
   /**
@@ -132,7 +87,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
     String oldMessage = message;
     message = newMessage;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HOOPLPackage.SEND_MESSAGE__MESSAGE, oldMessage, message));
+      eNotify(new ENotificationImpl(this, Notification.SET, HooplPackage.SEND_MESSAGE__MESSAGE, oldMessage, message));
   }
 
   /**
@@ -145,9 +100,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
   {
     switch (featureID)
     {
-      case HOOPLPackage.SEND_MESSAGE__NAME:
-        return getName();
-      case HOOPLPackage.SEND_MESSAGE__MESSAGE:
+      case HooplPackage.SEND_MESSAGE__MESSAGE:
         return getMessage();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -163,10 +116,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
   {
     switch (featureID)
     {
-      case HOOPLPackage.SEND_MESSAGE__NAME:
-        setName((String)newValue);
-        return;
-      case HOOPLPackage.SEND_MESSAGE__MESSAGE:
+      case HooplPackage.SEND_MESSAGE__MESSAGE:
         setMessage((String)newValue);
         return;
     }
@@ -183,10 +133,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
   {
     switch (featureID)
     {
-      case HOOPLPackage.SEND_MESSAGE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case HOOPLPackage.SEND_MESSAGE__MESSAGE:
+      case HooplPackage.SEND_MESSAGE__MESSAGE:
         setMessage(MESSAGE_EDEFAULT);
         return;
     }
@@ -203,9 +150,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
   {
     switch (featureID)
     {
-      case HOOPLPackage.SEND_MESSAGE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case HOOPLPackage.SEND_MESSAGE__MESSAGE:
+      case HooplPackage.SEND_MESSAGE__MESSAGE:
         return MESSAGE_EDEFAULT == null ? message != null : !MESSAGE_EDEFAULT.equals(message);
     }
     return super.eIsSet(featureID);
@@ -222,9 +167,7 @@ public class SendMessageImpl extends MinimalEObjectImpl.Container implements Sen
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", message: ");
+    result.append(" (message: ");
     result.append(message);
     result.append(')');
     return result.toString();

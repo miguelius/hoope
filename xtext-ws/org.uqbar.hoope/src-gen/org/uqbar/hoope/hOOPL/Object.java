@@ -1,8 +1,10 @@
 /**
  */
-package org.uqbar.hoope.hOOPL;
+package org.uqbar.hoope.hoopl;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,16 +14,16 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.uqbar.hoope.hOOPL.Object#getName <em>Name</em>}</li>
- *   <li>{@link org.uqbar.hoope.hOOPL.Object#getFeatures <em>Features</em>}</li>
+ *   <li>{@link org.uqbar.hoope.hoopl.Object#getName <em>Name</em>}</li>
+ *   <li>{@link org.uqbar.hoope.hoopl.Object#getFeatures <em>Features</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.uqbar.hoope.hOOPL.HOOPLPackage#getObject()
+ * @see org.uqbar.hoope.hoopl.HooplPackage#getObject()
  * @model
  * @generated
  */
-public interface Object extends HOOPL
+public interface Object extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -33,14 +35,14 @@ public interface Object extends HOOPL
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see org.uqbar.hoope.hOOPL.HOOPLPackage#getObject_Name()
+   * @see org.uqbar.hoope.hoopl.HooplPackage#getObject_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link org.uqbar.hoope.hOOPL.Object#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.uqbar.hoope.hoopl.Object#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -51,7 +53,7 @@ public interface Object extends HOOPL
 
   /**
    * Returns the value of the '<em><b>Features</b></em>' containment reference list.
-   * The list contents are of type {@link org.uqbar.hoope.hOOPL.Feature}.
+   * The list contents are of type {@link org.uqbar.hoope.hoopl.Feature}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
@@ -59,7 +61,7 @@ public interface Object extends HOOPL
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Features</em>' containment reference list.
-   * @see org.uqbar.hoope.hOOPL.HOOPLPackage#getObject_Features()
+   * @see org.uqbar.hoope.hoopl.HooplPackage#getObject_Features()
    * @model containment="true"
    * @generated
    */

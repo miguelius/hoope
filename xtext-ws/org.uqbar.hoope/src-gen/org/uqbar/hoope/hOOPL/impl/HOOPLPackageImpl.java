@@ -1,6 +1,6 @@
 /**
  */
-package org.uqbar.hoope.hOOPL.impl;
+package org.uqbar.hoope.hoopl.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -9,13 +9,18 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.uqbar.hoope.hOOPL.Feature;
-import org.uqbar.hoope.hOOPL.HOOPLFactory;
-import org.uqbar.hoope.hOOPL.HOOPLPackage;
-import org.uqbar.hoope.hOOPL.Mutator;
-import org.uqbar.hoope.hOOPL.Operation;
-import org.uqbar.hoope.hOOPL.Property;
-import org.uqbar.hoope.hOOPL.SendMessage;
+import org.eclipse.xtext.common.types.TypesPackage;
+
+import org.eclipse.xtext.xbase.XbasePackage;
+
+import org.uqbar.hoope.hoopl.Feature;
+import org.uqbar.hoope.hoopl.HooplFactory;
+import org.uqbar.hoope.hoopl.HooplPackage;
+import org.uqbar.hoope.hoopl.Mutator;
+import org.uqbar.hoope.hoopl.Operation;
+import org.uqbar.hoope.hoopl.Property;
+import org.uqbar.hoope.hoopl.SendMessage;
+import org.uqbar.hoope.hoopl.Sentence;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,15 +28,8 @@ import org.uqbar.hoope.hOOPL.SendMessage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
+public class HooplPackageImpl extends EPackageImpl implements HooplPackage
 {
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass hooplEClass = null;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -65,6 +63,13 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass sentenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass mutatorEClass = null;
 
   /**
@@ -85,13 +90,13 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see org.eclipse.emf.ecore.EPackage.Registry
-   * @see org.uqbar.hoope.hOOPL.HOOPLPackage#eNS_URI
+   * @see org.uqbar.hoope.hoopl.HooplPackage#eNS_URI
    * @see #init()
    * @generated
    */
-  private HOOPLPackageImpl()
+  private HooplPackageImpl()
   {
-    super(eNS_URI, HOOPLFactory.eINSTANCE);
+    super(eNS_URI, HooplFactory.eINSTANCE);
   }
 
   /**
@@ -104,7 +109,7 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
    * 
-   * <p>This method is used to initialize {@link HOOPLPackage#eINSTANCE} when that field is accessed.
+   * <p>This method is used to initialize {@link HooplPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -113,38 +118,31 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * @see #initializePackageContents()
    * @generated
    */
-  public static HOOPLPackage init()
+  public static HooplPackage init()
   {
-    if (isInited) return (HOOPLPackage)EPackage.Registry.INSTANCE.getEPackage(HOOPLPackage.eNS_URI);
+    if (isInited) return (HooplPackage)EPackage.Registry.INSTANCE.getEPackage(HooplPackage.eNS_URI);
 
     // Obtain or create and register package
-    HOOPLPackageImpl theHOOPLPackage = (HOOPLPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HOOPLPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HOOPLPackageImpl());
+    HooplPackageImpl theHooplPackage = (HooplPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HooplPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HooplPackageImpl());
 
     isInited = true;
 
+    // Initialize simple dependencies
+    XbasePackage.eINSTANCE.eClass();
+
     // Create package meta-data objects
-    theHOOPLPackage.createPackageContents();
+    theHooplPackage.createPackageContents();
 
     // Initialize created meta-data
-    theHOOPLPackage.initializePackageContents();
+    theHooplPackage.initializePackageContents();
 
     // Mark meta-data to indicate it can't be changed
-    theHOOPLPackage.freeze();
+    theHooplPackage.freeze();
 
   
     // Update the registry and return the package
-    EPackage.Registry.INSTANCE.put(HOOPLPackage.eNS_URI, theHOOPLPackage);
-    return theHOOPLPackage;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getHOOPL()
-  {
-    return hooplEClass;
+    EPackage.Registry.INSTANCE.put(HooplPackage.eNS_URI, theHooplPackage);
+    return theHooplPackage;
   }
 
   /**
@@ -212,6 +210,26 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getProperty_Type()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getProperty_Initial()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getOperation()
   {
     return operationEClass;
@@ -222,9 +240,9 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getOperation_Annotations()
+  public EReference getOperation_Sentence()
   {
-    return (EAttribute)operationEClass.getEStructuralFeatures().get(0);
+    return (EReference)operationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -232,9 +250,19 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getOperation_Sentence()
+  public EClass getSentence()
   {
-    return (EReference)operationEClass.getEStructuralFeatures().get(1);
+    return sentenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getSentence_Name()
+  {
+    return (EAttribute)sentenceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -252,16 +280,6 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMutator_Name()
-  {
-    return (EAttribute)mutatorEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getSendMessage()
   {
     return sendMessageEClass;
@@ -272,7 +290,7 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSendMessage_Name()
+  public EAttribute getSendMessage_Message()
   {
     return (EAttribute)sendMessageEClass.getEStructuralFeatures().get(0);
   }
@@ -282,19 +300,9 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getSendMessage_Message()
+  public HooplFactory getHooplFactory()
   {
-    return (EAttribute)sendMessageEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public HOOPLFactory getHOOPLFactory()
-  {
-    return (HOOPLFactory)getEFactoryInstance();
+    return (HooplFactory)getEFactoryInstance();
   }
 
   /**
@@ -317,8 +325,6 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
     isCreated = true;
 
     // Create classes and their features
-    hooplEClass = createEClass(HOOPL);
-
     objectEClass = createEClass(OBJECT);
     createEAttribute(objectEClass, OBJECT__NAME);
     createEReference(objectEClass, OBJECT__FEATURES);
@@ -327,16 +333,18 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
     createEAttribute(featureEClass, FEATURE__NAME);
 
     propertyEClass = createEClass(PROPERTY);
+    createEReference(propertyEClass, PROPERTY__TYPE);
+    createEReference(propertyEClass, PROPERTY__INITIAL);
 
     operationEClass = createEClass(OPERATION);
-    createEAttribute(operationEClass, OPERATION__ANNOTATIONS);
     createEReference(operationEClass, OPERATION__SENTENCE);
 
+    sentenceEClass = createEClass(SENTENCE);
+    createEAttribute(sentenceEClass, SENTENCE__NAME);
+
     mutatorEClass = createEClass(MUTATOR);
-    createEAttribute(mutatorEClass, MUTATOR__NAME);
 
     sendMessageEClass = createEClass(SEND_MESSAGE);
-    createEAttribute(sendMessageEClass, SEND_MESSAGE__NAME);
     createEAttribute(sendMessageEClass, SEND_MESSAGE__MESSAGE);
   }
 
@@ -364,40 +372,45 @@ public class HOOPLPackageImpl extends EPackageImpl implements HOOPLPackage
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    objectEClass.getESuperTypes().add(this.getHOOPL());
     propertyEClass.getESuperTypes().add(this.getFeature());
     operationEClass.getESuperTypes().add(this.getFeature());
+    mutatorEClass.getESuperTypes().add(this.getSentence());
+    sendMessageEClass.getESuperTypes().add(this.getSentence());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(hooplEClass, org.uqbar.hoope.hOOPL.HOOPL.class, "HOOPL", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(objectEClass, org.uqbar.hoope.hOOPL.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.uqbar.hoope.hOOPL.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getObject_Features(), this.getFeature(), null, "features", null, 0, -1, org.uqbar.hoope.hOOPL.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(objectEClass, org.uqbar.hoope.hoopl.Object.class, "Object", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getObject_Name(), ecorePackage.getEString(), "name", null, 0, 1, org.uqbar.hoope.hoopl.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getObject_Features(), this.getFeature(), null, "features", null, 0, -1, org.uqbar.hoope.hoopl.Object.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProperty_Initial(), theXbasePackage.getXExpression(), null, "initial", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(operationEClass, Operation.class, "Operation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getOperation_Annotations(), ecorePackage.getEString(), "annotations", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getOperation_Sentence(), ecorePackage.getEObject(), null, "sentence", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOperation_Sentence(), this.getSentence(), null, "sentence", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(sentenceEClass, Sentence.class, "Sentence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSentence_Name(), ecorePackage.getEString(), "name", null, 0, 1, Sentence.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mutatorEClass, Mutator.class, "Mutator", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMutator_Name(), ecorePackage.getEString(), "name", null, 0, 1, Mutator.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(sendMessageEClass, SendMessage.class, "SendMessage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getSendMessage_Name(), ecorePackage.getEString(), "name", null, 0, 1, SendMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSendMessage_Message(), ecorePackage.getEString(), "message", null, 0, 1, SendMessage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
   }
 
-} //HOOPLPackageImpl
+} //HooplPackageImpl

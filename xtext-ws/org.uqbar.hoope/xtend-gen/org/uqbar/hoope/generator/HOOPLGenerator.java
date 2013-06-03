@@ -18,9 +18,10 @@ import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.uqbar.hoope.hOOPL.Feature;
-import org.uqbar.hoope.hOOPL.Operation;
-import org.uqbar.hoope.hOOPL.Property;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.uqbar.hoope.hoopl.Feature;
+import org.uqbar.hoope.hoopl.Operation;
+import org.uqbar.hoope.hoopl.Property;
 
 /**
  * Generates code from your model files on save.
@@ -36,8 +37,8 @@ public class HOOPLGenerator implements IGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
     TreeIterator<EObject> _allContents = resource.getAllContents();
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<org.uqbar.hoope.hOOPL.Object> _filter = Iterables.<org.uqbar.hoope.hOOPL.Object>filter(_iterable, org.uqbar.hoope.hOOPL.Object.class);
-    for (final org.uqbar.hoope.hOOPL.Object o : _filter) {
+    Iterable<org.uqbar.hoope.hoopl.Object> _filter = Iterables.<org.uqbar.hoope.hoopl.Object>filter(_iterable, org.uqbar.hoope.hoopl.Object.class);
+    for (final org.uqbar.hoope.hoopl.Object o : _filter) {
       String _name = o.getName();
       QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(o);
       String _string = _fullyQualifiedName.toString("/");
@@ -54,6 +55,36 @@ public class HOOPLGenerator implements IGenerator {
     _builder.append(_name, "");
     _builder.append(";");
     _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append("int get");
+    String _name_1 = p.getName();
+    String _firstUpper = StringExtensions.toFirstUpper(_name_1);
+    _builder.append(_firstUpper, "");
+    _builder.append("() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("return ");
+    String _name_2 = p.getName();
+    _builder.append(_name_2, "	");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("void set");
+    String _name_3 = p.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_3);
+    _builder.append(_firstUpper_1, "");
+    _builder.append("(int value) {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("this.");
+    String _name_4 = p.getName();
+    _builder.append(_name_4, "	");
+    _builder.append(" = value;");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
     return _builder;
   }
   
@@ -71,7 +102,7 @@ public class HOOPLGenerator implements IGenerator {
     return _builder;
   }
   
-  public CharSequence compile(final org.uqbar.hoope.hOOPL.Object o) {
+  public CharSequence compile(final org.uqbar.hoope.hoopl.Object o) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("public class ");
     String _name = o.getName();
