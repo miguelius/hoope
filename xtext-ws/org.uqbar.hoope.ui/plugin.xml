@@ -392,5 +392,28 @@
             extensions="hoopl">
     </provider>
   </extension>
-
+  <extension point="org.eclipse.ui.views">
+  	 <category 
+           id="org.uqbar.hoope.ui.views"
+           name="HOOPE">
+     </category>
+  	 <view id="org.uqbar.hoope.ui.views.hoopeview"
+             name="HOOPE Runtime"
+             category="org.uqbar.hoope.ui.views"
+          class="org.uqbar.hoope.ui.views.HOOPEView"
+          icon="icons\view.gif"/>
+  	 <view id="org.uqbar.hoope.ui.views.hoopeconsoleview"
+             name="HOOPE Console"
+             category="org.uqbar.hoope.ui.views"
+          class="org.uqbar.hoope.ui.views.HOOPEConsoleView"
+          icon="icons\view.gif"/>
+  </extension>
+<!--
+  <extension point="org.eclipse.ui.views">
+  	 <category 
+           id="org.uqbar.hoope.ui.views"
+           name="HOOPE">
+     </category>
+  </extension>
+-->
 </plugin>
