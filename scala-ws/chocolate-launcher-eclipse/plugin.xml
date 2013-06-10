@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<plugin
+	name="Eclipse Hello World Example"
+	id="org.eclipse.examples.helloworld"
+	version="0.0.0"
+	provider-name="OTI">
+		
+    <requires>
+	<import plugin="org.eclipse.core.resources"/>
+        <import plugin="org.eclipse.ui"/>
+    </requires>
+<!--
+    <runtime>
+	<library name="helloworld.jar"/>
+    </runtime>
+-->
+  <extension point="org.eclipse.ui.views">
+  	 <category 
+           id="org.uqbar.hoope.ui.views"
+           name="HOOPE">
+     </category>
+  	 <view id="org.uqbar.chocolate.launchers.chocolateview"
+             name="HOOPE Runtime"
+             category="org.uqbar.hoope.ui.views"
+          class="org.uqbar.chocolate.launchers.ChocolateViewPart"
+          icon="icons\view.gif"/>
+  </extension>
+</plugin>

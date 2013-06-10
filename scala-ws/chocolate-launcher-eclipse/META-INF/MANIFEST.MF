@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: chocolate-launcher-eclipse
+Bundle-SymbolicName: chocolate-launcher-eclipse;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: Activator
+Bundle-ClassPath: .,lib/scala-library.jar,lib/scala-reflect.jar,lib/scala-swing.jar,lib/scala-actors.jar,lib/chocolate-core-2.1.4.jar,lib/chocolate-common-components-2.1.4.jar,lib/chocolate-game-test-2.1.4.jar
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.scala-ide.scala.library
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
