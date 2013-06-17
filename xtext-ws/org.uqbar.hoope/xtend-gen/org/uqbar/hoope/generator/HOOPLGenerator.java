@@ -3,25 +3,12 @@
  */
 package org.uqbar.hoope.generator;
 
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.uqbar.hoope.hoopl.Feature;
-import org.uqbar.hoope.hoopl.Operation;
-import org.uqbar.hoope.hoopl.Property;
 
 /**
  * Generates code from your model files on save.
@@ -34,118 +21,6 @@ public class HOOPLGenerator implements IGenerator {
   @Extension
   private IQualifiedNameProvider _iQualifiedNameProvider;
   
-  public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    TreeIterator<EObject> _allContents = resource.getAllContents();
-    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-    Iterable<org.uqbar.hoope.hoopl.Object> _filter = Iterables.<org.uqbar.hoope.hoopl.Object>filter(_iterable, org.uqbar.hoope.hoopl.Object.class);
-    for (final org.uqbar.hoope.hoopl.Object o : _filter) {
-      String _name = o.getName();
-      QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(o);
-      String _string = _fullyQualifiedName.toString("/");
-      String _plus = (_string + ".java");
-      CharSequence _compile = this.compile(o);
-      fsa.generateFile(_name, _plus, _compile);
-    }
-  }
-  
-  public CharSequence compile(final Property p) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("int ");
-    String _name = p.getName();
-    _builder.append(_name, "");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
-    _builder.append("int get");
-    String _name_1 = p.getName();
-    String _firstUpper = StringExtensions.toFirstUpper(_name_1);
-    _builder.append(_firstUpper, "");
-    _builder.append("() {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append("return ");
-    String _name_2 = p.getName();
-    _builder.append(_name_2, "	");
-    _builder.append(";");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    _builder.newLine();
-    _builder.append("void set");
-    String _name_3 = p.getName();
-    String _firstUpper_1 = StringExtensions.toFirstUpper(_name_3);
-    _builder.append(_firstUpper_1, "");
-    _builder.append("(int value) {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.append("this.");
-    String _name_4 = p.getName();
-    _builder.append(_name_4, "	");
-    _builder.append(" = value;");
-    _builder.newLineIfNotEmpty();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence compile(final Operation op) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("void ");
-    String _name = op.getName();
-    _builder.append(_name, "");
-    _builder.append("() {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence compile(final org.uqbar.hoope.hoopl.Object o) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public class ");
-    String _name = o.getName();
-    _builder.append(_name, "");
-    _builder.append(" {");
-    _builder.newLineIfNotEmpty();
-    _builder.append("   ");
-    EList<Feature> _features = o.getFeatures();
-    Iterable<Property> _filter = Iterables.<Property>filter(_features, Property.class);
-    final Function1<Property,CharSequence> _function = new Function1<Property,CharSequence>() {
-        public CharSequence apply(final Property it) {
-          CharSequence _compile = HOOPLGenerator.this.compile(it);
-          return _compile;
-        }
-      };
-    Iterable<CharSequence> _map = IterableExtensions.<Property, CharSequence>map(_filter, _function);
-    _builder.append(_map, "   ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("   ");
-    EList<Feature> _features_1 = o.getFeatures();
-    Iterable<Operation> _filter_1 = Iterables.<Operation>filter(_features_1, Operation.class);
-    final Function1<Operation,CharSequence> _function_1 = new Function1<Operation,CharSequence>() {
-        public CharSequence apply(final Operation it) {
-          CharSequence _compile = HOOPLGenerator.this.compile(it);
-          return _compile;
-        }
-      };
-    Iterable<CharSequence> _map_1 = IterableExtensions.<Operation, CharSequence>map(_filter_1, _function_1);
-    _builder.append(_map_1, "   ");
-    _builder.newLineIfNotEmpty();
-    _builder.append("   ");
-    _builder.newLine();
-    _builder.append("   ");
-    _builder.append("public static void main(String args) {");
-    _builder.newLine();
-    _builder.append("   \t");
-    _builder.append("System.out.println(\"Hola, Mundo!\");");
-    _builder.newLine();
-    _builder.append("   ");
-    _builder.append("} ");
-    _builder.newLine();
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
+  public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
   }
 }

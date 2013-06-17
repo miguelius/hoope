@@ -3,14 +3,11 @@
  */
 package org.uqbar.hoope.generator
 
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.IGenerator
-import org.eclipse.xtext.generator.IFileSystemAccess
-import org.eclipse.xtext.naming.IQualifiedNameProvider
 import com.google.inject.Inject
-import org.uqbar.hoope.hoopl.Object
-import org.uqbar.hoope.hoopl.Property
-import org.uqbar.hoope.hoopl.Operation
+import org.eclipse.xtext.generator.IGenerator
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.IFileSystemAccess
 
 /**
  * Generates code from your model files on save.
@@ -20,7 +17,12 @@ import org.uqbar.hoope.hoopl.Operation
 class HOOPLGenerator implements IGenerator {
 
 	@Inject extension IQualifiedNameProvider
-
+	
+	override doGenerate(Resource input, IFileSystemAccess fsa) {
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
+/*
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (o : resource.allContents.toIterable.filter(typeof(Object))) {
 			fsa.generateFile(o.name, o.fullyQualifiedName.toString("/") + ".java", o.compile)
@@ -55,4 +57,5 @@ class HOOPLGenerator implements IGenerator {
 		   } 
 		}
 	'''
+	*/
 }

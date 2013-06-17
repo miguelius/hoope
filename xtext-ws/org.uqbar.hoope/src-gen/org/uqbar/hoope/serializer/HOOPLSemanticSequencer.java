@@ -55,10 +55,10 @@ import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.uqbar.hoope.hoopl.HooplPackage;
-import org.uqbar.hoope.hoopl.Mutator;
-import org.uqbar.hoope.hoopl.Operation;
+import org.uqbar.hoope.hoopl.Message;
+import org.uqbar.hoope.hoopl.ObjectDefinition;
+import org.uqbar.hoope.hoopl.Program;
 import org.uqbar.hoope.hoopl.Property;
-import org.uqbar.hoope.hoopl.SendMessage;
 import org.uqbar.hoope.services.HOOPLGrammarAccess;
 
 @SuppressWarnings("all")
@@ -69,23 +69,23 @@ public class HOOPLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == HooplPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
-			case HooplPackage.MUTATOR:
-				if(context == grammarAccess.getMutatorRule() ||
-				   context == grammarAccess.getSentenceRule()) {
-					sequence_Mutator(context, (Mutator) semanticObject); 
-					return; 
-				}
-				else break;
-			case HooplPackage.OBJECT:
-				if(context == grammarAccess.getObjectRule()) {
-					sequence_Object(context, (org.uqbar.hoope.hoopl.Object) semanticObject); 
-					return; 
-				}
-				else break;
-			case HooplPackage.OPERATION:
+			case HooplPackage.MESSAGE:
 				if(context == grammarAccess.getFeatureRule() ||
-				   context == grammarAccess.getOperationRule()) {
-					sequence_Operation(context, (Operation) semanticObject); 
+				   context == grammarAccess.getMessageRule()) {
+					sequence_Message(context, (Message) semanticObject); 
+					return; 
+				}
+				else break;
+			case HooplPackage.OBJECT_DEFINITION:
+				if(context == grammarAccess.getFeatureRule() ||
+				   context == grammarAccess.getObjectDefinitionRule()) {
+					sequence_ObjectDefinition(context, (ObjectDefinition) semanticObject); 
+					return; 
+				}
+				else break;
+			case HooplPackage.PROGRAM:
+				if(context == grammarAccess.getProgramRule()) {
+					sequence_Program(context, (Program) semanticObject); 
 					return; 
 				}
 				else break;
@@ -93,13 +93,6 @@ public class HOOPLSemanticSequencer extends XbaseSemanticSequencer {
 				if(context == grammarAccess.getFeatureRule() ||
 				   context == grammarAccess.getPropertyRule()) {
 					sequence_Property(context, (Property) semanticObject); 
-					return; 
-				}
-				else break;
-			case HooplPackage.SEND_MESSAGE:
-				if(context == grammarAccess.getSendMessageRule() ||
-				   context == grammarAccess.getSentenceRule()) {
-					sequence_SendMessage(context, (SendMessage) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1047,17 +1040,10 @@ public class HOOPLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ValidID
+	 *     (name=ValidID sentences+=XExpression*)
 	 */
-	protected void sequence_Mutator(EObject context, Mutator semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, HooplPackage.Literals.SENTENCE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HooplPackage.Literals.SENTENCE__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getMutatorAccess().getNameValidIDParserRuleCall_0_0(), semanticObject.getName());
-		feeder.finish();
+	protected void sequence_Message(EObject context, Message semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1065,34 +1051,35 @@ public class HOOPLSemanticSequencer extends XbaseSemanticSequencer {
 	 * Constraint:
 	 *     (name=ValidID features+=Feature*)
 	 */
-	protected void sequence_Object(EObject context, org.uqbar.hoope.hoopl.Object semanticObject) {
+	protected void sequence_ObjectDefinition(EObject context, ObjectDefinition semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ValidID sentence+=Sentence*)
+	 *     objects+=ObjectDefinition*
 	 */
-	protected void sequence_Operation(EObject context, Operation semanticObject) {
+	protected void sequence_Program(EObject context, Program semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (type=JvmTypeReference name=ValidID initial=XExpression?)
+	 *     (name=ValidID type=JvmTypeReference)
 	 */
 	protected void sequence_Property(EObject context, Property semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ((name=ValidID | name='self') (message=ValidID | message=Primitive))
-	 */
-	protected void sequence_SendMessage(EObject context, SendMessage semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, HooplPackage.Literals.FEATURE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HooplPackage.Literals.FEATURE__NAME));
+			if(transientValues.isValueTransient(semanticObject, HooplPackage.Literals.PROPERTY__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, HooplPackage.Literals.PROPERTY__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getPropertyAccess().getNameValidIDParserRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0(), semanticObject.getType());
+		feeder.finish();
 	}
 }

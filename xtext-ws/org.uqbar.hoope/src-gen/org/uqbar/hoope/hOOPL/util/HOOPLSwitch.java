@@ -7,13 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.uqbar.hoope.hoopl.Feature;
-import org.uqbar.hoope.hoopl.HooplPackage;
-import org.uqbar.hoope.hoopl.Mutator;
-import org.uqbar.hoope.hoopl.Operation;
-import org.uqbar.hoope.hoopl.Property;
-import org.uqbar.hoope.hoopl.SendMessage;
-import org.uqbar.hoope.hoopl.Sentence;
+import org.uqbar.hoope.hoopl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -78,10 +72,18 @@ public class HooplSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case HooplPackage.OBJECT:
+      case HooplPackage.PROGRAM:
       {
-        org.uqbar.hoope.hoopl.Object object = (org.uqbar.hoope.hoopl.Object)theEObject;
-        T result = caseObject(object);
+        Program program = (Program)theEObject;
+        T result = caseProgram(program);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case HooplPackage.OBJECT_DEFINITION:
+      {
+        ObjectDefinition objectDefinition = (ObjectDefinition)theEObject;
+        T result = caseObjectDefinition(objectDefinition);
+        if (result == null) result = caseFeature(objectDefinition);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -100,34 +102,11 @@ public class HooplSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case HooplPackage.OPERATION:
+      case HooplPackage.MESSAGE:
       {
-        Operation operation = (Operation)theEObject;
-        T result = caseOperation(operation);
-        if (result == null) result = caseFeature(operation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case HooplPackage.SENTENCE:
-      {
-        Sentence sentence = (Sentence)theEObject;
-        T result = caseSentence(sentence);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case HooplPackage.MUTATOR:
-      {
-        Mutator mutator = (Mutator)theEObject;
-        T result = caseMutator(mutator);
-        if (result == null) result = caseSentence(mutator);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case HooplPackage.SEND_MESSAGE:
-      {
-        SendMessage sendMessage = (SendMessage)theEObject;
-        T result = caseSendMessage(sendMessage);
-        if (result == null) result = caseSentence(sendMessage);
+        Message message = (Message)theEObject;
+        T result = caseMessage(message);
+        if (result == null) result = caseFeature(message);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,17 +115,33 @@ public class HooplSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Object</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Program</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Object</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Program</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseObject(org.uqbar.hoope.hoopl.Object object)
+  public T caseProgram(Program object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Object Definition</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Object Definition</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseObjectDefinition(ObjectDefinition object)
   {
     return null;
   }
@@ -184,65 +179,17 @@ public class HooplSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Operation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Message</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Message</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOperation(Operation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sentence</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sentence</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSentence(Sentence object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Mutator</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Mutator</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMutator(Mutator object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Send Message</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Send Message</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSendMessage(SendMessage object)
+  public T caseMessage(Message object)
   {
     return null;
   }

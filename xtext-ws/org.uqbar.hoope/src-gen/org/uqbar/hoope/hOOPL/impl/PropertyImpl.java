@@ -12,8 +12,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.xtext.common.types.JvmTypeReference;
 
-import org.eclipse.xtext.xbase.XExpression;
-
 import org.uqbar.hoope.hoopl.HooplPackage;
 import org.uqbar.hoope.hoopl.Property;
 
@@ -25,7 +23,6 @@ import org.uqbar.hoope.hoopl.Property;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.uqbar.hoope.hoopl.impl.PropertyImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.uqbar.hoope.hoopl.impl.PropertyImpl#getInitial <em>Initial</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,16 +39,6 @@ public class PropertyImpl extends FeatureImpl implements Property
    * @ordered
    */
   protected JvmTypeReference type;
-
-  /**
-   * The cached value of the '{@link #getInitial() <em>Initial</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getInitial()
-   * @generated
-   * @ordered
-   */
-  protected XExpression initial;
 
   /**
    * <!-- begin-user-doc -->
@@ -127,54 +114,6 @@ public class PropertyImpl extends FeatureImpl implements Property
    * <!-- end-user-doc -->
    * @generated
    */
-  public XExpression getInitial()
-  {
-    return initial;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetInitial(XExpression newInitial, NotificationChain msgs)
-  {
-    XExpression oldInitial = initial;
-    initial = newInitial;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HooplPackage.PROPERTY__INITIAL, oldInitial, newInitial);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setInitial(XExpression newInitial)
-  {
-    if (newInitial != initial)
-    {
-      NotificationChain msgs = null;
-      if (initial != null)
-        msgs = ((InternalEObject)initial).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HooplPackage.PROPERTY__INITIAL, null, msgs);
-      if (newInitial != null)
-        msgs = ((InternalEObject)newInitial).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HooplPackage.PROPERTY__INITIAL, null, msgs);
-      msgs = basicSetInitial(newInitial, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, HooplPackage.PROPERTY__INITIAL, newInitial, newInitial));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -182,8 +121,6 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case HooplPackage.PROPERTY__TYPE:
         return basicSetType(null, msgs);
-      case HooplPackage.PROPERTY__INITIAL:
-        return basicSetInitial(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -200,8 +137,6 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case HooplPackage.PROPERTY__TYPE:
         return getType();
-      case HooplPackage.PROPERTY__INITIAL:
-        return getInitial();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -218,9 +153,6 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case HooplPackage.PROPERTY__TYPE:
         setType((JvmTypeReference)newValue);
-        return;
-      case HooplPackage.PROPERTY__INITIAL:
-        setInitial((XExpression)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -239,9 +171,6 @@ public class PropertyImpl extends FeatureImpl implements Property
       case HooplPackage.PROPERTY__TYPE:
         setType((JvmTypeReference)null);
         return;
-      case HooplPackage.PROPERTY__INITIAL:
-        setInitial((XExpression)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -258,8 +187,6 @@ public class PropertyImpl extends FeatureImpl implements Property
     {
       case HooplPackage.PROPERTY__TYPE:
         return type != null;
-      case HooplPackage.PROPERTY__INITIAL:
-        return initial != null;
     }
     return super.eIsSet(featureID);
   }

@@ -3,42 +3,48 @@ grammar org.uqbar.hoope.HOOPL with
 
 generate hoopl "http://www.uqbar.org/hoope/HOOPL"
 
-Object:
-		'object' name=ValidID '{'
-			    features+=Feature*
-		'}' 
+Program:
+	objects += (ObjectDefinition)*
+;
+
+ObjectDefinition:
+	'ref' name=ValidID '= object {'
+		features += (Feature)*
+	'}' 
 ;
 
 Feature:
-	Property | Operation
+	ObjectDefinition | Property | Message
 ;
-	
+
 Property:
-	  type=JvmTypeReference name=ValidID ('=' initial=XExpression)?
+	name=ValidID ':' type=JvmTypeReference	
 ;
 
-Operation:
-	name=ValidID '{'
-		sentence += (Sentence)*
-	'}'
+Message:
+	'message' name=ValidID '= method {'
+		sentences += (XExpression)*
+	'}'	
 ;
 
-Annotation:
-	'@'ValidID ( '(' (INT | STRING | ValidID) ')' )?	
-;
-
-Sentence:
-	Mutator | SendMessage
-;
-
-Mutator:
-	name=ValidID '(' (INT | STRING | ValidID) ')'
-;
+/*
 
 SendMessage:
-	name=(ValidID | 'self') message=(ValidID | Primitive)
+	target=Objecto => message=ValidID
+;
+Selector:
+	Unary | KeyValue
 ;
 
-Primitive:
-	'subir' | 'bajar' | 'derecha' | 'izquierda' 
+Unary:
+	ValidID
 ;
+
+KeyValue:
+	pairs+=(Pair)*
+;
+
+Pair:
+	parameter=ValidID ':' argument=ValidID
+;
+*/

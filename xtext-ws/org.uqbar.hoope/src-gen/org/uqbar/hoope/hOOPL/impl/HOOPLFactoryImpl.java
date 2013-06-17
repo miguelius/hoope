@@ -10,14 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.uqbar.hoope.hoopl.Feature;
-import org.uqbar.hoope.hoopl.HooplFactory;
-import org.uqbar.hoope.hoopl.HooplPackage;
-import org.uqbar.hoope.hoopl.Mutator;
-import org.uqbar.hoope.hoopl.Operation;
-import org.uqbar.hoope.hoopl.Property;
-import org.uqbar.hoope.hoopl.SendMessage;
-import org.uqbar.hoope.hoopl.Sentence;
+import org.uqbar.hoope.hoopl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -71,13 +64,11 @@ public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
   {
     switch (eClass.getClassifierID())
     {
-      case HooplPackage.OBJECT: return createObject();
+      case HooplPackage.PROGRAM: return createProgram();
+      case HooplPackage.OBJECT_DEFINITION: return createObjectDefinition();
       case HooplPackage.FEATURE: return createFeature();
       case HooplPackage.PROPERTY: return createProperty();
-      case HooplPackage.OPERATION: return createOperation();
-      case HooplPackage.SENTENCE: return createSentence();
-      case HooplPackage.MUTATOR: return createMutator();
-      case HooplPackage.SEND_MESSAGE: return createSendMessage();
+      case HooplPackage.MESSAGE: return createMessage();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -88,10 +79,21 @@ public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public org.uqbar.hoope.hoopl.Object createObject()
+  public Program createProgram()
   {
-    ObjectImpl object = new ObjectImpl();
-    return object;
+    ProgramImpl program = new ProgramImpl();
+    return program;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ObjectDefinition createObjectDefinition()
+  {
+    ObjectDefinitionImpl objectDefinition = new ObjectDefinitionImpl();
+    return objectDefinition;
   }
 
   /**
@@ -121,43 +123,10 @@ public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Operation createOperation()
+  public Message createMessage()
   {
-    OperationImpl operation = new OperationImpl();
-    return operation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Sentence createSentence()
-  {
-    SentenceImpl sentence = new SentenceImpl();
-    return sentence;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Mutator createMutator()
-  {
-    MutatorImpl mutator = new MutatorImpl();
-    return mutator;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SendMessage createSendMessage()
-  {
-    SendMessageImpl sendMessage = new SendMessageImpl();
-    return sendMessage;
+    MessageImpl message = new MessageImpl();
+    return message;
   }
 
   /**

@@ -38,12 +38,6 @@ public class HOOPLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getFeatureAccess().getAlternatives(), "rule__Feature__Alternatives");
-					put(grammarAccess.getAnnotationAccess().getAlternatives_2_1(), "rule__Annotation__Alternatives_2_1");
-					put(grammarAccess.getSentenceAccess().getAlternatives(), "rule__Sentence__Alternatives");
-					put(grammarAccess.getMutatorAccess().getAlternatives_2(), "rule__Mutator__Alternatives_2");
-					put(grammarAccess.getSendMessageAccess().getNameAlternatives_0_0(), "rule__SendMessage__NameAlternatives_0_0");
-					put(grammarAccess.getSendMessageAccess().getMessageAlternatives_1_0(), "rule__SendMessage__MessageAlternatives_1_0");
-					put(grammarAccess.getPrimitiveAccess().getAlternatives(), "rule__Primitive__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpMultiAssignAccess().getAlternatives(), "rule__OpMultiAssign__Alternatives");
 					put(grammarAccess.getOpEqualityAccess().getAlternatives(), "rule__OpEquality__Alternatives");
@@ -80,14 +74,9 @@ public class HOOPLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
-					put(grammarAccess.getObjectAccess().getGroup(), "rule__Object__Group__0");
+					put(grammarAccess.getObjectDefinitionAccess().getGroup(), "rule__ObjectDefinition__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
-					put(grammarAccess.getPropertyAccess().getGroup_2(), "rule__Property__Group_2__0");
-					put(grammarAccess.getOperationAccess().getGroup(), "rule__Operation__Group__0");
-					put(grammarAccess.getAnnotationAccess().getGroup(), "rule__Annotation__Group__0");
-					put(grammarAccess.getAnnotationAccess().getGroup_2(), "rule__Annotation__Group_2__0");
-					put(grammarAccess.getMutatorAccess().getGroup(), "rule__Mutator__Group__0");
-					put(grammarAccess.getSendMessageAccess().getGroup(), "rule__SendMessage__Group__0");
+					put(grammarAccess.getMessageAccess().getGroup(), "rule__Message__Group__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -241,16 +230,13 @@ public class HOOPLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameWithWildcardAccess().getGroup(), "rule__QualifiedNameWithWildcard__Group__0");
 					put(grammarAccess.getXImportDeclarationAccess().getGroup(), "rule__XImportDeclaration__Group__0");
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
-					put(grammarAccess.getObjectAccess().getNameAssignment_1(), "rule__Object__NameAssignment_1");
-					put(grammarAccess.getObjectAccess().getFeaturesAssignment_3(), "rule__Object__FeaturesAssignment_3");
-					put(grammarAccess.getPropertyAccess().getTypeAssignment_0(), "rule__Property__TypeAssignment_0");
-					put(grammarAccess.getPropertyAccess().getNameAssignment_1(), "rule__Property__NameAssignment_1");
-					put(grammarAccess.getPropertyAccess().getInitialAssignment_2_1(), "rule__Property__InitialAssignment_2_1");
-					put(grammarAccess.getOperationAccess().getNameAssignment_0(), "rule__Operation__NameAssignment_0");
-					put(grammarAccess.getOperationAccess().getSentenceAssignment_2(), "rule__Operation__SentenceAssignment_2");
-					put(grammarAccess.getMutatorAccess().getNameAssignment_0(), "rule__Mutator__NameAssignment_0");
-					put(grammarAccess.getSendMessageAccess().getNameAssignment_0(), "rule__SendMessage__NameAssignment_0");
-					put(grammarAccess.getSendMessageAccess().getMessageAssignment_1(), "rule__SendMessage__MessageAssignment_1");
+					put(grammarAccess.getProgramAccess().getObjectsAssignment(), "rule__Program__ObjectsAssignment");
+					put(grammarAccess.getObjectDefinitionAccess().getNameAssignment_1(), "rule__ObjectDefinition__NameAssignment_1");
+					put(grammarAccess.getObjectDefinitionAccess().getFeaturesAssignment_3(), "rule__ObjectDefinition__FeaturesAssignment_3");
+					put(grammarAccess.getPropertyAccess().getNameAssignment_0(), "rule__Property__NameAssignment_0");
+					put(grammarAccess.getPropertyAccess().getTypeAssignment_2(), "rule__Property__TypeAssignment_2");
+					put(grammarAccess.getMessageAccess().getNameAssignment_1(), "rule__Message__NameAssignment_1");
+					put(grammarAccess.getMessageAccess().getSentencesAssignment_3(), "rule__Message__SentencesAssignment_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");
@@ -387,7 +373,7 @@ public class HOOPLParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.uqbar.hoope.ui.contentassist.antlr.internal.InternalHOOPLParser typedParser = (org.uqbar.hoope.ui.contentassist.antlr.internal.InternalHOOPLParser) parser;
-			typedParser.entryRuleObject();
+			typedParser.entryRuleProgram();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

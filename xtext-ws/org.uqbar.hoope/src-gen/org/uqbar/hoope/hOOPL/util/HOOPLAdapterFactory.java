@@ -9,13 +9,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.uqbar.hoope.hoopl.Feature;
-import org.uqbar.hoope.hoopl.HooplPackage;
-import org.uqbar.hoope.hoopl.Mutator;
-import org.uqbar.hoope.hoopl.Operation;
-import org.uqbar.hoope.hoopl.Property;
-import org.uqbar.hoope.hoopl.SendMessage;
-import org.uqbar.hoope.hoopl.Sentence;
+import org.uqbar.hoope.hoopl.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,9 +75,14 @@ public class HooplAdapterFactory extends AdapterFactoryImpl
     new HooplSwitch<Adapter>()
     {
       @Override
-      public Adapter caseObject(org.uqbar.hoope.hoopl.Object object)
+      public Adapter caseProgram(Program object)
       {
-        return createObjectAdapter();
+        return createProgramAdapter();
+      }
+      @Override
+      public Adapter caseObjectDefinition(ObjectDefinition object)
+      {
+        return createObjectDefinitionAdapter();
       }
       @Override
       public Adapter caseFeature(Feature object)
@@ -96,24 +95,9 @@ public class HooplAdapterFactory extends AdapterFactoryImpl
         return createPropertyAdapter();
       }
       @Override
-      public Adapter caseOperation(Operation object)
+      public Adapter caseMessage(Message object)
       {
-        return createOperationAdapter();
-      }
-      @Override
-      public Adapter caseSentence(Sentence object)
-      {
-        return createSentenceAdapter();
-      }
-      @Override
-      public Adapter caseMutator(Mutator object)
-      {
-        return createMutatorAdapter();
-      }
-      @Override
-      public Adapter caseSendMessage(SendMessage object)
-      {
-        return createSendMessageAdapter();
+        return createMessageAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -138,16 +122,31 @@ public class HooplAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Object <em>Object</em>}'.
+   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Program <em>Program</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.uqbar.hoope.hoopl.Object
+   * @see org.uqbar.hoope.hoopl.Program
    * @generated
    */
-  public Adapter createObjectAdapter()
+  public Adapter createProgramAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.ObjectDefinition <em>Object Definition</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.uqbar.hoope.hoopl.ObjectDefinition
+   * @generated
+   */
+  public Adapter createObjectDefinitionAdapter()
   {
     return null;
   }
@@ -183,61 +182,16 @@ public class HooplAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Operation <em>Operation</em>}'.
+   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Message <em>Message</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.uqbar.hoope.hoopl.Operation
+   * @see org.uqbar.hoope.hoopl.Message
    * @generated
    */
-  public Adapter createOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Sentence <em>Sentence</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.uqbar.hoope.hoopl.Sentence
-   * @generated
-   */
-  public Adapter createSentenceAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.Mutator <em>Mutator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.uqbar.hoope.hoopl.Mutator
-   * @generated
-   */
-  public Adapter createMutatorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.hoopl.SendMessage <em>Send Message</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.uqbar.hoope.hoopl.SendMessage
-   * @generated
-   */
-  public Adapter createSendMessageAdapter()
+  public Adapter createMessageAdapter()
   {
     return null;
   }

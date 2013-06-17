@@ -23,13 +23,22 @@ public interface HooplFactory extends EFactory
   HooplFactory eINSTANCE = org.uqbar.hoope.hoopl.impl.HooplFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Object</em>'.
+   * Returns a new object of class '<em>Program</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Object</em>'.
+   * @return a new object of class '<em>Program</em>'.
    * @generated
    */
-  Object createObject();
+  Program createProgram();
+
+  /**
+   * Returns a new object of class '<em>Object Definition</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Object Definition</em>'.
+   * @generated
+   */
+  ObjectDefinition createObjectDefinition();
 
   /**
    * Returns a new object of class '<em>Feature</em>'.
@@ -50,40 +59,13 @@ public interface HooplFactory extends EFactory
   Property createProperty();
 
   /**
-   * Returns a new object of class '<em>Operation</em>'.
+   * Returns a new object of class '<em>Message</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Operation</em>'.
+   * @return a new object of class '<em>Message</em>'.
    * @generated
    */
-  Operation createOperation();
-
-  /**
-   * Returns a new object of class '<em>Sentence</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sentence</em>'.
-   * @generated
-   */
-  Sentence createSentence();
-
-  /**
-   * Returns a new object of class '<em>Mutator</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Mutator</em>'.
-   * @generated
-   */
-  Mutator createMutator();
-
-  /**
-   * Returns a new object of class '<em>Send Message</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Send Message</em>'.
-   * @generated
-   */
-  SendMessage createSendMessage();
+  Message createMessage();
 
   /**
    * Returns the package supported by this factory.
