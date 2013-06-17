@@ -18,40 +18,37 @@ import org.uqbar.hoope.hoopl.Operation
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class HOOPLGenerator implements IGenerator {
-	
+
 	@Inject extension IQualifiedNameProvider
-	
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		for(o: resource.allContents.toIterable.filter(typeof(Object))) {
-	    fsa.generateFile(
-	      o.name,
-	      o.fullyQualifiedName.toString("/") + ".java",
-	      o.compile)
-	  	}
+		for (o : resource.allContents.toIterable.filter(typeof(Object))) {
+			fsa.generateFile(o.name, o.fullyQualifiedName.toString("/") + ".java", o.compile)
+		}
 	}
-	
+
 	def compile(Property p) '''
-		int Çp.nameÈ;
+		int Â«p.nameÂ»;
 		
-		int getÇp.name.toFirstUpperÈ() {
-			return Çp.nameÈ;
+		int getÂ«p.name.toFirstUpperÂ»() {
+			return Â«p.nameÂ»;
 		}
 		
-		void setÇp.name.toFirstUpperÈ(int value) {
-			this.Çp.nameÈ = value;
+		void setÂ«p.name.toFirstUpperÂ»(int value) {
+			this.Â«p.nameÂ» = value;
 		}
-	''' 
-	
+	'''
+
 	def compile(Operation op) '''
-		void Çop.nameÈ() {
+		void Â«op.nameÂ»() {
 			
 		}
-	''' 
-	
+	'''
+
 	def compile(Object o) '''
-		public class Ço.nameÈ {
-		   Ço.features.filter(typeof(Property)).map[compile]È
-		   Ço.features.filter(typeof(Operation)).map[compile]È
+		public class Â«o.nameÂ» {
+		   Â«o.features.filter(typeof(Property)).map[compile]Â»
+		   Â«o.features.filter(typeof(Operation)).map[compile]Â»
 		   
 		   public static void main(String args) {
 		   	System.out.println("Hola, Mundo!");
