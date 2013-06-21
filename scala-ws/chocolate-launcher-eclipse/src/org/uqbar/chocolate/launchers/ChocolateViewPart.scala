@@ -14,7 +14,7 @@ import org.eclipse.swt.awt.SWT_AWT
 class ChocolateViewPart extends ViewPart {
 
    // acá defino el juego
-   val player = new GamePlayer(KeyboardTest)
+   val player = new GamePlayer(CollisionTest)
   
    override def createPartControl(parent : Composite) {
 		var swtAwtComponent = new Composite(parent, SWT.EMBEDDED);
