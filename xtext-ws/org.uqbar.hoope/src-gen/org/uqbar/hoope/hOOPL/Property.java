@@ -2,7 +2,6 @@
  */
 package org.uqbar.hoope.hoopl;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +12,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}</li>
+ *   <li>{@link org.uqbar.hoope.hoopl.Property#getInitial <em>Initial</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,29 +23,55 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 public interface Property extends Feature
 {
   /**
-   * Returns the value of the '<em><b>Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see #setType(String)
    * @see org.uqbar.hoope.hoopl.HooplPackage#getProperty_Type()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmTypeReference getType();
+  String getType();
 
   /**
-   * Sets the value of the '{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @param value the new value of the '<em>Type</em>' attribute.
    * @see #getType()
    * @generated
    */
-  void setType(JvmTypeReference value);
+  void setType(String value);
+
+  /**
+   * Returns the value of the '<em><b>Initial</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Initial</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Initial</em>' attribute.
+   * @see #setInitial(String)
+   * @see org.uqbar.hoope.hoopl.HooplPackage#getProperty_Initial()
+   * @model
+   * @generated
+   */
+  String getInitial();
+
+  /**
+   * Sets the value of the '{@link org.uqbar.hoope.hoopl.Property#getInitial <em>Initial</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Initial</em>' attribute.
+   * @see #getInitial()
+   * @generated
+   */
+  void setInitial(String value);
 
 } // Property

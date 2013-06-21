@@ -9,10 +9,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.eclipse.xtext.common.types.TypesPackage;
-
-import org.eclipse.xtext.xbase.XbasePackage;
-
+import org.uqbar.hoope.hoopl.Expresion;
 import org.uqbar.hoope.hoopl.Feature;
 import org.uqbar.hoope.hoopl.HooplFactory;
 import org.uqbar.hoope.hoopl.HooplPackage;
@@ -65,6 +62,13 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
   private EClass messageEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expresionEClass = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -111,9 +115,6 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
     HooplPackageImpl theHooplPackage = (HooplPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof HooplPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new HooplPackageImpl());
 
     isInited = true;
-
-    // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theHooplPackage.createPackageContents();
@@ -205,9 +206,19 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getProperty_Type()
+  public EAttribute getProperty_Type()
   {
-    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getProperty_Initial()
+  {
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -228,6 +239,56 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
   public EReference getMessage_Sentences()
   {
     return (EReference)messageEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExpresion()
+  {
+    return expresionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpresion_Condition()
+  {
+    return (EReference)expresionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpresion_Then()
+  {
+    return (EReference)expresionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpresion_Else()
+  {
+    return (EReference)expresionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExpresion_Sentences()
+  {
+    return (EReference)expresionEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -270,10 +331,17 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
     createEAttribute(featureEClass, FEATURE__NAME);
 
     propertyEClass = createEClass(PROPERTY);
-    createEReference(propertyEClass, PROPERTY__TYPE);
+    createEAttribute(propertyEClass, PROPERTY__TYPE);
+    createEAttribute(propertyEClass, PROPERTY__INITIAL);
 
     messageEClass = createEClass(MESSAGE);
     createEReference(messageEClass, MESSAGE__SENTENCES);
+
+    expresionEClass = createEClass(EXPRESION);
+    createEReference(expresionEClass, EXPRESION__CONDITION);
+    createEReference(expresionEClass, EXPRESION__THEN);
+    createEReference(expresionEClass, EXPRESION__ELSE);
+    createEReference(expresionEClass, EXPRESION__SENTENCES);
   }
 
   /**
@@ -300,10 +368,6 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
-    // Obtain other dependent packages
-    TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
-
     // Create type parameters
 
     // Set bounds for type parameters
@@ -315,7 +379,7 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProgram_Objects(), this.getObjectDefinition(), null, "objects", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getProgram_Objects(), ecorePackage.getEObject(), null, "objects", null, 0, -1, Program.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(objectDefinitionEClass, ObjectDefinition.class, "ObjectDefinition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObjectDefinition_Features(), this.getFeature(), null, "features", null, 0, -1, ObjectDefinition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -324,10 +388,17 @@ public class HooplPackageImpl extends EPackageImpl implements HooplPackage
     initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getProperty_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProperty_Type(), ecorePackage.getEString(), "type", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProperty_Initial(), ecorePackage.getEString(), "initial", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMessage_Sentences(), theXbasePackage.getXExpression(), null, "sentences", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMessage_Sentences(), this.getExpresion(), null, "sentences", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(expresionEClass, Expresion.class, "Expresion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpresion_Condition(), this.getExpresion(), null, "condition", null, 0, 1, Expresion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpresion_Then(), this.getExpresion(), null, "then", null, 0, 1, Expresion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpresion_Else(), this.getExpresion(), null, "else", null, 0, 1, Expresion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpresion_Sentences(), this.getExpresion(), null, "sentences", null, 0, -1, Expresion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

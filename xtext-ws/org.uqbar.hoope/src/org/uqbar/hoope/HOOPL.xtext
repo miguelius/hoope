@@ -1,14 +1,14 @@
 grammar org.uqbar.hoope.HOOPL with
-	org.eclipse.xtext.xbase.Xbase
+	org.eclipse.xtext.common.Terminals
 
 generate hoopl "http://www.uqbar.org/hoope/HOOPL"
 
 Program:
-	objects += (ObjectDefinition)*
+	objects += (Expresion | ObjectDefinition)*
 ;
 
 ObjectDefinition:
-	'ref' name=ValidID '= object {'
+	'ref' name=ID '= object {'
 		features += (Feature)*
 	'}' 
 ;
@@ -18,33 +18,31 @@ Feature:
 ;
 
 Property:
-	name=ValidID ':' type=JvmTypeReference	
+	name=ID ':' type=Typo ('=' initial=Terminal)?
 ;
 
 Message:
-	'message' name=ValidID '= method {'
-		sentences += (XExpression)*
+	'message' name=ID '= method {'
+		sentences += (Expresion)*
 	'}'	
 ;
 
-/*
+Expresion: WhileExpresion | IfExpresion | Terminal ( (Operator) Terminal)*;
 
-SendMessage:
-	target=Objecto => message=ValidID
-;
-Selector:
-	Unary | KeyValue
+IfExpresion returns Expresion:
+	'if' condition=Expresion 'then' then=Expresion
+	(=> 'else' else=Expresion)?
 ;
 
-Unary:
-	ValidID
+WhileExpresion returns Expresion: 'while' condition=Expresion '{'
+		sentences += (Expresion)*
+	'}'
 ;
 
-KeyValue:
-	pairs+=(Pair)*
-;
+Terminal: INT | STRING | ID | INT'..'INT;
 
-Pair:
-	parameter=ValidID ':' argument=ValidID
+Operator: '+' | '-' | '*' | '/';
+
+Typo: 
+	'Number' | 'String' | 'Boolean'
 ;
-*/

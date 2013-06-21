@@ -69,6 +69,7 @@ public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
       case HooplPackage.FEATURE: return createFeature();
       case HooplPackage.PROPERTY: return createProperty();
       case HooplPackage.MESSAGE: return createMessage();
+      case HooplPackage.EXPRESION: return createExpresion();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -127,6 +128,17 @@ public class HooplFactoryImpl extends EFactoryImpl implements HooplFactory
   {
     MessageImpl message = new MessageImpl();
     return message;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Expresion createExpresion()
+  {
+    ExpresionImpl expresion = new ExpresionImpl();
+    return expresion;
   }
 
   /**

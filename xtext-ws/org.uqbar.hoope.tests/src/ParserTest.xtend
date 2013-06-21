@@ -1,33 +1,29 @@
-import org.eclipse.xtext.junit4.InjectWith
-import org.junit.runner.RunWith
-import org.eclipse.xtext.junit4.XtextRunner
-import org.uqbar.hoope.HOOPLInjectorProvider
-import static org.junit.Assert.*
 import com.google.inject.Inject
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
-import org.uqbar.hoope.hoopl.Object
+import org.junit.runner.RunWith
+import org.uqbar.hoope.HOOPLInjectorProvider
+import org.uqbar.hoope.hoopl.Program
+
+import static org.junit.Assert.*
 
 @InjectWith(typeof(HOOPLInjectorProvider))
 @RunWith(typeof(XtextRunner))
 class ParserTest {
 
 	@Inject
-	ParseHelper<Object> parser
+	ParseHelper<Program> parser
 	
 	@Test
 	def void parseHOOPL() {
 		var hoopl = parser.parse(
-	"object Rana {
-		 x = 3
-		 y = 3
-		
-		salta {
-			self subir
-		}
-	 } ")
-		val rana = hoopl as Object
+	"ref rana = object { }
+	ref camion = object { }
+ ")
+		val rana = hoopl as Program
 		//assertEquals("x", rana.features.head.name)	
-		assertEquals("salta", rana.features.last.name)	
+		assertEquals(2, rana.objects.size)	
 	}
 }

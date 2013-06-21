@@ -68,6 +68,15 @@ public interface HooplFactory extends EFactory
   Message createMessage();
 
   /**
+   * Returns a new object of class '<em>Expresion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expresion</em>'.
+   * @generated
+   */
+  Expresion createExpresion();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

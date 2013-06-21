@@ -20,6 +20,7 @@ class HOOPLGenerator implements IGenerator {
 	
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		return
 	}
 	
 /*

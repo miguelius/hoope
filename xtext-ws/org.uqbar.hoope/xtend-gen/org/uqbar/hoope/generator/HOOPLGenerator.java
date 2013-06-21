@@ -22,5 +22,6 @@ public class HOOPLGenerator implements IGenerator {
   private IQualifiedNameProvider _iQualifiedNameProvider;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
+    return;
   }
 }

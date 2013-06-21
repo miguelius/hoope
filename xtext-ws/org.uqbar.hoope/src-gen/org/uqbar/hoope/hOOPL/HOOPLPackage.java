@@ -169,7 +169,7 @@ public interface HooplPackage extends EPackage
   int PROPERTY__NAME = FEATURE__NAME;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -178,13 +178,22 @@ public interface HooplPackage extends EPackage
   int PROPERTY__TYPE = FEATURE_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Initial</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__INITIAL = FEATURE_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.MessageImpl <em>Message</em>}' class.
@@ -222,6 +231,61 @@ public interface HooplPackage extends EPackage
    * @ordered
    */
   int MESSAGE_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.uqbar.hoope.hoopl.impl.ExpresionImpl <em>Expresion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.uqbar.hoope.hoopl.impl.ExpresionImpl
+   * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getExpresion()
+   * @generated
+   */
+  int EXPRESION = 5;
+
+  /**
+   * The feature id for the '<em><b>Condition</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION__CONDITION = 0;
+
+  /**
+   * The feature id for the '<em><b>Then</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION__THEN = 1;
+
+  /**
+   * The feature id for the '<em><b>Else</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION__ELSE = 2;
+
+  /**
+   * The feature id for the '<em><b>Sentences</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION__SENTENCES = 3;
+
+  /**
+   * The number of structural features of the '<em>Expresion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESION_FEATURE_COUNT = 4;
 
 
   /**
@@ -298,15 +362,26 @@ public interface HooplPackage extends EPackage
   EClass getProperty();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}'.
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.Property#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @return the meta object for the attribute '<em>Type</em>'.
    * @see org.uqbar.hoope.hoopl.Property#getType()
    * @see #getProperty()
    * @generated
    */
-  EReference getProperty_Type();
+  EAttribute getProperty_Type();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.hoopl.Property#getInitial <em>Initial</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Initial</em>'.
+   * @see org.uqbar.hoope.hoopl.Property#getInitial()
+   * @see #getProperty()
+   * @generated
+   */
+  EAttribute getProperty_Initial();
 
   /**
    * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Message <em>Message</em>}'.
@@ -328,6 +403,60 @@ public interface HooplPackage extends EPackage
    * @generated
    */
   EReference getMessage_Sentences();
+
+  /**
+   * Returns the meta object for class '{@link org.uqbar.hoope.hoopl.Expresion <em>Expresion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expresion</em>'.
+   * @see org.uqbar.hoope.hoopl.Expresion
+   * @generated
+   */
+  EClass getExpresion();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Expresion#getCondition <em>Condition</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condition</em>'.
+   * @see org.uqbar.hoope.hoopl.Expresion#getCondition()
+   * @see #getExpresion()
+   * @generated
+   */
+  EReference getExpresion_Condition();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Expresion#getThen <em>Then</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Then</em>'.
+   * @see org.uqbar.hoope.hoopl.Expresion#getThen()
+   * @see #getExpresion()
+   * @generated
+   */
+  EReference getExpresion_Then();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.hoopl.Expresion#getElse <em>Else</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Else</em>'.
+   * @see org.uqbar.hoope.hoopl.Expresion#getElse()
+   * @see #getExpresion()
+   * @generated
+   */
+  EReference getExpresion_Else();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.uqbar.hoope.hoopl.Expresion#getSentences <em>Sentences</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Sentences</em>'.
+   * @see org.uqbar.hoope.hoopl.Expresion#getSentences()
+   * @see #getExpresion()
+   * @generated
+   */
+  EReference getExpresion_Sentences();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -417,12 +546,20 @@ public interface HooplPackage extends EPackage
     EClass PROPERTY = eINSTANCE.getProperty();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY__TYPE = eINSTANCE.getProperty_Type();
+    EAttribute PROPERTY__TYPE = eINSTANCE.getProperty_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Initial</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY__INITIAL = eINSTANCE.getProperty_Initial();
 
     /**
      * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.MessageImpl <em>Message</em>}' class.
@@ -441,6 +578,48 @@ public interface HooplPackage extends EPackage
      * @generated
      */
     EReference MESSAGE__SENTENCES = eINSTANCE.getMessage_Sentences();
+
+    /**
+     * The meta object literal for the '{@link org.uqbar.hoope.hoopl.impl.ExpresionImpl <em>Expresion</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.uqbar.hoope.hoopl.impl.ExpresionImpl
+     * @see org.uqbar.hoope.hoopl.impl.HooplPackageImpl#getExpresion()
+     * @generated
+     */
+    EClass EXPRESION = eINSTANCE.getExpresion();
+
+    /**
+     * The meta object literal for the '<em><b>Condition</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESION__CONDITION = eINSTANCE.getExpresion_Condition();
+
+    /**
+     * The meta object literal for the '<em><b>Then</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESION__THEN = eINSTANCE.getExpresion_Then();
+
+    /**
+     * The meta object literal for the '<em><b>Else</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESION__ELSE = eINSTANCE.getExpresion_Else();
+
+    /**
+     * The meta object literal for the '<em><b>Sentences</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESION__SENTENCES = eINSTANCE.getExpresion_Sentences();
 
   }
 
