@@ -18,7 +18,7 @@ public class ExpressionBuilder {
 		if (BinaryOperator.class.isInstance(expression)) {
 			BinaryOperator bo = (BinaryOperator) expression;
 			bo.setRightSide(reference);
-			isWaitingOperand = false;
+			isWaitingOperand = true;
 		} else if (isWaitingOperand) {
 			this.expression = reference;
 			isWaitingOperand = false;
