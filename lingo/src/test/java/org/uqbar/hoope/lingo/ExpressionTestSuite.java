@@ -67,8 +67,9 @@ public class ExpressionTestSuite {
 
 	@Test
 	public void variablesBinaryExpressionExpression() {
-		lingoContext.registerNamedReference("a", lingoContext.createInstance(1));
-		lingoContext.registerNamedReference("b", lingoContext.createInstance(2));
+		lingoContext.registerNamedReference("a", new BigDecimal(1));
+		lingoContext.registerNamedReference("b", new BigDecimal(2));
+		
 		// a + b
 		Expression expression = 
 				ExpressionBuilder.getInstance()
