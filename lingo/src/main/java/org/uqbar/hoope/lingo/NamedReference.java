@@ -29,5 +29,7 @@ public class NamedReference extends AbstractReference {
 		return name.equals(((NamedReference)that).name);
 	}
 
-
+	public Object value() {
+		return ((Reference )referenced).resolve();
+	}
 }

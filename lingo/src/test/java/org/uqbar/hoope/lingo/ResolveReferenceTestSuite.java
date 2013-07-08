@@ -2,6 +2,8 @@ package org.uqbar.hoope.lingo;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,14 +26,14 @@ public class ResolveReferenceTestSuite {
 	public void numericResolve() {
 		Reference numericReference = lingoContext.createInstance(NUMERIC_EXAMPLE);
 		
-		assertEquals(numericReference.resolve(), new Integer(NUMERIC_EXAMPLE));
+		assertEquals(numericReference.resolve(), new BigDecimal(NUMERIC_EXAMPLE));
 	}
 	
 	@Test
 	public void decimalResolve() {
 		Reference decimalReference = lingoContext.createInstance(DECIMAL_EXAMPLE);
 		
-		assertEquals(decimalReference.resolve(), new Double(DECIMAL_EXAMPLE));
+		assertEquals(decimalReference.resolve(), new BigDecimal(DECIMAL_EXAMPLE));
 	}
 	
 	@Test
@@ -55,5 +57,19 @@ public class ResolveReferenceTestSuite {
 		mutableReference.assign(ENGLISH_STRING_EXAMPLE);
 	
 		assertEquals(ENGLISH_STRING_EXAMPLE, lingoContext.resolve(NAME).resolve());
+	}
+	
+	@Test
+	public void falseResolve() {
+		Reference booleanReference = lingoContext.registerBooleanReference(false);
+		assertFalse((Boolean )booleanReference.resolve());
+		assertTrue((Boolean )booleanReference.resolve() == false);
+	}
+
+	@Test
+	public void trueResolve() {
+		Reference booleanReference = lingoContext.registerBooleanReference(true);
+		assertTrue((Boolean )booleanReference.resolve());
+		assertFalse((Boolean )booleanReference.resolve() == false);
 	}
 }

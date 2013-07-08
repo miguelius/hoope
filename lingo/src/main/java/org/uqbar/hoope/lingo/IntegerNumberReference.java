@@ -1,16 +1,18 @@
 package org.uqbar.hoope.lingo;
 
-public class IntegerNumberReference extends AbstractReference {
+import java.math.BigDecimal;
+
+public class IntegerNumberReference extends NumberReference {
 
 	public IntegerNumberReference(long l) {
-		super(new Long(l));
+		super(new BigDecimal(l));
 	}
 
 	public IntegerNumberReference(int i) {
-		super(new Integer(i));
+		super(new BigDecimal(i));
 	}
 
 	public IntegerNumberReference(byte b) {
-		super(new Byte(b));
+		super(new BigDecimal(b));
 	}
 }

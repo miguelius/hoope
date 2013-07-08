@@ -60,4 +60,8 @@ public class LingoContext {
 		}
 	}
 
+	public Reference registerBooleanReference(boolean buleano) {
+		return new BooleanReference(buleano);
+	}
+
 }

@@ -15,16 +15,18 @@ public class ExpressionBuilder {
 	Expression expression;
 	
 	public ExpressionBuilder add(Reference reference) {
-		if (BinaryOperator.class.isInstance(expression)) {
+
+		if ( BinaryOperator.class.isInstance(expression) ) {
 			BinaryOperator bo = (BinaryOperator) expression;
 			bo.setRightSide(reference);
-			isWaitingOperand = true;
+			isWaitingOperand = false;
 		} else if (isWaitingOperand) {
 			this.expression = reference;
 			isWaitingOperand = false;
 		} else {
 			throw new RuntimeException();
 		}
+		
 		return this;
 	}
 	
