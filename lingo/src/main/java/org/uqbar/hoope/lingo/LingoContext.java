@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 public class LingoContext {
 	
-	private Map<String, Reference> namedReferences = new TreeMap<String, Reference>();
+	protected Map<String, Reference> namedReferences = new TreeMap<String, Reference>();
 
 	public NumberReference createInstance(double d) {
 		return new DecimalNumberReference(d);
@@ -49,12 +49,12 @@ public class LingoContext {
 		return (MutableReference )registerInContext(namedReference);
 	}
 
-	private Reference registerInContext(NamedReference namedReference) {
+	protected Reference registerInContext(NamedReference namedReference) {
 		namedReferences.put(namedReference.getName(), namedReference);
 		return namedReference;
 	}
 
-	private void avoidRepetitionInContext(String name) {
+	protected void avoidRepetitionInContext(String name) {
 		if (namedReferences.containsKey(name)) {
 			throw new RuntimeException(name + ": ya se encuentra registrado en este contexto."); 
 		}
@@ -62,6 +62,10 @@ public class LingoContext {
 
 	public BooleanReference registerBooleanReference(boolean buleano) {
 		return new BooleanReference(buleano);
+	}
+
+	public NamedReference registerLingoObject(String name) {
+		return registerNamedReference(name, new LingoObject());
 	}
 
 }
