@@ -7,13 +7,12 @@ import org.eclipse.swt.awt.SWT_AWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.ui.part.ViewPart
 import org.uqbar.chocolate.core.GamePlayer
-import org.uqbar.chocolate.games.test.StressTest
-import org.uqbar.chocolate.games.test.CollisionTest
+import org.uqbar.chocolate.games.skeletons.Skeletons
 
 class ChocolateViewPart extends ViewPart {
 
    // acá defino el juego
-   val player = new GamePlayer(CollisionTest)
+   val player = new GamePlayer(Skeletons)
   
    override def createPartControl(parent : Composite) {
 		var swtAwtComponent = new Composite(parent, SWT.EMBEDDED);

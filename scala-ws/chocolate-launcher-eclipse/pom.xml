@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<chocolate.version>2.1.4</chocolate.version>
+		<chocolate.version>2.2.4</chocolate.version>
 	</properties>
 
 	<dependencies>
@@ -22,8 +22,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.uqbar.chocolate.games</groupId>
-			<artifactId>chocolate-game-test</artifactId>
-			<version>${chocolate.version}</version>
+			<artifactId>chocolate-game-skeletons</artifactId>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
 

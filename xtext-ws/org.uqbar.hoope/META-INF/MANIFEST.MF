@@ -33,7 +33,4 @@ Export-Package: org.uqbar.hoope,
  org.uqbar.hoope.scoping,
  org.uqbar.hoope.generator,
  org.uqbar.hoope.formatting,
- org.uqbar.hoope.jvmmodel,
- org.uqbar.hoope.hoopl,
- org.uqbar.hoope.hoopl.impl,
- org.uqbar.hoope.hoopl.util
+ org.uqbar.hoope.jvmmodel

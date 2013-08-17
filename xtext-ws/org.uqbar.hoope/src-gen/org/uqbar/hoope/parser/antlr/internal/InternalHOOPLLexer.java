@@ -27,8 +27,8 @@ public class InternalHOOPLLexer extends Lexer {
     public static final int EOF=-1;
     public static final int RULE_SL_COMMENT=8;
     public static final int RULE_ML_COMMENT=7;
-    public static final int T__30=30;
     public static final int T__19=19;
+    public static final int T__30=30;
     public static final int RULE_STRING=6;
     public static final int T__16=16;
     public static final int T__15=15;
