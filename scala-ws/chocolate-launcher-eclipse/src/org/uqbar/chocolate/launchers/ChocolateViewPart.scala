@@ -1,15 +1,14 @@
 package org.uqbar.chocolate.launchers
 
-import org.eclipse.swt.widgets.Composite
-import org.eclipse.ui.part.ViewPart
-import javax.swing.JFrame
-import org.uqbar.chocolate.core.GamePlayer
-import java.awt.event.WindowListener
 import java.awt.event.WindowEvent
-import org.uqbar.chocolate.core.Game
-import org.uqbar.chocolate.games.test._
+import java.awt.event.WindowListener
 import org.eclipse.swt.SWT
 import org.eclipse.swt.awt.SWT_AWT
+import org.eclipse.swt.widgets.Composite
+import org.eclipse.ui.part.ViewPart
+import org.uqbar.chocolate.core.GamePlayer
+import org.uqbar.chocolate.games.test.StressTest
+import org.uqbar.chocolate.games.test.CollisionTest
 
 class ChocolateViewPart extends ViewPart {
 
