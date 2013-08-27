@@ -408,6 +408,20 @@
           class="org.uqbar.hoope.ui.views.HOOPEConsoleView"
           icon="icons\view.gif"/>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <category
+           id="org.uqbar.hoope.ui.hoope"
+           name="HOOPE">
+     </category>
+     <wizard
+           category="org.uqbar.hoope.ui.hoope"
+           class="org.uqbar.hoope.ui.NewWizard1"
+           id="org.uqbar.hoope.ui.hoope.lesson"
+           name="HOOPE Lesson"
+           project="true">
+     </wizard>
+  </extension>
 <!--
   <extension point="org.eclipse.ui.views">
   	 <category 

@@ -12,7 +12,7 @@ import org.uqbar.chocolate.games.skeletons.Skeletons
 class ChocolateViewPart extends ViewPart {
 
    // acá defino el juego
-   val player = new GamePlayer(Skeletons)
+   val player = new GamePlayer(MockGame)
   
    override def createPartControl(parent : Composite) {
 		var swtAwtComponent = new Composite(parent, SWT.EMBEDDED);

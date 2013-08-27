@@ -7,5 +7,7 @@ package org.uqbar.hoope;
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class HOOPLRuntimeModule extends org.uqbar.hoope.AbstractHOOPLRuntimeModule {
-
+	public Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
+		return org.uqbar.hoope.generator.HOOPLGenerator.class;
+	}
 }

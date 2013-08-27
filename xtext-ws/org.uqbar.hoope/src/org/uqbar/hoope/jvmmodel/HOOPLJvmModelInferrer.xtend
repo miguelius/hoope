@@ -5,6 +5,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.uqbar.hoope.hoopl.Program
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -46,7 +47,13 @@ class HOOPLJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-   	def dispatch void infer(Object element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-   		return
+   	   	
+   	def dispatch void infer(Program prog, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+
+	 acceptor.accept(
+	 		prog.toClass("programa")
+	 	).initializeLater [
+		]
+   		
    	}
 }

@@ -3,12 +3,18 @@
  */
 package org.uqbar.hoope.generator;
 
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.uqbar.hoope.hoopl.ObjectDefinition;
 
 /**
  * Generates code from your model files on save.
@@ -22,6 +28,42 @@ public class HOOPLGenerator implements IGenerator {
   private IQualifiedNameProvider _iQualifiedNameProvider;
   
   public void doGenerate(final Resource input, final IFileSystemAccess fsa) {
-    return;
+    TreeIterator<EObject> _allContents = input.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<ObjectDefinition> _filter = Iterables.<ObjectDefinition>filter(_iterable, ObjectDefinition.class);
+    for (final ObjectDefinition od : _filter) {
+      String _name = od.getName();
+      String _plus = (_name + ".java");
+      CharSequence _compile = this.compile(od);
+      fsa.generateFile(_plus, _compile);
+    }
+  }
+  
+  public CharSequence compile(final ObjectDefinition o) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("import org.uqbar.hoop.HoopeObject");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("public class ");
+    String _name = o.getName();
+    _builder.append(_name, "");
+    _builder.append(" extends HoopObject {");
+    _builder.newLineIfNotEmpty();
+    _builder.newLine();
+    _builder.append(" \t");
+    _builder.append("public static void main(String args) {");
+    _builder.newLine();
+    _builder.append(" \t\t");
+    _builder.append("System.out.println(\"Soy ");
+    String _name_1 = o.getName();
+    _builder.append(_name_1, " 		");
+    _builder.append("\");");
+    _builder.newLineIfNotEmpty();
+    _builder.append(" \t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder;
   }
 }

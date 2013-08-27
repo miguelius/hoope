@@ -3,11 +3,15 @@ package org.uqbar.hoope.jvmmodel;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.uqbar.hoope.hoopl.Program;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -53,20 +57,26 @@ public class HOOPLJvmModelInferrer extends AbstractModelInferrer {
    *            rely on linking using the index if isPreIndexingPhase is
    *            <code>true</code>.
    */
-  protected void _infer(final Object element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
-    return;
+  protected void _infer(final Program prog, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
+    JvmGenericType _class = this._jvmTypesBuilder.toClass(prog, "programa");
+    IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
+    final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
+        public void apply(final JvmGenericType it) {
+        }
+      };
+    _accept.initializeLater(_function);
   }
   
-  public void infer(final Object e, final IJvmDeclaredTypeAcceptor acceptor, final boolean preIndexingPhase) {
-    if (e instanceof EObject) {
-      _infer((EObject)e, acceptor, preIndexingPhase);
+  public void infer(final EObject prog, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
+    if (prog instanceof Program) {
+      _infer((Program)prog, acceptor, isPreIndexingPhase);
       return;
-    } else if (e != null) {
-      _infer(e, acceptor, preIndexingPhase);
+    } else if (prog != null) {
+      _infer(prog, acceptor, isPreIndexingPhase);
       return;
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(e, acceptor, preIndexingPhase).toString());
+        Arrays.<Object>asList(prog, acceptor, isPreIndexingPhase).toString());
     }
   }
 }
