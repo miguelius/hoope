@@ -1,0 +1,44 @@
+grammar org.uqbar.Hoope with org.eclipse.xtext.xbase.Xbase
+
+import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
+
+generate hoope "http://www.uqbar.org/Hoope"
+
+Program returns xbase::XBlockExpression:
+       {Program}
+       (expressions+=XExpressionInsideBlock ';'?)*;
+ 
+XPrimaryExpression returns xbase::XExpression:
+       XConstructorCall |
+       XBlockExpression |
+       XSwitchExpression |
+       XFeatureCall |
+       XLiteral |
+       XIfExpression |
+       XForLoopExpression |
+       XWhileExpression |
+       XDoWhileExpression |
+       XThrowExpression |
+       XReturnExpression |
+       XTryCatchFinallyExpression |
+       XParenthesizedExpression |
+       HoopeObject;
+
+HoopeObject returns xbase::XExpression:
+       {HoopeObject}
+       'object' '{'
+       features+=Feature*
+       '}';
+ 
+Feature:
+  Property | Message;
+ 
+Property:
+  name=ValidID ':' type=JvmTypeReference;
+ 
+Message:
+  'message' name=ValidID '=' 'method' 
+    '('(params+=FullJvmFormalParameter 
+      (',' params+=FullJvmFormalParameter)*)?')'
+    ':' type=JvmTypeReference 
+    body=XBlockExpression;
