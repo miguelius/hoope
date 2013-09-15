@@ -24,7 +24,6 @@ class HoopeCompiler extends XbaseCompiler {
 	}
 
 	@Inject extension HoopeJvmModelInferrer;
-
 	def dispatch void toJavaExpression(HoopeObject object, ITreeAppendable b) {
 		b.append("new ").append(getType(object)).append("();")
 

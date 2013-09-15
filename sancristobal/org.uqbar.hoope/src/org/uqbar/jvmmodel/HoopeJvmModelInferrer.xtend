@@ -14,6 +14,7 @@ import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Program
+import org.uqbar.hoope.Property
 import org.uqbar.hoope.Message
 
 /**
@@ -36,7 +37,7 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(Program element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		cleanClassCache
 		acceptor.accept(
-			element.toClass("examples.loop.Main")
+			element.toClass("examples.hoope.Main")
 		).initializeLater [
 			documentation = element.documentation
 			members += element.toMethod("main", getTypeForName(Void::TYPE, element)) [
@@ -57,12 +58,12 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def dispatch void infer(HoopeObject element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		var result = element.toClass("examples.hoope.HoopeObject" + count)
 		count = count + 1
-		var result = element.toClass("examples.loop.LoopObject" + count)
 		acceptor.accept(result).initializeLater [
 			documentation = element.documentation
 			for (feature : element.features) {
-				switch (feature) {
+				switch feature {
 					Property: {
 						members += feature.toField(feature.name, feature.type)
 						members += feature.toGetter(feature.name, feature.type)
