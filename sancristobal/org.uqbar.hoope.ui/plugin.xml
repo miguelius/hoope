@@ -393,4 +393,16 @@
     </provider>
   </extension>
 
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.eclipse.xtext.projectwiz"
+            class="org.uqbar.ui.HoopeExecutableExtensionFactory:org.uqbar.ui.wizard.HoopeNewProjectWizard"
+            id="org.uqbar.ui.wizard.HoopeNewProjectWizard"
+            name="HOOPE Lesson"
+            project="true">
+      </wizard>
+   </extension>
+
+
 </plugin>

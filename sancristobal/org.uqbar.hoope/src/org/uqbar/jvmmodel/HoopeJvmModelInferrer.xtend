@@ -16,6 +16,8 @@ import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.Property
 import org.uqbar.hoope.Message
+import org.eclipse.xtext.xbase.XVariableDeclaration
+import org.uqbar.HoopeRuntime
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -36,9 +38,11 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 
 	def dispatch void infer(Program element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		cleanClassCache
+		val mainClass =	element.toClass("examples.hoope.Main")
 		acceptor.accept(
-			element.toClass("examples.hoope.Main")
+			mainClass
 		).initializeLater [
+			//superTypes += element.newTypeRef(typeof(HoopeRuntime))
 			documentation = element.documentation
 			members += element.toMethod("main", getTypeForName(Void::TYPE, element)) [
 				setStatic(true)

@@ -1,0 +1,50 @@
+«IMPORT org::uqbar::ui::wizard»
+
+«DEFINE main FOR HoopeProjectInfo»
+«EXPAND model FOR this»
+«EXPAND launcher FOR this»
+«ENDDEFINE»
+
+«DEFINE model FOR HoopeProjectInfo»
+«FILE "src/pepita.hoopl"-»
+/*
+ * Este es el ejemplo de pepita
+ */ 
+val pepita = object {
+	nombre: java.lang.String
+	energia: int 
+	
+	message come = method (int gramos): void {
+		energia = energia + gramos
+	}
+	
+	message vola = method (int metros): void {
+		energia = Math.max(0,energia - metros)
+	}
+	
+}
+
+pepita.come(4)
+
+pepita.vola(6)
+
+System.out.println(pepita.energia)
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE launcher FOR HoopeProjectInfo»
+«FILE ".launch/"+ this.projectName +".launch"-»
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/«this.projectName»/src-gen/examples/hoope/Main.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="examples.hoope.Main"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="«this.projectName»"/>
+</launchConfiguration>
+«ENDFILE»
+«ENDDEFINE»
