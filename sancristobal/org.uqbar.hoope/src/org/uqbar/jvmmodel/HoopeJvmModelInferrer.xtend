@@ -13,11 +13,9 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.uqbar.hoope.HoopeObject
+import org.uqbar.hoope.Message
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.Property
-import org.uqbar.hoope.Message
-import org.eclipse.xtext.xbase.XVariableDeclaration
-import org.uqbar.HoopeRuntime
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
