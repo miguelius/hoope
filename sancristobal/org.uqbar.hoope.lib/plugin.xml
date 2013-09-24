@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+  <extension
+        point="org.eclipse.ui.views">
+     <view
+           category="org.eclipse.xtext.viewCategory"
+           class="org.uqbar.hoope.lib.ExecutableExtensionFactory:org.uqbar.hoope.lib.views.SampleView"
+           icon="icons/Turtle_16.png"
+           id="org.uqbar.hoope.lib.SampleView"
+           name="Tortoise View"
+           restorable="true">
+     </view>
+  </extension>
+</plugin>

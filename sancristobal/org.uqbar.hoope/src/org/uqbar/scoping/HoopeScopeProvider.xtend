@@ -3,6 +3,8 @@
  */
 package org.uqbar.scoping
 
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+
 /**
  * This class contains custom scoping description.
  * 
@@ -10,6 +12,7 @@ package org.uqbar.scoping
  * on how and when to use it 
  *
  */
-class HoopeScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+class HoopeScopeProvider extends AbstractDeclarativeScopeProvider {
 
+	
 }
