@@ -7,6 +7,8 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.computation.XbaseTypeComputer;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
+import org.uqbar.hoope.lib.IHoopeInterpreter;
+import org.uqbar.interpreter.HoopeGraphicObjectShellInterpreter;
 
 /**
  * Use this class to register components to be used at runtime / without the
@@ -20,12 +22,11 @@ public class HoopeRuntimeModule extends org.uqbar.AbstractHoopeRuntimeModule {
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
 		return HoopeCompiler.class;
 	}
-	/*
-	public Class<? extends XbaseTypeComputer> bindXBaseComputer() {
-		return HoopeTypeComputer.class;
-	}
-	 */
 
+	public Class<? extends IHoopeInterpreter> bindITortoiseInterpreter() {
+		return HoopeGraphicObjectShellInterpreter.class;
+	}
+	
 	public Class<? extends ITypeComputer> bindITypeComputer() {
 		return HoopeTypeComputer.class;
 	}

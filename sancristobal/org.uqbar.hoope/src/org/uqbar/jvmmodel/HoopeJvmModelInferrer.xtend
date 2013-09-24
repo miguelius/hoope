@@ -16,6 +16,7 @@ import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Message
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.Property
+import org.uqbar.hoope.lib.HoopeGraphicObject
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -40,7 +41,7 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 		acceptor.accept(
 			mainClass
 		).initializeLater [
-			//superTypes += element.newTypeRef(typeof(HoopeRuntime))
+			superTypes += element.newTypeRef(typeof(HoopeGraphicObject))
 			documentation = element.documentation
 			members += element.toMethod("main", getTypeForName(Void::TYPE, element)) [
 				setStatic(true)
