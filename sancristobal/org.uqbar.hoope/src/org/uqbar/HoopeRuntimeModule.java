@@ -23,9 +23,9 @@ public class HoopeRuntimeModule extends org.uqbar.AbstractHoopeRuntimeModule {
 		return HoopeCompiler.class;
 	}
 
-	public Class<? extends IHoopeInterpreter> bindITortoiseInterpreter() {
-		return HoopeGraphicObjectShellInterpreter.class;
-	}
+//	public Class<? extends IHoopeInterpreter> bindITortoiseInterpreter() {
+//		return HoopeGraphicObjectShellInterpreter.class;
+//	}
 	
 	public Class<? extends ITypeComputer> bindITypeComputer() {
 		return HoopeTypeComputer.class;

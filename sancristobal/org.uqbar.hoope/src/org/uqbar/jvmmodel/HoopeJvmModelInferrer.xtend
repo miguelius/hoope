@@ -41,7 +41,7 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 		acceptor.accept(
 			mainClass
 		).initializeLater [
-			superTypes += element.newTypeRef(typeof(HoopeGraphicObject))
+			//superTypes += element.newTypeRef(typeof(HoopeGraphicObject))
 			documentation = element.documentation
 			members += element.toMethod("main", getTypeForName(Void::TYPE, element)) [
 				setStatic(true)
