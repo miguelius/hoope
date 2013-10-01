@@ -8,13 +8,16 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.xbase.XExpression
+import org.eclipse.xtext.xbase.XMemberFeatureCall
 import org.eclipse.xtext.xbase.interpreter.IEvaluationContext
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider
-import org.uqbar.hoope.Message
+import org.uqbar.hoope.HoopeObject
+import org.uqbar.hoope.Program
 import org.uqbar.hoope.lib.HoopeGraphicObject
 import org.uqbar.hoope.lib.IHoopeInterpreter
+import org.uqbar.jvmmodel.HoopeJvmModelInferrer
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 
@@ -30,7 +33,7 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 			this.stopAtLine = stopAtLine
 			try {
 				program.jvmElements.filter(JvmOperation).head
-					?.invokeOperation(null, emptyList)
+					?.invokeOperation(tortoise, emptyList)
 			} catch (StopLineReachedException exc) {
 				// ignore
 			}
@@ -51,16 +54,38 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 			context.newValue(XbaseScopeProvider.THIS, hoopeGraphicObject)
 			var index = 0
 			for (param : operation.parameters) {
-				context.newValue(QualifiedName.create(param.name), argumentValues.get(index))
+				if (argumentValues.size == 0){
+					context.newValue(QualifiedName.create(param.name), newArrayOfSize(0));
+				} else {
+					context.newValue(QualifiedName.create(param.name), argumentValues.get(index))
+				}
 				index = index + 1	
 			}
-			val result = evaluate((executable as Message).body, context, CancelIndicator.NullImpl)
+			val result = evaluate((executable as Program), context, CancelIndicator.NullImpl)
 			if(result.exception != null)
 				throw result.exception
 			result.result
 		} else {
 			super.invokeOperation(operation, receiver, argumentValues)
 		}
+	}
+	
+	@Inject extension HoopeJvmModelInferrer
+	
+
+	def dispatch Object doEvaluate(HoopeObject expression, IEvaluationContext context, CancelIndicator indicator) {
+		expression
+	}
+
+	def override dispatch Object doEvaluate(XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
+		handleMemberFeatureCall(featureCall.actualReceiver, featureCall, context,indicator)
+	}
+
+	def dispatch handleMemberFeatureCall(HoopeObject receiver,XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
+		0
+	}
+	def dispatch handleMemberFeatureCall(XExpression receiver,XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
+		super.doEvaluate(featureCall,context,indicator)
 	}
 
 }
