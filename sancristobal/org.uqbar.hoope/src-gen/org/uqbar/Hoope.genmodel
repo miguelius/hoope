@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.uqbar.hoope/src-gen" editDirectory="/org.uqbar.hoope.edit/src"
+    editorDirectory="/org.uqbar.hoope.editor/src" modelPluginID="org.uqbar.hoope"
+    forceOverwrite="true" modelName="Hoope" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.uqbar.hoope.edit"
+    editorPluginID="org.uqbar.hoope.editor" runtimeVersion="2.9" usedGenPackages="../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="Hoope" basePackage="org.uqbar" disposableProviderFactory="true"
+      fileExtensions="hoopl" ecorePackage="Hoope.ecore#/">
+    <genClasses ecoreClass="Hoope.ecore#//Feature">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hoope.ecore#//Feature/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Feature/type"/>
+    </genClasses>
+    <genClasses ecoreClass="Hoope.ecore#//Property"/>
+    <genClasses ecoreClass="Hoope.ecore#//Message">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Message/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Message/body"/>
+    </genClasses>
+    <genClasses ecoreClass="Hoope.ecore#//Program"/>
+    <genClasses ecoreClass="Hoope.ecore#//HoopeObject">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//HoopeObject/features"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
