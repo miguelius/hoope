@@ -13,79 +13,90 @@ import org.eclipse.xtext.xbase.interpreter.IEvaluationContext
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider
-import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Program
-import org.uqbar.hoope.lib.HoopeGraphicObject
 import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
+import org.uqbar.hoope.lib.HoopeObject
+import java.util.ArrayList
+import org.uqbar.hoope.lib.IProjectClassLoaderHelper
+import org.eclipse.core.resources.IProject
+import java.util.logging.Logger
+import org.eclipse.xtext.common.types.JvmGenericType
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
-
+	
 	@Inject extension IJvmModelAssociations 
 
-	HoopeGraphicObject hoopeGraphicObject
+	@Inject extension IProjectClassLoaderHelper
+
+	@Inject IEvaluationContext context
+
+	static Logger log = Logger::getLogger( typeof(HoopeGraphicObjectShellInterpreter).name ) 
+
+	HoopeObject hoopeGraphicObject
+	
+	IProject project;
 
 	int stopAtLine
 
-	override run(HoopeGraphicObject tortoise, EObject program, int stopAtLine) {
-		if (tortoise != null && program != null) {
-			this.hoopeGraphicObject = tortoise
-			this.stopAtLine = stopAtLine
-			try {
-				program.jvmElements.filter(JvmOperation).head
-					?.invokeOperation(tortoise, emptyList)
-			} catch (StopLineReachedException exc) {
-				// ignore
-			}
+	// Evalúa el método main de la clase Main
+	override run(EObject program, int stopAtLine) {
+		val runningContext = context.fork
+
+		if (program != null) {
+			(program as Program).expressions.forEach[
+				it.evaluate(runningContext,null)
+			]
 		}
+			
+//			val v = program.jvmElements
+//			System.out.println(v)
+//			try {
+//				val pepita = loadClass("examples.hoope.Main").newInstance
+//				System.out.println(pepita);
+//				
+//			} catch (StopLineReachedException exc) {
+//
+//			}
+//			this.hoopeGraphicObject = tortoise
+//			this.stopAtLine = stopAtLine
+//			try {
+//				program.jvmElements.filter(JvmOperation).head
+//					?.invokeOperation(tortoise, emptyList)
+//			} catch (StopLineReachedException exc) {
+//				// ignore
+//			}
 	}
 
-	override protected internalEvaluate(XExpression expression, IEvaluationContext context, CancelIndicator indicator) {
-		val line = NodeModelUtils.findActualNodeFor(expression)?.startLine
-		if (line-1 == stopAtLine)
-			throw new StopLineReachedException
-		super.internalEvaluate(expression, context, indicator)
-	}
-
-	override protected invokeOperation(JvmOperation operation, Object receiver, List<Object> argumentValues) {
-		val executable = operation.sourceElements.head
-		if (executable instanceof XExpression) {
-			val context = createContext
-			context.newValue(XbaseScopeProvider.THIS, hoopeGraphicObject)
-			var index = 0
-			for (param : operation.parameters) {
-				if (argumentValues.size == 0){
-					context.newValue(QualifiedName.create(param.name), newArrayOfSize(0));
-				} else {
-					context.newValue(QualifiedName.create(param.name), argumentValues.get(index))
-				}
-				index = index + 1	
-			}
-			val result = evaluate((executable as Program), context, CancelIndicator.NullImpl)
-			if(result.exception != null)
-				throw result.exception
-			result.result
-		} else {
-			super.invokeOperation(operation, receiver, argumentValues)
-		}
-	}
-	
 	@Inject extension HoopeJvmModelInferrer
 	
-
-	def dispatch Object doEvaluate(HoopeObject expression, IEvaluationContext context, CancelIndicator indicator) {
-		expression
+	//extiende el evaluador de expresiones para instanciar un hoope object
+	override Object doEvaluate(XExpression expression, IEvaluationContext context, CancelIndicator indicator) {
+		log.info(''' evaluando: «expression.toString» ''')
+		switch expression {
+			org.uqbar.hoope.HoopeObject: {
+				log.info(''' se comopne de: «getJvmElements(expression).head» ''')
+				loadClass(project, (getJvmElements(expression).head as JvmGenericType).identifier).newInstance
+			}
+			XExpression:
+				super.doEvaluate(expression,context,indicator)
+		}
+		
 	}
 
-	def override dispatch Object doEvaluate(XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
-		handleMemberFeatureCall(featureCall.actualReceiver, featureCall, context,indicator)
+	//esto duele y mucho:
+	// cuando quiero invocar métodos de las clases definidas por el usuario
+	// necesito el classloader con el que fueron definidas, por lo que le pido a la clase
+	// su class loader.
+	// El error que ocurría era que no podía encontrar el método, ya que lo buscaba en el class loader
+	// del plugin
+	override Object invokeOperation(JvmOperation operation, Object receiver, List<Object> argumentValues) {
+		javaReflectAccess.setClassLoader(receiver.class.classLoader)
+		super.invokeOperation(operation,receiver,argumentValues)
 	}
-
-	def dispatch handleMemberFeatureCall(HoopeObject receiver,XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
-		0
-	}
-	def dispatch handleMemberFeatureCall(XExpression receiver,XMemberFeatureCall featureCall, IEvaluationContext context, CancelIndicator indicator) {
-		super.doEvaluate(featureCall,context,indicator)
+	
+	override setProject(IProject project) {
+		this.project = project
 	}
 
 }

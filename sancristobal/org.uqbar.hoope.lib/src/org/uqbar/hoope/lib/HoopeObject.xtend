@@ -6,7 +6,7 @@ import org.eclipse.draw2d.geometry.Point
 import org.eclipse.draw2d.ColorConstants
 import java.util.List
 
-class HoopeGraphicObject {
+class HoopeObject {
 	double angle
 	double x
 	double y
@@ -106,11 +106,11 @@ class HoopeGraphicObject {
 }
 
 @Data class MoveEvent implements IHoopeObjectEvent {
-	HoopeGraphicObject hoopeObject
+	HoopeObject hoopeObject
 	Point oldPosition
 }
 
 @Data class TurnEvent implements IHoopeObjectEvent {
-	HoopeGraphicObject hoopeObject
+	HoopeObject hoopeObject
 	double oldAngle	
 }

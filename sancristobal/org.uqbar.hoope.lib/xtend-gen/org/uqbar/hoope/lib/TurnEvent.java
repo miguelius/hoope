@@ -2,15 +2,15 @@ package org.uqbar.hoope.lib;
 
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.uqbar.hoope.lib.HoopeGraphicObject;
+import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.IHoopeObjectEvent;
 
 @Data
 @SuppressWarnings("all")
 public class TurnEvent implements IHoopeObjectEvent {
-  private final HoopeGraphicObject _hoopeObject;
+  private final HoopeObject _hoopeObject;
   
-  public HoopeGraphicObject getHoopeObject() {
+  public HoopeObject getHoopeObject() {
     return this._hoopeObject;
   }
   
@@ -20,7 +20,7 @@ public class TurnEvent implements IHoopeObjectEvent {
     return this._oldAngle;
   }
   
-  public TurnEvent(final HoopeGraphicObject hoopeObject, final double oldAngle) {
+  public TurnEvent(final HoopeObject hoopeObject, final double oldAngle) {
     super();
     this._hoopeObject = hoopeObject;
     this._oldAngle = oldAngle;

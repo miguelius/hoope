@@ -13,7 +13,7 @@ import org.uqbar.hoope.lib.MoveEvent;
 import org.uqbar.hoope.lib.TurnEvent;
 
 @SuppressWarnings("all")
-public class HoopeGraphicObject {
+public class HoopeObject {
   private double angle;
   
   private double x;

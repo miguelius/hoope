@@ -13,3 +13,9 @@
 /.HoopeGraphicObjectPartListener.java._trace
 /.ToggleStopModeAction.java._trace
 /.RootLayer.java._trace
+/Activator.java
+/ExecutableExtensionFactory.java
+/HoopeObject.java
+/Module.java
+/MoveEvent.java
+/TurnEvent.java

@@ -15,7 +15,7 @@ class HoopeGraphicObjectFigure  extends ImageFigure {
 
 	@Inject 
 	new(PluginImageHelper imageHelper) {
-		super(imageHelper.getImage('Turtle.png'), PositionConstants.NORTH_EAST)
+		super(imageHelper.getImage('pepita_80.png'), PositionConstants.NORTH_EAST)
 	}
 
 	override protected paintFigure(Graphics graphics) {

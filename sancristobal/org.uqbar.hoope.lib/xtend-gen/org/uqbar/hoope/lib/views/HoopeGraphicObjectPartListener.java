@@ -28,14 +28,14 @@ import org.uqbar.hoope.lib.views.SampleView;
 
 @SuppressWarnings("all")
 public class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeListener, CaretListener {
-  private XtextEditor currentTortoiseEditor;
+  private XtextEditor currentEditor;
   
   @Inject
   private SampleView view;
   
   private boolean isStopMode;
   
-  public boolean isTortoiseEditor(final IWorkbenchPart part) {
+  public boolean isHoopeEditor(final IWorkbenchPart part) {
     boolean _and = false;
     if (!(part instanceof XtextEditor)) {
       _and = false;
@@ -49,11 +49,11 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
   }
   
   public void partActivated(final IWorkbenchPart part) {
-    boolean _isTortoiseEditor = this.isTortoiseEditor(part);
-    if (_isTortoiseEditor) {
+    boolean _isHoopeEditor = this.isHoopeEditor(part);
+    if (_isHoopeEditor) {
       IFile _editorFile = null;
-      if (this.currentTortoiseEditor!=null) {
-        _editorFile=this.getEditorFile(this.currentTortoiseEditor);
+      if (this.currentEditor!=null) {
+        _editorFile=this.getEditorFile(this.currentEditor);
       }
       IWorkspace _workspace = null;
       if (_editorFile!=null) {
@@ -63,8 +63,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
         _workspace.removeResourceChangeListener(this);
       }
       ISourceViewer _internalSourceViewer = null;
-      if (this.currentTortoiseEditor!=null) {
-        _internalSourceViewer=this.currentTortoiseEditor.getInternalSourceViewer();
+      if (this.currentEditor!=null) {
+        _internalSourceViewer=this.currentEditor.getInternalSourceViewer();
       }
       StyledText _textWidget = null;
       if (_internalSourceViewer!=null) {
@@ -73,26 +73,10 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
       if (_textWidget!=null) {
         _textWidget.removeCaretListener(this);
       }
-      this.currentTortoiseEditor = ((XtextEditor) part);
-      if (this.isStopMode) {
-        ISourceViewer _internalSourceViewer_1 = null;
-        if (this.currentTortoiseEditor!=null) {
-          _internalSourceViewer_1=this.currentTortoiseEditor.getInternalSourceViewer();
-        }
-        StyledText _textWidget_1 = null;
-        if (_internalSourceViewer_1!=null) {
-          _textWidget_1=_internalSourceViewer_1.getTextWidget();
-        }
-        if (_textWidget_1!=null) {
-          _textWidget_1.addCaretListener(this);
-        }
-      } else {
-        int _minus = (-10);
-        this.view.show(this.currentTortoiseEditor, _minus);
-      }
+      this.currentEditor = ((XtextEditor) part);
       IFile _editorFile_1 = null;
-      if (this.currentTortoiseEditor!=null) {
-        _editorFile_1=this.getEditorFile(this.currentTortoiseEditor);
+      if (this.currentEditor!=null) {
+        _editorFile_1=this.getEditorFile(this.currentEditor);
       }
       IWorkspace _workspace_1 = null;
       if (_editorFile_1!=null) {
@@ -111,11 +95,11 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
   }
   
   public void partDeactivated(final IWorkbenchPart part) {
-    boolean _equals = Objects.equal(part, this.currentTortoiseEditor);
+    boolean _equals = Objects.equal(part, this.currentEditor);
     if (_equals) {
       ISourceViewer _internalSourceViewer = null;
-      if (this.currentTortoiseEditor!=null) {
-        _internalSourceViewer=this.currentTortoiseEditor.getInternalSourceViewer();
+      if (this.currentEditor!=null) {
+        _internalSourceViewer=this.currentEditor.getInternalSourceViewer();
       }
       StyledText _textWidget = null;
       if (_internalSourceViewer!=null) {
@@ -125,8 +109,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
         _textWidget.removeCaretListener(this);
       }
       IFile _editorFile = null;
-      if (this.currentTortoiseEditor!=null) {
-        _editorFile=this.getEditorFile(this.currentTortoiseEditor);
+      if (this.currentEditor!=null) {
+        _editorFile=this.getEditorFile(this.currentEditor);
       }
       IWorkspace _workspace = null;
       if (_editorFile!=null) {
@@ -135,7 +119,7 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
       if (_workspace!=null) {
         _workspace.removeResourceChangeListener(this);
       }
-      this.currentTortoiseEditor = null;
+      this.currentEditor = null;
     }
   }
   
@@ -145,8 +129,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
   public void resourceChanged(final IResourceChangeEvent event) {
     try {
       IFile _editorFile = null;
-      if (this.currentTortoiseEditor!=null) {
-        _editorFile=this.getEditorFile(this.currentTortoiseEditor);
+      if (this.currentEditor!=null) {
+        _editorFile=this.getEditorFile(this.currentEditor);
       }
       final IFile editorFile = _editorFile;
       boolean _notEquals = (!Objects.equal(editorFile, null));
@@ -175,13 +159,7 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
                 _and = (_and_1 && _equals_2);
               }
               if (_and) {
-                boolean _xblockexpression = false;
-                {
-                  int _minus = (-10);
-                  HoopeGraphicObjectPartListener.this.view.show(HoopeGraphicObjectPartListener.this.currentTortoiseEditor, _minus);
-                  _xblockexpression = (false);
-                }
-                _xifexpression = _xblockexpression;
+                _xifexpression = false;
               } else {
                 IResource _resource_1 = it.getResource();
                 IPath _fullPath = _resource_1.getFullPath();
@@ -218,8 +196,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
     boolean _xblockexpression = false;
     {
       ISourceViewer _internalSourceViewer = null;
-      if (this.currentTortoiseEditor!=null) {
-        _internalSourceViewer=this.currentTortoiseEditor.getInternalSourceViewer();
+      if (this.currentEditor!=null) {
+        _internalSourceViewer=this.currentEditor.getInternalSourceViewer();
       }
       StyledText _textWidget = null;
       if (_internalSourceViewer!=null) {
@@ -232,8 +210,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
       this.isStopMode = _not;
       if (this.isStopMode) {
         ISourceViewer _internalSourceViewer_1 = null;
-        if (this.currentTortoiseEditor!=null) {
-          _internalSourceViewer_1=this.currentTortoiseEditor.getInternalSourceViewer();
+        if (this.currentEditor!=null) {
+          _internalSourceViewer_1=this.currentEditor.getInternalSourceViewer();
         }
         StyledText _textWidget_1 = null;
         if (_internalSourceViewer_1!=null) {
@@ -250,9 +228,8 @@ public class HoopeGraphicObjectPartListener implements IPartListener, IResourceC
   
   public void caretMoved(final CaretEvent event) {
     try {
-      IXtextDocument _document = this.currentTortoiseEditor.getDocument();
+      IXtextDocument _document = this.currentEditor.getDocument();
       final int stopAtLine = _document.getLineOfOffset(event.caretOffset);
-      this.view.show(this.currentTortoiseEditor, stopAtLine);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

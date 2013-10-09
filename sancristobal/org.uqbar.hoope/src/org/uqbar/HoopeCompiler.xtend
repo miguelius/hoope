@@ -5,8 +5,8 @@ import com.google.inject.Singleton
 import org.eclipse.xtext.xbase.XExpression
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
-import org.uqbar.jvmmodel.HoopeJvmModelInferrer
 import org.uqbar.hoope.HoopeObject
+import org.uqbar.jvmmodel.HoopeJvmModelInferrer
 
 @Singleton
 class HoopeCompiler extends XbaseCompiler {
@@ -25,6 +25,7 @@ class HoopeCompiler extends XbaseCompiler {
 
 	@Inject extension HoopeJvmModelInferrer;
 	def dispatch void toJavaExpression(HoopeObject object, ITreeAppendable b) {
+		
 		b.append("new ").append(getType(object)).append("();")
 
 		// String body = func.getValue()

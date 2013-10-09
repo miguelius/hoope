@@ -5,3 +5,10 @@
 /.ToggleStopModeAction.java._trace
 /.RootLayer.java._trace
 /.HoopeGraphicObjectFigure.java._trace
+/Animation.java
+/Animator.java
+/HoopeGraphicObjectFigure.java
+/HoopeGraphicObjectPartListener.java
+/RootLayer.java
+/SampleView.java
+/ToggleStopModeAction.java

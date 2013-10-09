@@ -8,6 +8,8 @@ import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer;
 import org.eclipse.xtext.xbase.typesystem.computation.XbaseTypeComputer;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.uqbar.hoope.lib.IHoopeInterpreter;
+import org.uqbar.hoope.lib.IProjectClassLoaderHelper;
+import org.uqbar.hoope.lib.ProjectClassLoaderHelper;
 import org.uqbar.interpreter.HoopeGraphicObjectShellInterpreter;
 
 /**
@@ -15,16 +17,20 @@ import org.uqbar.interpreter.HoopeGraphicObjectShellInterpreter;
  * Equinox extension registry.
  */
 public class HoopeRuntimeModule extends org.uqbar.AbstractHoopeRuntimeModule {
-	public Class<? extends ITypeProvider> bindITypeProvider() {
-		return HoopeTypeProvider.class;
-	}
+//	public Class<? extends ITypeProvider> bindITypeProvider() {
+//		return HoopeTypeProvider.class;
+//	}
 
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
 		return HoopeCompiler.class;
 	}
 
-	public Class<? extends IHoopeInterpreter> bindITortoiseInterpreter() {
+	public Class<? extends IHoopeInterpreter> bindIHoopeInterpreter() {
 		return HoopeGraphicObjectShellInterpreter.class;
+	}
+	
+	public Class<? extends IProjectClassLoaderHelper> bindProjectClassLoader() {
+		return ProjectClassLoaderHelper.class;
 	}
 	
 	public Class<? extends ITypeComputer> bindITypeComputer() {

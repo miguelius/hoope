@@ -14,26 +14,26 @@ import org.eclipse.xtext.ui.editor.XtextEditor
 
 class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeListener, CaretListener {
 	
-	XtextEditor currentTortoiseEditor
+	XtextEditor currentEditor
 	
 	@Inject SampleView view
 	
 	boolean isStopMode
 	
-	def isTortoiseEditor(IWorkbenchPart part) {
+	def isHoopeEditor(IWorkbenchPart part) {
 		part instanceof XtextEditor && part.site.id == 'org.uqbar.Hoope'
 	}
 
 	override partActivated(IWorkbenchPart part) {
-		if (part.tortoiseEditor) {
-			currentTortoiseEditor?.editorFile?.workspace?.removeResourceChangeListener(this)
-			currentTortoiseEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
-			currentTortoiseEditor = part as XtextEditor
-			if (isStopMode)
-				currentTortoiseEditor?.internalSourceViewer?.textWidget?.addCaretListener(this)
-			else
-				view.show(currentTortoiseEditor, -10)
-			currentTortoiseEditor?.editorFile?.workspace?.addResourceChangeListener(this)
+		if (part.hoopeEditor) {
+			currentEditor?.editorFile?.workspace?.removeResourceChangeListener(this)
+			currentEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
+			currentEditor = part as XtextEditor
+//			if (isStopMode)
+//				currentEditor?.internalSourceViewer?.textWidget?.addCaretListener(this)
+//			else
+//				view.show(currentEditor, -10)
+			currentEditor?.editorFile?.workspace?.addResourceChangeListener(this)
 		}
 	}
 	
@@ -44,10 +44,10 @@ class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeLi
 	}
 	
 	override partDeactivated(IWorkbenchPart part) {
-		if (part == currentTortoiseEditor) {
-			currentTortoiseEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
-			currentTortoiseEditor?.editorFile?.workspace?.removeResourceChangeListener(this)
-			currentTortoiseEditor = null
+		if (part == currentEditor) {
+			currentEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
+			currentEditor?.editorFile?.workspace?.removeResourceChangeListener(this)
+			currentEditor = null
 		}
 	}
 	
@@ -55,12 +55,12 @@ class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeLi
 	}
 
 	override resourceChanged(IResourceChangeEvent event) {
-		val editorFile = currentTortoiseEditor?.editorFile
+		val editorFile = currentEditor?.editorFile
 		if (editorFile != null) {
 			val editorFilePath = editorFile.fullPath 
 			event.delta.accept [
 				if (resource == editorFile && kind==IResourceDelta.CHANGED && flags==IResourceDelta.CONTENT) {
-					view.show(currentTortoiseEditor, -10)
+					//view.show(currentEditor, -10)
 					false			
 				} else {
 				    resource.fullPath.isPrefixOf(editorFilePath)
@@ -78,16 +78,16 @@ class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeLi
 
 
 	def boolean toggleStopMode() {
-		currentTortoiseEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
+		currentEditor?.internalSourceViewer?.textWidget?.removeCaretListener(this)
 		isStopMode = !isStopMode 
 		if (isStopMode) 
-			currentTortoiseEditor?.internalSourceViewer?.textWidget?.addCaretListener(this)
+			currentEditor?.internalSourceViewer?.textWidget?.addCaretListener(this)
 		isStopMode
 	}
 	
 	override caretMoved(CaretEvent event) {
-		val stopAtLine = currentTortoiseEditor.document.getLineOfOffset(event.caretOffset)
-		view.show(currentTortoiseEditor, stopAtLine)
+		val stopAtLine = currentEditor.document.getLineOfOffset(event.caretOffset)
+		//view.show(currentEditor, stopAtLine)
 	}
-	
+
 }

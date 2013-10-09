@@ -24,7 +24,7 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
   public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper) {
     super(new Function0<Image>() {
       public Image apply() {
-        Image _image = imageHelper.getImage("Turtle.png");
+        Image _image = imageHelper.getImage("pepita_80.png");
         return _image;
       }
     }.apply(), PositionConstants.NORTH_EAST);

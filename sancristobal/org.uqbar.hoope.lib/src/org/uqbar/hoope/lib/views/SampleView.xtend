@@ -8,7 +8,6 @@ import org.eclipse.draw2d.FigureCanvas
 import org.eclipse.draw2d.FreeformLayeredPane
 import org.eclipse.draw2d.FreeformViewport
 import org.eclipse.draw2d.Polyline
-import org.eclipse.draw2d.geometry.Point
 import org.eclipse.jface.dialogs.MessageDialog
 import org.eclipse.jface.text.source.Annotation
 import org.eclipse.swt.SWT
@@ -17,11 +16,12 @@ import org.eclipse.ui.IViewSite
 import org.eclipse.ui.part.ViewPart
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.util.DisplayRunHelper
-import org.uqbar.hoope.lib.HoopeGraphicObject
+import org.uqbar.hoope.lib.HoopeObject
 import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.hoope.lib.IHoopeObjectEvent
 import org.uqbar.hoope.lib.MoveEvent
 import org.uqbar.hoope.lib.TurnEvent
+import org.eclipse.core.resources.IResource
 
 @Singleton
 public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
@@ -63,24 +63,27 @@ public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
 
 	def reset() {
 		rootFigure.removeAll
-		rootFigure.add(hoopeGraphicObjectFigure)
-		hoopeGraphicObjectFigure.objectLocation = new Point(0,0)
-		hoopeGraphicObjectFigure.angle = 0
+//		rootFigure.add(hoopeGraphicObjectFigure)
+//		hoopeGraphicObjectFigure.objectLocation = new Point(0,0)
+//		hoopeGraphicObjectFigure.angle = 0
 		val viewportSize = canvas.size	
 		canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
 	}
 	
-	def show(XtextEditor tortoiseEditor, int stopAtLine) {
+	def show(XtextEditor hooplEditor, int stopAtLine) {
 		animator.setAnimated(stopAtLine < 0)
 		DisplayRunHelper.runSyncInDisplayThread[|reset]
-		tortoiseEditor.document.readOnly [
-			if(it != null && !tortoiseEditor.hasError) {
-				val hoopeObject = new HoopeGraphicObject
+
+		hooplEditor.document.readOnly [
+			if(it != null && !hooplEditor.hasError) {
+				val hoopeObject = new HoopeObject
 				hoopeObject.addListener(this)
 				val interpreter = resourceServiceProvider.get(IHoopeInterpreter)
 				if(interpreter != null && !contents.empty) {
 					try {
-						interpreter.run(hoopeObject, contents.get(0), stopAtLine)
+						System.out.println(contents)
+						interpreter.project = hooplEditor.resource.project
+						interpreter.run( contents.get(0), stopAtLine)
 					} catch (Exception e) {
 						MessageDialog.openError(site.shell, "Error during Execution", '''
 						Error during execution:
@@ -94,8 +97,8 @@ public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
 		]
 	}
 	
-	def hasError(XtextEditor tortoiseEditor) {
-		val annotations = tortoiseEditor.documentProvider?.getAnnotationModel(tortoiseEditor.editorInput)?.annotationIterator
+	def hasError(XtextEditor hooplEditor) {
+		val annotations = hooplEditor.documentProvider?.getAnnotationModel(hooplEditor.editorInput)?.annotationIterator
 		while(annotations != null && annotations.hasNext) {
 			val annotation = annotations.next
 			if(annotation instanceof Annotation && 

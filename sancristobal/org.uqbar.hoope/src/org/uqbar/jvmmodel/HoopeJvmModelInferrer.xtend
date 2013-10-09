@@ -16,7 +16,7 @@ import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Message
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.Property
-import org.uqbar.hoope.lib.HoopeGraphicObject
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -29,7 +29,8 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension JvmTypesBuilder
 	@Inject extension IQualifiedNameProvider
 	@Inject extension TypeReferences
-	@Inject extension ITypeProvider
+
+	@Inject extension IJvmModelAssociations 
 
 	// @Inject extension XbaseFactory 
 	var count = 0
@@ -61,9 +62,9 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	def dispatch void infer(HoopeObject element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
-		var result = element.toClass("examples.hoope.HoopeObject" + count)
+		var jvmGenericType = element.toClass("examples.hoope.HoopeObject" + count)
 		count = count + 1
-		acceptor.accept(result).initializeLater [
+		acceptor.accept(jvmGenericType).initializeLater [
 			documentation = element.documentation
 			for (feature : element.features) {
 				switch feature {
@@ -84,11 +85,11 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 				}
 			}
 		]
-		createdClasses.put(element, result)
+		createdClasses.put(element, jvmGenericType)
 	}
 
 	def JvmGenericType getType(HoopeObject element) {
-		createdClasses.get(element)
+		(getJvmElements(element).head as JvmGenericType)
 	}
 
 }

@@ -3,15 +3,15 @@ package org.uqbar.hoope.lib;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.xtend.lib.Data;
 import org.eclipse.xtext.xbase.lib.util.ToStringHelper;
-import org.uqbar.hoope.lib.HoopeGraphicObject;
+import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.IHoopeObjectEvent;
 
 @Data
 @SuppressWarnings("all")
 public class MoveEvent implements IHoopeObjectEvent {
-  private final HoopeGraphicObject _hoopeObject;
+  private final HoopeObject _hoopeObject;
   
-  public HoopeGraphicObject getHoopeObject() {
+  public HoopeObject getHoopeObject() {
     return this._hoopeObject;
   }
   
@@ -21,7 +21,7 @@ public class MoveEvent implements IHoopeObjectEvent {
     return this._oldPosition;
   }
   
-  public MoveEvent(final HoopeGraphicObject hoopeObject, final Point oldPosition) {
+  public MoveEvent(final HoopeObject hoopeObject, final Point oldPosition) {
     super();
     this._hoopeObject = hoopeObject;
     this._oldPosition = oldPosition;
