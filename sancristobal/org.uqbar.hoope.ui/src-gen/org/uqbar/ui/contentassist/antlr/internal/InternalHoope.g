@@ -3617,6 +3617,7 @@ rule__Property__Group__2
     }
 :
 	rule__Property__Group__2__Impl
+	rule__Property__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3639,6 +3640,99 @@ finally {
 }
 
 
+rule__Property__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getGroup_3()); }
+(rule__Property__Group_3__0)?
+{ after(grammarAccess.getPropertyAccess().getGroup_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+
+
+rule__Property__Group_3__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group_3__0__Impl
+	rule__Property__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group_3__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getEqualsSignKeyword_3_0()); }
+
+	'=' 
+
+{ after(grammarAccess.getPropertyAccess().getEqualsSignKeyword_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Property__Group_3__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Property__Group_3__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__Group_3__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getValueAssignment_3_1()); }
+(rule__Property__ValueAssignment_3_1)
+{ after(grammarAccess.getPropertyAccess().getValueAssignment_3_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -15705,6 +15799,21 @@ rule__Property__TypeAssignment_2
 (
 { before(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0()); }
 	ruleJvmTypeReference{ after(grammarAccess.getPropertyAccess().getTypeJvmTypeReferenceParserRuleCall_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__ValueAssignment_3_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getValueXExpressionParserRuleCall_3_1_0()); }
+	ruleXExpression{ after(grammarAccess.getPropertyAccess().getValueXExpressionParserRuleCall_3_1_0()); }
 )
 
 ;

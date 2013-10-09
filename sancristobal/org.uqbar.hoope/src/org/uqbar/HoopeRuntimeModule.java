@@ -17,9 +17,9 @@ import org.uqbar.interpreter.HoopeGraphicObjectShellInterpreter;
  * Equinox extension registry.
  */
 public class HoopeRuntimeModule extends org.uqbar.AbstractHoopeRuntimeModule {
-//	public Class<? extends ITypeProvider> bindITypeProvider() {
-//		return HoopeTypeProvider.class;
-//	}
+	public Class<? extends ITypeProvider> bindITypeProvider() {
+		return HoopeTypeProvider.class;
+	}
 
 	public Class<? extends XbaseCompiler> bindXbaseCompiler() {
 		return HoopeCompiler.class;

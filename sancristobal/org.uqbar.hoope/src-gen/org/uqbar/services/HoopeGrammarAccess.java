@@ -187,12 +187,16 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cValueXExpressionParserRuleCall_3_1_0 = (RuleCall)cValueAssignment_3_1.eContents().get(0);
 		
 		//Property:
-		//	name=ValidID ":" type=JvmTypeReference;
+		//	name=ValidID ":" type=JvmTypeReference ("=" value=XExpression)?;
 		public ParserRule getRule() { return rule; }
 
-		//name=ValidID ":" type=JvmTypeReference
+		//name=ValidID ":" type=JvmTypeReference ("=" value=XExpression)?
 		public Group getGroup() { return cGroup; }
 
 		//name=ValidID
@@ -209,6 +213,18 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 
 		//JvmTypeReference
 		public RuleCall getTypeJvmTypeReferenceParserRuleCall_2_0() { return cTypeJvmTypeReferenceParserRuleCall_2_0; }
+
+		//("=" value=XExpression)?
+		public Group getGroup_3() { return cGroup_3; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
+
+		//value=XExpression
+		public Assignment getValueAssignment_3_1() { return cValueAssignment_3_1; }
+
+		//XExpression
+		public RuleCall getValueXExpressionParserRuleCall_3_1_0() { return cValueXExpressionParserRuleCall_3_1_0; }
 	}
 
 	public class MessageElements extends AbstractParserRuleElementFinder {
@@ -390,7 +406,7 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Property:
-	//	name=ValidID ":" type=JvmTypeReference;
+	//	name=ValidID ":" type=JvmTypeReference ("=" value=XExpression)?;
 	public PropertyElements getPropertyAccess() {
 		return (pProperty != null) ? pProperty : (pProperty = new PropertyElements());
 	}

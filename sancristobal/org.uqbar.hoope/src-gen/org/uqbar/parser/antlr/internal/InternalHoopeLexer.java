@@ -215,11 +215,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:16:7: ( 'message' )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:16:9: 'message'
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:16:7: ( '=' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:16:9: '='
             {
-            match("message"); 
-
+            match('='); 
 
             }
 
@@ -236,10 +235,11 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:17:7: ( '=' )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:17:9: '='
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:17:7: ( 'message' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:17:9: 'message'
             {
-            match('='); 
+            match("message"); 
+
 
             }
 
@@ -1624,10 +1624,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:12: ( '0x' | '0X' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1655,7 +1655,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:13: '0x'
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:13: '0x'
                     {
                     match("0x"); 
 
@@ -1663,7 +1663,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:18: '0X'
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:18: '0X'
                     {
                     match("0X"); 
 
@@ -1673,7 +1673,7 @@ public class InternalHoopeLexer extends Lexer {
 
             }
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1711,7 +1711,7 @@ public class InternalHoopeLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1720,10 +1720,10 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1741,7 +1741,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1765,7 +1765,7 @@ public class InternalHoopeLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5663:84: ( 'l' | 'L' )
+                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5685:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1804,11 +1804,11 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5665:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5665:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5687:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5687:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5665:21: ( '0' .. '9' | '_' )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5687:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1857,11 +1857,11 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1870,7 +1870,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1881,7 +1881,7 @@ public class InternalHoopeLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:36: ( '+' | '-' )?
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1914,7 +1914,7 @@ public class InternalHoopeLexer extends Lexer {
 
             }
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -1926,7 +1926,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -1950,7 +1950,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5667:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5689:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -1983,10 +1983,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5669:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5669:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5691:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5691:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5669:11: ( '^' )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5691:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1995,7 +1995,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5669:11: '^'
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5691:11: '^'
                     {
                     match('^'); 
 
@@ -2013,7 +2013,7 @@ public class InternalHoopeLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5669:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5691:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2062,10 +2062,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2083,10 +2083,10 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2102,7 +2102,7 @@ public class InternalHoopeLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2118,7 +2118,7 @@ public class InternalHoopeLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2143,10 +2143,10 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2162,7 +2162,7 @@ public class InternalHoopeLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2178,7 +2178,7 @@ public class InternalHoopeLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5671:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5693:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2221,12 +2221,12 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5673:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5673:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5695:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5695:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5673:24: ( options {greedy=false; } : . )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5695:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2251,7 +2251,7 @@ public class InternalHoopeLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5673:52: .
+            	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5695:52: .
             	    {
             	    matchAny(); 
 
@@ -2281,12 +2281,12 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2299,7 +2299,7 @@ public class InternalHoopeLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2319,7 +2319,7 @@ public class InternalHoopeLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:40: ( ( '\\r' )? '\\n' )?
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2328,9 +2328,9 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:41: ( '\\r' )? '\\n'
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:41: ( '\\r' )?
+                    // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2339,7 +2339,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5675:41: '\\r'
+                            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5697:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2371,10 +2371,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5677:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5677:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5699:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5699:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5677:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5699:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2428,8 +2428,8 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5679:16: ( . )
-            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5679:18: .
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5701:16: ( . )
+            // ../org.uqbar.hoope/src-gen/org/uqbar/parser/antlr/internal/InternalHoope.g:5701:18: .
             {
             matchAny(); 
 
@@ -3030,80 +3030,80 @@ public class InternalHoopeLexer extends Lexer {
 
     protected DFA19 dfa19 = new DFA19(this);
     static final String DFA19_eotS =
-        "\2\uffff\1\60\2\uffff\1\64\1\60\1\70\3\uffff\1\75\1\100\1\102\1"+
+        "\2\uffff\1\60\2\uffff\1\64\1\67\1\60\3\uffff\1\75\1\100\1\102\1"+
         "\104\1\106\1\60\1\113\1\116\1\120\1\123\1\125\1\130\1\uffff\1\60"+
-        "\3\uffff\12\60\2\163\1\55\1\uffff\2\55\3\uffff\1\60\5\uffff\1\60"+
-        "\1\173\16\uffff\1\175\1\uffff\1\60\1\177\1\60\2\uffff\1\u0082\2"+
-        "\uffff\1\u0084\12\uffff\1\u0085\3\uffff\6\60\1\u008c\14\60\1\uffff"+
-        "\1\163\4\uffff\3\60\4\uffff\1\60\1\uffff\1\60\5\uffff\6\60\1\uffff"+
-        "\2\60\1\u00a9\3\60\1\u00ad\1\u00ae\1\u00af\2\60\1\u00b2\10\60\1"+
-        "\u00bb\5\60\1\u00c1\1\60\1\uffff\3\60\3\uffff\1\u00c6\1\u00c7\1"+
-        "\uffff\10\60\1\uffff\3\60\1\u00d4\1\60\1\uffff\1\u00d6\1\u00d7\1"+
-        "\60\1\u00d9\2\uffff\1\60\1\u00db\1\60\1\u00dd\1\60\1\u00df\1\60"+
-        "\1\u00e1\2\60\1\u00e4\1\u00e5\1\uffff\1\60\2\uffff\1\60\1\uffff"+
+        "\3\uffff\12\60\2\163\1\55\1\uffff\2\55\3\uffff\1\60\5\uffff\1\171"+
+        "\2\uffff\1\60\14\uffff\1\175\1\uffff\1\60\1\177\1\60\2\uffff\1\u0082"+
+        "\2\uffff\1\u0084\12\uffff\1\u0085\3\uffff\6\60\1\u008c\14\60\1\uffff"+
+        "\1\163\4\uffff\1\60\2\uffff\2\60\2\uffff\1\60\1\uffff\1\60\5\uffff"+
+        "\6\60\1\uffff\2\60\1\u00a9\3\60\1\u00ad\1\u00ae\1\u00af\2\60\1\u00b2"+
+        "\10\60\1\u00bb\5\60\1\u00c1\1\60\1\uffff\3\60\3\uffff\1\u00c6\1"+
+        "\u00c7\1\uffff\10\60\1\uffff\3\60\1\u00d4\1\60\1\uffff\1\u00d6\1"+
+        "\u00d7\1\60\1\u00d9\2\uffff\1\60\1\u00db\1\60\1\u00dd\1\60\1\u00df"+
+        "\1\60\1\u00e1\2\60\1\u00e4\1\u00e5\1\uffff\1\60\2\uffff\1\60\1\uffff"+
         "\1\u00e8\1\uffff\1\u00e9\1\uffff\1\u00ea\1\uffff\1\60\1\uffff\1"+
         "\u00ec\1\60\2\uffff\1\u00ee\1\u00ef\3\uffff\1\60\1\uffff\1\60\2"+
         "\uffff\1\60\1\u00f3\1\u00f4\2\uffff";
     static final String DFA19_eofS =
         "\u00f5\uffff";
     static final String DFA19_minS =
-        "\1\0\1\uffff\1\142\2\uffff\1\72\1\145\1\75\3\uffff\2\75\1\174\1"+
+        "\1\0\1\uffff\1\142\2\uffff\1\72\1\75\1\145\3\uffff\2\75\1\174\1"+
         "\46\1\75\1\146\2\75\2\56\2\52\1\uffff\1\163\3\uffff\1\154\1\164"+
         "\1\145\2\141\1\150\1\141\1\145\1\150\1\145\2\60\1\44\1\uffff\2\0"+
-        "\3\uffff\1\152\5\uffff\1\163\1\75\16\uffff\1\75\1\uffff\1\163\1"+
-        "\44\1\160\2\uffff\1\76\2\uffff\1\74\12\uffff\1\44\3\uffff\1\163"+
-        "\1\164\1\151\1\141\1\160\1\146\1\44\1\163\1\162\1\154\1\156\1\151"+
-        "\1\154\1\167\1\154\1\165\1\160\1\162\1\164\1\uffff\1\60\4\uffff"+
-        "\1\145\1\163\1\150\4\uffff\1\164\1\uffff\1\157\5\uffff\2\145\2\164"+
-        "\1\145\1\141\1\uffff\1\145\1\143\1\44\1\163\1\141\1\154\3\44\1\154"+
-        "\1\145\1\44\1\145\1\157\1\165\1\143\1\141\1\157\1\141\1\162\1\44"+
-        "\1\156\1\143\1\151\1\162\1\165\1\44\1\150\1\uffff\1\145\1\154\1"+
-        "\145\3\uffff\2\44\1\uffff\1\157\1\167\1\162\1\164\1\147\1\144\1"+
-        "\156\1\164\1\uffff\1\144\1\150\1\143\1\44\1\154\1\uffff\2\44\1\154"+
-        "\1\44\2\uffff\1\146\1\44\1\156\1\44\1\145\1\44\1\143\1\44\1\163"+
-        "\1\151\2\44\1\uffff\1\164\2\uffff\1\171\1\uffff\1\44\1\uffff\1\44"+
-        "\1\uffff\1\44\1\uffff\1\145\1\uffff\1\44\1\157\2\uffff\2\44\3\uffff"+
-        "\1\157\1\uffff\1\156\2\uffff\1\146\2\44\2\uffff";
+        "\3\uffff\1\152\5\uffff\1\75\2\uffff\1\163\14\uffff\1\75\1\uffff"+
+        "\1\163\1\44\1\160\2\uffff\1\76\2\uffff\1\74\12\uffff\1\44\3\uffff"+
+        "\1\163\1\164\1\151\1\141\1\160\1\146\1\44\1\163\1\162\1\154\1\156"+
+        "\1\151\1\154\1\167\1\154\1\165\1\160\1\162\1\164\1\uffff\1\60\4"+
+        "\uffff\1\145\2\uffff\1\163\1\150\2\uffff\1\164\1\uffff\1\157\5\uffff"+
+        "\2\145\2\164\1\145\1\141\1\uffff\1\145\1\143\1\44\1\163\1\141\1"+
+        "\154\3\44\1\154\1\145\1\44\1\145\1\157\1\165\1\143\1\141\1\157\1"+
+        "\141\1\162\1\44\1\156\1\143\1\151\1\162\1\165\1\44\1\150\1\uffff"+
+        "\1\145\1\154\1\145\3\uffff\2\44\1\uffff\1\157\1\167\1\162\1\164"+
+        "\1\147\1\144\1\156\1\164\1\uffff\1\144\1\150\1\143\1\44\1\154\1"+
+        "\uffff\2\44\1\154\1\44\2\uffff\1\146\1\44\1\156\1\44\1\145\1\44"+
+        "\1\143\1\44\1\163\1\151\2\44\1\uffff\1\164\2\uffff\1\171\1\uffff"+
+        "\1\44\1\uffff\1\44\1\uffff\1\44\1\uffff\1\145\1\uffff\1\44\1\157"+
+        "\2\uffff\2\44\3\uffff\1\157\1\uffff\1\156\2\uffff\1\146\2\44\2\uffff";
     static final String DFA19_maxS =
-        "\1\uffff\1\uffff\1\142\2\uffff\1\72\1\145\1\76\3\uffff\1\75\1\76"+
+        "\1\uffff\1\uffff\1\142\2\uffff\1\72\1\76\1\145\3\uffff\1\75\1\76"+
         "\1\174\1\46\1\75\1\156\1\75\1\76\1\56\1\72\1\52\1\57\1\uffff\1\163"+
         "\3\uffff\1\170\1\167\1\157\1\141\1\157\1\150\1\141\1\165\1\171\1"+
-        "\145\1\170\1\154\1\172\1\uffff\2\uffff\3\uffff\1\152\5\uffff\1\164"+
-        "\1\75\16\uffff\1\75\1\uffff\1\163\1\172\1\160\2\uffff\1\76\2\uffff"+
-        "\1\74\12\uffff\1\172\3\uffff\1\163\1\164\1\151\1\141\1\160\1\146"+
-        "\1\172\1\164\1\162\1\154\1\156\1\151\1\162\1\167\1\154\1\171\1\160"+
-        "\1\162\1\164\1\uffff\1\154\4\uffff\1\145\1\163\1\150\4\uffff\1\164"+
-        "\1\uffff\1\157\5\uffff\2\145\2\164\1\145\1\141\1\uffff\1\145\1\143"+
-        "\1\172\1\163\1\141\1\154\3\172\1\154\1\145\1\172\1\145\1\157\1\165"+
-        "\1\143\1\141\1\157\1\141\1\162\1\172\1\156\1\143\1\151\1\162\1\165"+
-        "\1\172\1\150\1\uffff\1\145\1\154\1\145\3\uffff\2\172\1\uffff\1\157"+
-        "\1\167\1\162\1\164\1\147\1\144\1\156\1\164\1\uffff\1\163\1\150\1"+
-        "\143\1\172\1\154\1\uffff\2\172\1\154\1\172\2\uffff\1\146\1\172\1"+
-        "\156\1\172\1\145\1\172\1\143\1\172\1\163\1\151\2\172\1\uffff\1\164"+
-        "\2\uffff\1\171\1\uffff\1\172\1\uffff\1\172\1\uffff\1\172\1\uffff"+
-        "\1\145\1\uffff\1\172\1\157\2\uffff\2\172\3\uffff\1\157\1\uffff\1"+
-        "\156\2\uffff\1\146\2\172\2\uffff";
+        "\145\1\170\1\154\1\172\1\uffff\2\uffff\3\uffff\1\152\5\uffff\1\75"+
+        "\2\uffff\1\164\14\uffff\1\75\1\uffff\1\163\1\172\1\160\2\uffff\1"+
+        "\76\2\uffff\1\74\12\uffff\1\172\3\uffff\1\163\1\164\1\151\1\141"+
+        "\1\160\1\146\1\172\1\164\1\162\1\154\1\156\1\151\1\162\1\167\1\154"+
+        "\1\171\1\160\1\162\1\164\1\uffff\1\154\4\uffff\1\145\2\uffff\1\163"+
+        "\1\150\2\uffff\1\164\1\uffff\1\157\5\uffff\2\145\2\164\1\145\1\141"+
+        "\1\uffff\1\145\1\143\1\172\1\163\1\141\1\154\3\172\1\154\1\145\1"+
+        "\172\1\145\1\157\1\165\1\143\1\141\1\157\1\141\1\162\1\172\1\156"+
+        "\1\143\1\151\1\162\1\165\1\172\1\150\1\uffff\1\145\1\154\1\145\3"+
+        "\uffff\2\172\1\uffff\1\157\1\167\1\162\1\164\1\147\1\144\1\156\1"+
+        "\164\1\uffff\1\163\1\150\1\143\1\172\1\154\1\uffff\2\172\1\154\1"+
+        "\172\2\uffff\1\146\1\172\1\156\1\172\1\145\1\172\1\143\1\172\1\163"+
+        "\1\151\2\172\1\uffff\1\164\2\uffff\1\171\1\uffff\1\172\1\uffff\1"+
+        "\172\1\uffff\1\172\1\uffff\1\145\1\uffff\1\172\1\157\2\uffff\2\172"+
+        "\3\uffff\1\157\1\uffff\1\156\2\uffff\1\146\2\172\2\uffff";
     static final String DFA19_acceptS =
         "\1\uffff\1\1\1\uffff\1\3\1\4\3\uffff\1\11\1\12\1\13\14\uffff\1\45"+
         "\1\uffff\1\53\1\54\1\55\15\uffff\1\115\2\uffff\1\121\1\122\1\1\1"+
-        "\uffff\1\115\1\3\1\4\1\51\1\5\2\uffff\1\34\1\7\1\11\1\12\1\13\1"+
-        "\14\1\40\1\15\1\31\1\41\1\16\1\56\1\17\1\111\1\uffff\1\46\3\uffff"+
-        "\1\25\1\27\1\uffff\1\35\1\30\1\uffff\1\50\1\36\1\52\1\110\1\43\1"+
-        "\42\1\117\1\120\1\44\1\45\1\uffff\1\53\1\54\1\55\23\uffff\1\112"+
-        "\1\uffff\1\113\1\114\1\116\1\121\3\uffff\1\22\1\20\1\23\1\21\1\uffff"+
-        "\1\57\1\uffff\1\37\1\26\1\32\1\33\1\47\6\uffff\1\66\34\uffff\1\64"+
-        "\3\uffff\1\67\1\70\1\76\2\uffff\1\105\10\uffff\1\60\5\uffff\1\63"+
-        "\4\uffff\1\101\1\100\14\uffff\1\75\1\uffff\1\107\1\77\1\uffff\1"+
-        "\65\1\uffff\1\103\1\uffff\1\2\1\uffff\1\10\1\uffff\1\73\2\uffff"+
-        "\1\61\1\72\2\uffff\1\102\1\104\1\6\1\uffff\1\71\1\uffff\1\62\1\106"+
-        "\3\uffff\1\74\1\24";
+        "\uffff\1\115\1\3\1\4\1\51\1\5\1\uffff\1\34\1\6\1\uffff\1\11\1\12"+
+        "\1\13\1\14\1\40\1\15\1\31\1\41\1\16\1\56\1\17\1\111\1\uffff\1\46"+
+        "\3\uffff\1\25\1\27\1\uffff\1\35\1\30\1\uffff\1\50\1\36\1\52\1\110"+
+        "\1\43\1\42\1\117\1\120\1\44\1\45\1\uffff\1\53\1\54\1\55\23\uffff"+
+        "\1\112\1\uffff\1\113\1\114\1\116\1\121\1\uffff\1\22\1\20\2\uffff"+
+        "\1\23\1\21\1\uffff\1\57\1\uffff\1\37\1\26\1\32\1\33\1\47\6\uffff"+
+        "\1\66\34\uffff\1\64\3\uffff\1\67\1\70\1\76\2\uffff\1\105\10\uffff"+
+        "\1\60\5\uffff\1\63\4\uffff\1\101\1\100\14\uffff\1\75\1\uffff\1\107"+
+        "\1\77\1\uffff\1\65\1\uffff\1\103\1\uffff\1\2\1\uffff\1\10\1\uffff"+
+        "\1\73\2\uffff\1\61\1\72\2\uffff\1\102\1\104\1\7\1\uffff\1\71\1\uffff"+
+        "\1\62\1\106\3\uffff\1\74\1\24";
     static final String DFA19_specialS =
         "\1\2\51\uffff\1\0\1\1\u00c9\uffff}>";
     static final String[] DFA19_transitionS = {
             "\11\55\2\54\2\55\1\54\22\55\1\54\1\17\1\52\1\31\1\51\1\27\1"+
             "\16\1\53\1\10\1\12\1\25\1\13\1\11\1\14\1\23\1\26\1\46\11\47"+
-            "\1\5\1\1\1\22\1\7\1\21\1\24\1\55\32\51\1\32\1\55\1\33\1\50\1"+
-            "\51\1\55\1\30\1\51\1\37\1\36\1\34\1\40\2\51\1\20\3\51\1\6\1"+
+            "\1\5\1\1\1\22\1\6\1\21\1\24\1\55\32\51\1\32\1\55\1\33\1\50\1"+
+            "\51\1\55\1\30\1\51\1\37\1\36\1\34\1\40\2\51\1\20\3\51\1\7\1"+
             "\43\1\2\2\51\1\45\1\35\1\44\1\51\1\42\1\41\3\51\1\3\1\15\1\4"+
             "\uff82\55",
             "",
@@ -3111,8 +3111,8 @@ public class InternalHoopeLexer extends Lexer {
             "",
             "",
             "\1\63",
-            "\1\65",
-            "\1\66\1\67",
+            "\1\65\1\66",
+            "\1\70",
             "",
             "",
             "",
@@ -3161,10 +3161,10 @@ public class InternalHoopeLexer extends Lexer {
             "",
             "",
             "",
-            "\1\170\1\171",
-            "\1\172",
+            "\1\170",
             "",
             "",
+            "\1\172\1\173",
             "",
             "",
             "",
@@ -3232,10 +3232,10 @@ public class InternalHoopeLexer extends Lexer {
             "",
             "",
             "\1\u009c",
+            "",
+            "",
             "\1\u009d",
             "\1\u009e",
-            "",
-            "",
             "",
             "",
             "\1\u009f",
@@ -3456,9 +3456,9 @@ public class InternalHoopeLexer extends Lexer {
 
                         else if ( (LA19_0==':') ) {s = 5;}
 
-                        else if ( (LA19_0=='m') ) {s = 6;}
+                        else if ( (LA19_0=='=') ) {s = 6;}
 
-                        else if ( (LA19_0=='=') ) {s = 7;}
+                        else if ( (LA19_0=='m') ) {s = 7;}
 
                         else if ( (LA19_0=='(') ) {s = 8;}
 

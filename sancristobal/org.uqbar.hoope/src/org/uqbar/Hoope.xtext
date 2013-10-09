@@ -34,7 +34,7 @@ Feature:
  Property | Message;
  
 Property:
-  name=ValidID ':' type=JvmTypeReference ;
+  name=ValidID ':' type=JvmTypeReference ('=' value=XExpression)?;
  
 Message:
   'message' name=ValidID '=' 'method' 

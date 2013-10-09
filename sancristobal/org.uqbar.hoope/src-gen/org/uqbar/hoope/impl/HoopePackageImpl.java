@@ -175,6 +175,16 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getProperty_Value()
+  {
+    return (EReference)propertyEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMessage()
   {
     return messageEClass;
@@ -265,6 +275,7 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
     createEReference(featureEClass, FEATURE__TYPE);
 
     propertyEClass = createEClass(PROPERTY);
+    createEReference(propertyEClass, PROPERTY__VALUE);
 
     messageEClass = createEClass(MESSAGE);
     createEReference(messageEClass, MESSAGE__PARAMS);
@@ -320,6 +331,7 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
     initEReference(getFeature_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getProperty_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(messageEClass, Message.class, "Message", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMessage_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

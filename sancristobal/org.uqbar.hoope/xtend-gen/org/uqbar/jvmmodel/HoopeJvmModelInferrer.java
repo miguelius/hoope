@@ -3,8 +3,6 @@ package org.uqbar.jvmmodel;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -24,9 +22,10 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingIn
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.uqbar.hoope.Feature;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.hoope.Message;
@@ -42,6 +41,9 @@ import org.uqbar.hoope.Property;
 @Singleton
 @SuppressWarnings("all")
 public class HoopeJvmModelInferrer extends AbstractModelInferrer {
+  @Inject
+  private ITypeProvider typeProvider;
+  
   @Inject
   @Extension
   private JvmTypesBuilder _jvmTypesBuilder;
@@ -60,15 +62,8 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
   
   private int count = 0;
   
-  private final Map<XExpression,JvmGenericType> createdClasses = new Function0<Map<XExpression,JvmGenericType>>() {
-    public Map<XExpression,JvmGenericType> apply() {
-      HashMap<XExpression,JvmGenericType> _hashMap = new HashMap<XExpression,JvmGenericType>();
-      return _hashMap;
-    }
-  }.apply();
-  
   protected void _infer(final Program element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
-    this.cleanClassCache();
+    this.count = 0;
     final JvmGenericType mainClass = this._jvmTypesBuilder.toClass(element, "examples.hoope.Main");
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(mainClass);
     final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
@@ -99,11 +94,6 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
     }
   }
   
-  public void cleanClassCache() {
-    this.count = 0;
-    this.createdClasses.clear();
-  }
-  
   protected void _infer(final HoopeObject element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
     String _plus = ("examples.hoope.HoopeObject" + Integer.valueOf(this.count));
     JvmGenericType jvmGenericType = this._jvmTypesBuilder.toClass(element, _plus);
@@ -121,20 +111,36 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
               if (feature instanceof Property) {
                 final Property _property = (Property)feature;
                 _matched=true;
+                JvmTypeReference _elvis = null;
+                JvmTypeReference _type = _property.getType();
+                if (_type != null) {
+                  _elvis = _type;
+                } else {
+                  JvmTypeReference _inferredType = null;
+                  XExpression _value = _property.getValue();
+                  if (_value!=null) {
+                    _inferredType=HoopeJvmModelInferrer.this._jvmTypesBuilder.inferredType(_value);
+                  }
+                  _elvis = ObjectExtensions.<JvmTypeReference>operator_elvis(_type, _inferredType);
+                }
+                final JvmTypeReference type = _elvis;
                 EList<JvmMember> _members = it.getMembers();
                 String _name = _property.getName();
-                JvmTypeReference _type = _property.getType();
-                JvmField _field = HoopeJvmModelInferrer.this._jvmTypesBuilder.toField(_property, _name, _type);
+                final Procedure1<JvmField> _function = new Procedure1<JvmField>() {
+                    public void apply(final JvmField it) {
+                      XExpression _value = _property.getValue();
+                      HoopeJvmModelInferrer.this._jvmTypesBuilder.setInitializer(it, _value);
+                    }
+                  };
+                JvmField _field = HoopeJvmModelInferrer.this._jvmTypesBuilder.toField(_property, _name, type, _function);
                 HoopeJvmModelInferrer.this._jvmTypesBuilder.<JvmField>operator_add(_members, _field);
                 EList<JvmMember> _members_1 = it.getMembers();
                 String _name_1 = _property.getName();
-                JvmTypeReference _type_1 = _property.getType();
-                JvmOperation _getter = HoopeJvmModelInferrer.this._jvmTypesBuilder.toGetter(_property, _name_1, _type_1);
+                JvmOperation _getter = HoopeJvmModelInferrer.this._jvmTypesBuilder.toGetter(_property, _name_1, type);
                 HoopeJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_1, _getter);
                 EList<JvmMember> _members_2 = it.getMembers();
                 String _name_2 = _property.getName();
-                JvmTypeReference _type_2 = _property.getType();
-                JvmOperation _setter = HoopeJvmModelInferrer.this._jvmTypesBuilder.toSetter(_property, _name_2, _type_2);
+                JvmOperation _setter = HoopeJvmModelInferrer.this._jvmTypesBuilder.toSetter(_property, _name_2, type);
                 HoopeJvmModelInferrer.this._jvmTypesBuilder.<JvmOperation>operator_add(_members_2, _setter);
               }
             }
@@ -169,7 +175,6 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
         }
       };
     _accept.initializeLater(_function);
-    this.createdClasses.put(element, jvmGenericType);
   }
   
   public JvmGenericType getType(final HoopeObject element) {

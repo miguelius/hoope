@@ -1624,10 +1624,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:12: ( '0x' | '0X' )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1655,7 +1655,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:13: '0x'
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:13: '0x'
                     {
                     match("0x"); 
 
@@ -1663,7 +1663,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:18: '0X'
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:18: '0X'
                     {
                     match("0X"); 
 
@@ -1673,7 +1673,7 @@ public class InternalHoopeLexer extends Lexer {
 
             }
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1711,7 +1711,7 @@ public class InternalHoopeLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1720,10 +1720,10 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1741,7 +1741,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1765,7 +1765,7 @@ public class InternalHoopeLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17771:84: ( 'l' | 'L' )
+                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17880:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1804,11 +1804,11 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17773:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17773:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17882:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17882:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17773:21: ( '0' .. '9' | '_' )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17882:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1857,11 +1857,11 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1870,7 +1870,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1881,7 +1881,7 @@ public class InternalHoopeLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:36: ( '+' | '-' )?
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1914,7 +1914,7 @@ public class InternalHoopeLexer extends Lexer {
 
             }
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -1926,7 +1926,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -1950,7 +1950,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17775:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17884:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -1983,10 +1983,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17777:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17777:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17886:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17886:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17777:11: ( '^' )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17886:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1995,7 +1995,7 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17777:11: '^'
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17886:11: '^'
                     {
                     match('^'); 
 
@@ -2013,7 +2013,7 @@ public class InternalHoopeLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17777:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17886:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2062,10 +2062,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2083,10 +2083,10 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2102,7 +2102,7 @@ public class InternalHoopeLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2118,7 +2118,7 @@ public class InternalHoopeLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2143,10 +2143,10 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2162,7 +2162,7 @@ public class InternalHoopeLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2178,7 +2178,7 @@ public class InternalHoopeLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17779:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17888:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2221,12 +2221,12 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17781:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17781:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17890:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17890:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17781:24: ( options {greedy=false; } : . )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17890:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2251,7 +2251,7 @@ public class InternalHoopeLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17781:52: .
+            	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17890:52: .
             	    {
             	    matchAny(); 
 
@@ -2281,12 +2281,12 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2299,7 +2299,7 @@ public class InternalHoopeLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2319,7 +2319,7 @@ public class InternalHoopeLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:40: ( ( '\\r' )? '\\n' )?
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2328,9 +2328,9 @@ public class InternalHoopeLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:41: ( '\\r' )? '\\n'
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:41: ( '\\r' )?
+                    // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2339,7 +2339,7 @@ public class InternalHoopeLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17783:41: '\\r'
+                            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17892:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2371,10 +2371,10 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17785:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17785:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17894:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17894:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17785:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17894:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2428,8 +2428,8 @@ public class InternalHoopeLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17787:16: ( . )
-            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17787:18: .
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17896:16: ( . )
+            // ../org.uqbar.hoope.ui/src-gen/org/uqbar/ui/contentassist/antlr/internal/InternalHoope.g:17896:18: .
             {
             matchAny(); 
 

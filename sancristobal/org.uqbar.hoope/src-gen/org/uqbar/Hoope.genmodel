@@ -11,7 +11,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hoope.ecore#//Feature/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Feature/type"/>
     </genClasses>
-    <genClasses ecoreClass="Hoope.ecore#//Property"/>
+    <genClasses ecoreClass="Hoope.ecore#//Property">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Property/value"/>
+    </genClasses>
     <genClasses ecoreClass="Hoope.ecore#//Message">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Message/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//Message/body"/>

@@ -6,7 +6,7 @@
      <view
            category="org.eclipse.xtext.viewCategory"
            class="org.uqbar.hoope.lib.ExecutableExtensionFactory:org.uqbar.hoope.lib.views.SampleView"
-           icon="icons/hoope.gif"
+           icon="icons/hoope-tr.gif"
            id="org.uqbar.hoope.lib.SampleView"
            name="Hoope View"
            restorable="true">
@@ -29,7 +29,8 @@
          point="org.eclipse.ui.handlers">
    	<handler
             class="org.uqbar.hoope.lib.HoopeExecutionHandler"
-            commandId="org.uqbar.hoope.execution.run">
+            commandId="org.uqbar.hoope.execution.run"
+            >
    	</handler>
    </extension>
     <extension
@@ -43,6 +44,7 @@
                   commandId="org.uqbar.hoope.execution.run"
                   label="Run"
                   style="push"
+                  icon="icons/hoope-tr.gif"
                   tooltip="Run Hoope Lesson!">
             </command>
          </menu>

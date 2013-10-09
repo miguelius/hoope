@@ -124,13 +124,22 @@ public interface HoopePackage extends EPackage
   int PROPERTY__TYPE = FEATURE__TYPE;
 
   /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__VALUE = FEATURE_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 0;
+  int PROPERTY_FEATURE_COUNT = FEATURE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.uqbar.hoope.impl.MessageImpl <em>Message</em>}' class.
@@ -287,6 +296,17 @@ public interface HoopePackage extends EPackage
   EClass getProperty();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.uqbar.hoope.Property#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see org.uqbar.hoope.Property#getValue()
+   * @see #getProperty()
+   * @generated
+   */
+  EReference getProperty_Value();
+
+  /**
    * Returns the meta object for class '{@link org.uqbar.hoope.Message <em>Message</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -407,6 +427,14 @@ public interface HoopePackage extends EPackage
      * @generated
      */
     EClass PROPERTY = eINSTANCE.getProperty();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY__VALUE = eINSTANCE.getProperty_Value();
 
     /**
      * The meta object literal for the '{@link org.uqbar.hoope.impl.MessageImpl <em>Message</em>}' class.

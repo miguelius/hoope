@@ -423,7 +423,29 @@ ruleProperty returns [EObject current=null]
 	    }
 
 )
-))
+)(	otherlv_3='=' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getPropertyAccess().getEqualsSignKeyword_3_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPropertyAccess().getValueXExpressionParserRuleCall_3_1_0()); 
+	    }
+		lv_value_4_0=ruleXExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPropertyRule());
+	        }
+       		set(
+       			$current, 
+       			"value",
+        		lv_value_4_0, 
+        		"XExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
