@@ -30,6 +30,15 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
     }.apply(), PositionConstants.NORTH_EAST);
   }
   
+  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper, final String imagen) {
+    super(new Function0<Image>() {
+      public Image apply() {
+        Image _image = imageHelper.getImage(imagen);
+        return _image;
+      }
+    }.apply(), PositionConstants.NORTH_EAST);
+  }
+  
   protected void paintFigure(final Graphics graphics) {
     graphics.pushState();
     final Dimension size = this.getSize();

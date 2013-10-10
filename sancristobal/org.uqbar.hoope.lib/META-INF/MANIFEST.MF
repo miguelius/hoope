@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: lib
+Bundle-Name: org.uqbar.hoope.lib
 Bundle-SymbolicName: org.uqbar.hoope.lib;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.uqbar.hoope.lib.Activator

@@ -395,8 +395,12 @@
 
    <extension
          point="org.eclipse.ui.newWizards">
+	  <category
+         id="org.uqbar.hoope.ui.hoopeCategory"
+         name="HOOPE">
+	  </category>
       <wizard
-            category="org.eclipse.xtext.projectwiz"
+            category="org.uqbar.hoope.ui.hoopeCategory"
             class="org.uqbar.ui.HoopeExecutableExtensionFactory:org.uqbar.ui.wizard.HoopeNewProjectWizard"
             id="org.uqbar.ui.wizard.HoopeNewProjectWizard"
             name="HOOPE Lesson"

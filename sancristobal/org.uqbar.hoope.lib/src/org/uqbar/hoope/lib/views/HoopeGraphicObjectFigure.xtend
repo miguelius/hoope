@@ -18,6 +18,10 @@ class HoopeGraphicObjectFigure  extends ImageFigure {
 		super(imageHelper.getImage('pepita_80.png'), PositionConstants.NORTH_EAST)
 	}
 
+	new(PluginImageHelper imageHelper, String imagen) {
+		super(imageHelper.getImage(imagen), PositionConstants.NORTH_EAST)
+	}
+
 	override protected paintFigure(Graphics graphics) {
 		graphics.pushState
 		val size = size

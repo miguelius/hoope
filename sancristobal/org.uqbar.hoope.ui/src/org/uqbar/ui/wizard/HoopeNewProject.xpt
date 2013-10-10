@@ -11,24 +11,63 @@
  * Este es el ejemplo de pepita
  */ 
 val pepita = object {
-	nombre: java.lang.String
-	energia: int 
+	energia:double = 2.0
+	position: java.awt.Point = new java.awt.Point(0,0)
+	image: String = "pepita_80.png"
 	
-	message come = method (int gramos): void {
+	message come = method (double gramos): void {
 		energia = energia + gramos
+
+		System.out.println("pepita comio " + gramos)
 	}
-	
-	message vola = method (int metros): void {
-		energia = Math.max(0,energia - metros)
+
+	message vola = method (java.awt.Point donde): void {
+		energia = Math.max(0,energia - donde.distance(position))
+		if (energia < 0.01) {
+			System.out.println("pepita se quedo sin energia :(")
+		}
+		position = donde
+		System.out.println("pepita llego a " + donde)
 	}
-	
 }
 
-pepita.come(4)
+val coquita = object {
+	energia:double = 2.0
+	position: java.awt.Point = new java.awt.Point(100,100)
+	image: String = "pepita_64.png"
+	
+	message come = method (double gramos): void {
+		energia = energia + gramos
 
-pepita.vola(6)
+		System.out.println("coquita comio " + gramos)
+	}
 
-System.out.println(pepita.energia)
+	message vola = method (java.awt.Point donde): void {
+		energia = Math.max(0,energia - donde.distance(position))
+		if (energia < 0.01) {
+			System.out.println("coquita se quedo sin energia :(")
+		}
+		position = donde
+		System.out.println("coquita llego a " + donde)
+	}
+}
+
+val donde = new java.awt.Point(200,100)
+val otroDonde = new java.awt.Point(100,200)
+
+coquita.come(1)
+
+pepita.come(3)
+
+pepita.vola(donde)
+
+pepita.come(1)
+
+pepita.vola(otroDonde)
+
+pepita.vola(donde)
+
+pepita.come(1)
 
 «ENDFILE»
 «ENDDEFINE»

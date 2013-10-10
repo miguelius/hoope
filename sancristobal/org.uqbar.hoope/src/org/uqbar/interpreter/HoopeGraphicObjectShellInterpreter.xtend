@@ -22,6 +22,11 @@ import org.uqbar.hoope.lib.IProjectClassLoaderHelper
 import org.eclipse.core.resources.IProject
 import java.util.logging.Logger
 import org.eclipse.xtext.common.types.JvmGenericType
+import org.eclipse.xtext.xbase.interpreter.impl.DefaultEvaluationContext
+import org.eclipse.xtext.xbase.XAssignment
+import org.eclipse.xtext.xbase.XVariableDeclaration
+import java.awt.image.SampleModel
+import org.uqbar.hoope.lib.IHoopePlayground
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 	
@@ -30,42 +35,29 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 	@Inject extension IProjectClassLoaderHelper
 
 	@Inject IEvaluationContext context
-
+	
 	static Logger log = Logger::getLogger( typeof(HoopeGraphicObjectShellInterpreter).name ) 
 
-	HoopeObject hoopeGraphicObject
-	
 	IProject project;
 
-	int stopAtLine
-
 	// Evalúa el método main de la clase Main
-	override run(EObject program, int stopAtLine) {
+	override run(EObject program, IHoopePlayground playground) {
 		val runningContext = context.fork
 
 		if (program != null) {
 			(program as Program).expressions.forEach[
 				it.evaluate(runningContext,null)
 			]
-		}
 			
-//			val v = program.jvmElements
-//			System.out.println(v)
-//			try {
-//				val pepita = loadClass("examples.hoope.Main").newInstance
-//				System.out.println(pepita);
-//				
-//			} catch (StopLineReachedException exc) {
-//
-//			}
-//			this.hoopeGraphicObject = tortoise
-//			this.stopAtLine = stopAtLine
-//			try {
-//				program.jvmElements.filter(JvmOperation).head
-//					?.invokeOperation(tortoise, emptyList)
-//			} catch (StopLineReachedException exc) {
-//				// ignore
-//			}
+			// manera muy cabeza de obtener los elementos dibujables:
+			// son aquellos que son HoopeObject y tienen un field de position
+			val dibujables = 
+				(program as Program).expressions.filter(XVariableDeclaration).map[(it as XVariableDeclaration).right].filter(org.uqbar.hoope.HoopeObject).map[t|t -> t.features].filter[it.value.exists[f|f.name=='position']].map[it.key]
+			
+			dibujables.forEach[playground.registerGraphicObject(it, it.doEvaluate(runningContext, null) )]
+			log.info(dibujables.fold("dibujables: ")[ x,t | x + t.doEvaluate(runningContext, null) ]);
+		}
+
 	}
 
 	@Inject extension HoopeJvmModelInferrer

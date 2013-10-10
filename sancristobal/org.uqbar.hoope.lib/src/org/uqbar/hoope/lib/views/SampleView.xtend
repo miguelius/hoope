@@ -22,11 +22,17 @@ import org.uqbar.hoope.lib.IHoopeObjectEvent
 import org.uqbar.hoope.lib.MoveEvent
 import org.uqbar.hoope.lib.TurnEvent
 import org.eclipse.core.resources.IResource
+import org.uqbar.hoope.lib.IHoopePlayground
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.draw2d.Figure.FigureIterator
+import org.eclipse.draw2d.geometry.Point
+import org.eclipse.xtext.ui.PluginImageHelper
+import org.eclipse.core.resources.IProject
 
 @Singleton
-public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
+public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
 	
-	static val LOGGER = Logger.getLogger(SampleView)
+	static val LOGGER = Logger::getLogger(SampleView)
 	 
 	FigureCanvas canvas
 	
@@ -35,6 +41,8 @@ public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
 	@Inject HoopeGraphicObjectFigure hoopeGraphicObjectFigure 
 	@Inject HoopeGraphicObjectPartListener listener
 	@Inject Animator animator
+	
+	var IProject project
 	
 	override createPartControl(Composite parent) {
 		canvas = new FigureCanvas(parent, SWT.DOUBLE_BUFFERED)
@@ -82,8 +90,8 @@ public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
 				if(interpreter != null && !contents.empty) {
 					try {
 						System.out.println(contents)
-						interpreter.project = hooplEditor.resource.project
-						interpreter.run( contents.get(0), stopAtLine)
+						this.project = interpreter.project = hooplEditor.resource.project
+						interpreter.run( contents.get(0), this )
 					} catch (Exception e) {
 						MessageDialog.openError(site.shell, "Error during Execution", '''
 						Error during execution:
@@ -125,5 +133,26 @@ public class SampleView extends ViewPart implements IHoopeObjectEvent.Listener {
 				animator.addAnimation(new Animation(event.oldAngle, event.hoopeObject.angleInRadians, event.hoopeObject.delay))
 			} 
 		}
-	}	
+	}
+	
+	@Inject PluginImageHelper pluginImageHelper
+	
+	/**
+	 * esto es super provisorio. se arregla con una interfaz
+	 * 
+	 * se puede parametrizar con las imágenes del plugin
+	 */
+	override registerGraphicObject(EObject objectMetadata, Object realObject) {
+		val imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head.invoke(realObject)
+		val posicion = realObject.class.declaredMethods.filter[f| f.name == 'getPosition'].head
+
+		if (posicion != null){
+			val java.awt.Point punto  = (posicion.invoke(realObject)) as java.awt.Point
+			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(pluginImageHelper, imagen as String)
+			rootFigure.add(hoopeGraphicObjectFigure)
+			hoopeGraphicObjectFigure.objectLocation = new Point(punto.x, punto.y)
+		}
+		return;
+	}
+	
 }

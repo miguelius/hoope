@@ -3,6 +3,7 @@ package org.uqbar.hoope.lib.views;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
@@ -34,16 +35,21 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.PluginImageHelper;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.util.DisplayRunHelper;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.IHoopeInterpreter;
 import org.uqbar.hoope.lib.IHoopeObjectEvent;
 import org.uqbar.hoope.lib.IHoopeObjectEvent.Listener;
+import org.uqbar.hoope.lib.IHoopePlayground;
 import org.uqbar.hoope.lib.MoveEvent;
 import org.uqbar.hoope.lib.TurnEvent;
 import org.uqbar.hoope.lib.views.Animation;
@@ -55,7 +61,7 @@ import org.uqbar.hoope.lib.views.ToggleStopModeAction;
 
 @Singleton
 @SuppressWarnings("all")
-public class SampleView extends ViewPart implements Listener {
+public class SampleView extends ViewPart implements IHoopePlayground, Listener {
   private final static Logger LOGGER = new Function0<Logger>() {
     public Logger apply() {
       Logger _logger = Logger.getLogger(SampleView.class);
@@ -79,6 +85,8 @@ public class SampleView extends ViewPart implements Listener {
   
   @Inject
   private Animator animator;
+  
+  private IProject project;
   
   public void createPartControl(final Composite parent) {
     FigureCanvas _figureCanvas = new FigureCanvas(parent, SWT.DOUBLE_BUFFERED);
@@ -172,10 +180,11 @@ public class SampleView extends ViewPart implements Listener {
                     System.out.println(_contents_1);
                     IResource _resource = hooplEditor.getResource();
                     IProject _project = _resource.getProject();
-                    interpreter.setProject(_project);
+                    IProject _setProject = interpreter.setProject(_project);
+                    SampleView.this.project = _setProject;
                     EList<EObject> _contents_2 = it.getContents();
                     EObject _get = _contents_2.get(0);
-                    interpreter.run(_get, stopAtLine);
+                    interpreter.run(_get, SampleView.this);
                   } catch (final Throwable _t) {
                     if (_t instanceof Exception) {
                       final Exception e = (Exception)_t;
@@ -313,6 +322,55 @@ public class SampleView extends ViewPart implements Listener {
         Animation _animation = new Animation(_oldAngle, _angleInRadians, _delay);
         this.animator.addAnimation(_animation);
       }
+    }
+  }
+  
+  @Inject
+  private PluginImageHelper pluginImageHelper;
+  
+  /**
+   * esto es super provisorio. se arregla con una interfaz
+   * 
+   * se puede parametrizar con las im?genes del plugin
+   */
+  public void registerGraphicObject(final EObject objectMetadata, final Object realObject) {
+    try {
+      Class<? extends Object> _class = realObject.getClass();
+      Method[] _declaredMethods = _class.getDeclaredMethods();
+      final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
+          public Boolean apply(final Method f) {
+            String _name = f.getName();
+            boolean _equals = Objects.equal(_name, "getImage");
+            return Boolean.valueOf(_equals);
+          }
+        };
+      Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
+      Method _head = IterableExtensions.<Method>head(_filter);
+      final Object imagen = _head.invoke(realObject);
+      Class<? extends Object> _class_1 = realObject.getClass();
+      Method[] _declaredMethods_1 = _class_1.getDeclaredMethods();
+      final Function1<Method,Boolean> _function_1 = new Function1<Method,Boolean>() {
+          public Boolean apply(final Method f) {
+            String _name = f.getName();
+            boolean _equals = Objects.equal(_name, "getPosition");
+            return Boolean.valueOf(_equals);
+          }
+        };
+      Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods_1)), _function_1);
+      final Method posicion = IterableExtensions.<Method>head(_filter_1);
+      boolean _notEquals = (!Objects.equal(posicion, null));
+      if (_notEquals) {
+        Object _invoke = posicion.invoke(realObject);
+        final java.awt.Point punto = ((java.awt.Point) _invoke);
+        HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(this.pluginImageHelper, ((String) imagen));
+        final HoopeGraphicObjectFigure hoopeGraphicObjectFigure = _hoopeGraphicObjectFigure;
+        this.rootFigure.add(hoopeGraphicObjectFigure);
+        org.eclipse.draw2d.geometry.Point _point = new org.eclipse.draw2d.geometry.Point(punto.x, punto.y);
+        hoopeGraphicObjectFigure.setObjectLocation(_point);
+      }
+      return;
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
     }
   }
 }
