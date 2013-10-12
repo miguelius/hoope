@@ -54,7 +54,7 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 			val dibujables = 
 				(program as Program).expressions.filter(XVariableDeclaration).map[(it as XVariableDeclaration).right].filter(org.uqbar.hoope.HoopeObject).map[t|t -> t.features].filter[it.value.exists[f|f.name=='position']].map[it.key]
 			
-			dibujables.forEach[playground.registerGraphicObject(it, it.doEvaluate(runningContext, null) )]
+			dibujables.forEach[playground.registerGraphicObject((it.eContainer as XVariableDeclaration).name, it.doEvaluate(runningContext, null) )]
 			log.info(dibujables.fold("dibujables: ")[ x,t | x + t.doEvaluate(runningContext, null) ]);
 		}
 

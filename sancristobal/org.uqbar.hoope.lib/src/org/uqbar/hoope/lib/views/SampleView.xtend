@@ -28,6 +28,11 @@ import org.eclipse.draw2d.Figure.FigureIterator
 import org.eclipse.draw2d.geometry.Point
 import org.eclipse.xtext.ui.PluginImageHelper
 import org.eclipse.core.resources.IProject
+import org.eclipse.swt.widgets.Menu
+import org.eclipse.swt.events.MenuListener
+import org.eclipse.swt.events.MenuEvent
+import org.eclipse.draw2d.IFigure
+import org.eclipse.draw2d.Label
 
 @Singleton
 public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
@@ -97,7 +102,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 						Error during execution:
 						  «e.message»
 						See log for details''')
-						LOGGER.error("Error executing TortoiseScript", e)
+						LOGGER.error("Error executing Hoopl Interpreter", e)
 					}
 				}
 				hoopeObject.removeListener(this)
@@ -142,15 +147,17 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 	 * 
 	 * se puede parametrizar con las imágenes del plugin
 	 */
-	override registerGraphicObject(EObject objectMetadata, Object realObject) {
-		val imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head.invoke(realObject)
+	override registerGraphicObject(String identifier, Object realObject) {
+		val imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(realObject)
 		val posicion = realObject.class.declaredMethods.filter[f| f.name == 'getPosition'].head
 
-		if (posicion != null){
+		if (posicion != null && imagen != null){
 			val java.awt.Point punto  = (posicion.invoke(realObject)) as java.awt.Point
-			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(pluginImageHelper, imagen as String)
+			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(pluginImageHelper, imagen as String, identifier, realObject)
 			rootFigure.add(hoopeGraphicObjectFigure)
 			hoopeGraphicObjectFigure.objectLocation = new Point(punto.x, punto.y)
+
+	
 		}
 		return;
 	}

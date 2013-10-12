@@ -199,7 +199,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
                       _builder.newLineIfNotEmpty();
                       _builder.append("See log for details");
                       MessageDialog.openError(_shell, "Error during Execution", _builder.toString());
-                      SampleView.LOGGER.error("Error executing TortoiseScript", e);
+                      SampleView.LOGGER.error("Error executing Hoopl Interpreter", e);
                     } else {
                       throw Exceptions.sneakyThrow(_t);
                     }
@@ -333,7 +333,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
    * 
    * se puede parametrizar con las im?genes del plugin
    */
-  public void registerGraphicObject(final EObject objectMetadata, final Object realObject) {
+  public void registerGraphicObject(final String identifier, final Object realObject) {
     try {
       Class<? extends Object> _class = realObject.getClass();
       Method[] _declaredMethods = _class.getDeclaredMethods();
@@ -346,7 +346,11 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         };
       Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
       Method _head = IterableExtensions.<Method>head(_filter);
-      final Object imagen = _head.invoke(realObject);
+      Object _invoke = null;
+      if (_head!=null) {
+        _invoke=_head.invoke(realObject);
+      }
+      final Object imagen = _invoke;
       Class<? extends Object> _class_1 = realObject.getClass();
       Method[] _declaredMethods_1 = _class_1.getDeclaredMethods();
       final Function1<Method,Boolean> _function_1 = new Function1<Method,Boolean>() {
@@ -358,11 +362,18 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         };
       Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods_1)), _function_1);
       final Method posicion = IterableExtensions.<Method>head(_filter_1);
+      boolean _and = false;
       boolean _notEquals = (!Objects.equal(posicion, null));
-      if (_notEquals) {
-        Object _invoke = posicion.invoke(realObject);
-        final java.awt.Point punto = ((java.awt.Point) _invoke);
-        HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(this.pluginImageHelper, ((String) imagen));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        boolean _notEquals_1 = (!Objects.equal(imagen, null));
+        _and = (_notEquals && _notEquals_1);
+      }
+      if (_and) {
+        Object _invoke_1 = posicion.invoke(realObject);
+        final java.awt.Point punto = ((java.awt.Point) _invoke_1);
+        HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(this.pluginImageHelper, ((String) imagen), identifier, realObject);
         final HoopeGraphicObjectFigure hoopeGraphicObjectFigure = _hoopeGraphicObjectFigure;
         this.rootFigure.add(hoopeGraphicObjectFigure);
         org.eclipse.draw2d.geometry.Point _point = new org.eclipse.draw2d.geometry.Point(punto.x, punto.y);

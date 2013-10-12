@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -20,23 +21,31 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
     return this._angle;
   }
   
-  @Inject
-  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper) {
-    super(new Function0<Image>() {
-      public Image apply() {
-        Image _image = imageHelper.getImage("pepita_80.png");
-        return _image;
-      }
-    }.apply(), PositionConstants.NORTH_EAST);
+  private Object _observedObject;
+  
+  public Object getObservedObject() {
+    return this._observedObject;
   }
   
-  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper, final String imagen) {
+  public void setObservedObject(final Object observedObject) {
+    this._observedObject = observedObject;
+  }
+  
+  @Inject
+  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper) {
+    this(imageHelper, "pepita_80.png", "unknown", null);
+  }
+  
+  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper, final String imagen, final String identifier, final Object observedObject) {
     super(new Function0<Image>() {
       public Image apply() {
         Image _image = imageHelper.getImage(imagen);
         return _image;
       }
     }.apply(), PositionConstants.NORTH_EAST);
+    this.setObservedObject(observedObject);
+    Label _label = new Label(identifier);
+    this.toolTip = _label;
   }
   
   protected void paintFigure(final Graphics graphics) {

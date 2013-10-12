@@ -111,8 +111,10 @@ public class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter impleme
       final Iterable<HoopeObject> dibujables = IterableExtensions.<Pair<HoopeObject,EList<Feature>>, HoopeObject>map(_filter_2, _function_4);
       final Procedure1<HoopeObject> _function_5 = new Procedure1<HoopeObject>() {
           public void apply(final HoopeObject it) {
+            EObject _eContainer = it.eContainer();
+            String _name = ((XVariableDeclaration) _eContainer).getName();
             Object _doEvaluate = HoopeGraphicObjectShellInterpreter.this.doEvaluate(it, runningContext, null);
-            playground.registerGraphicObject(it, _doEvaluate);
+            playground.registerGraphicObject(_name, _doEvaluate);
           }
         };
       IterableExtensions.<HoopeObject>forEach(dibujables, _function_5);

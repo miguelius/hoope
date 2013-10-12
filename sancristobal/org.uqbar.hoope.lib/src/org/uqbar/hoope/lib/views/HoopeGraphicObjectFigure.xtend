@@ -8,18 +8,23 @@ import org.eclipse.draw2d.geometry.Dimension
 import org.eclipse.draw2d.geometry.Point
 import org.eclipse.draw2d.geometry.Rectangle
 import org.eclipse.xtext.ui.PluginImageHelper
+import org.eclipse.draw2d.Label
 
 class HoopeGraphicObjectFigure  extends ImageFigure {
 
 	@Property double angle
+	
+	@Property Object observedObject
 
 	@Inject 
 	new(PluginImageHelper imageHelper) {
-		super(imageHelper.getImage('pepita_80.png'), PositionConstants.NORTH_EAST)
+		this(imageHelper, 'pepita_80.png', 'unknown', null)
 	}
 
-	new(PluginImageHelper imageHelper, String imagen) {
+	new(PluginImageHelper imageHelper, String imagen, String identifier, Object observedObject) {
 		super(imageHelper.getImage(imagen), PositionConstants.NORTH_EAST)
+		this.observedObject = observedObject
+		this.toolTip = new Label(identifier)
 	}
 
 	override protected paintFigure(Graphics graphics) {
