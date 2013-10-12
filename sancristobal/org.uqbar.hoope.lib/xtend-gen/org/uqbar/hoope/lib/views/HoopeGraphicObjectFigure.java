@@ -1,6 +1,5 @@
 package org.uqbar.hoope.lib.views;
 
-import com.google.inject.Inject;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -10,8 +9,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.xtext.ui.PluginImageHelper;
-import org.eclipse.xtext.xbase.lib.Functions.Function0;
 
 @SuppressWarnings("all")
 public class HoopeGraphicObjectFigure extends ImageFigure {
@@ -31,19 +28,10 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
     this._observedObject = observedObject;
   }
   
-  @Inject
-  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper) {
-    this(imageHelper, "pepita_80.png", "unknown", null);
-  }
-  
-  public HoopeGraphicObjectFigure(final PluginImageHelper imageHelper, final String imagen, final String identifier, final Object observedObject) {
-    super(new Function0<Image>() {
-      public Image apply() {
-        Image _image = imageHelper.getImage(imagen);
-        return _image;
-      }
-    }.apply(), PositionConstants.NORTH_EAST);
-    this.setObservedObject(observedObject);
+  public HoopeGraphicObjectFigure(final Image image, final String identifier, final Object object) {
+    super(image, PositionConstants.NORTH_EAST);
+    Object _observedObject = this.getObservedObject();
+    this.setObservedObject(_observedObject);
     Label _label = new Label(identifier);
     this.toolTip = _label;
   }

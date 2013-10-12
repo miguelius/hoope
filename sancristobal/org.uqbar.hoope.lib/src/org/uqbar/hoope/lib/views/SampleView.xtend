@@ -3,36 +3,31 @@ package org.uqbar.hoope.lib.views
 import com.google.inject.Inject
 import com.google.inject.Singleton
 import org.apache.log4j.Logger
+import org.eclipse.core.resources.IProject
 import org.eclipse.draw2d.ColorConstants
 import org.eclipse.draw2d.FigureCanvas
 import org.eclipse.draw2d.FreeformLayeredPane
 import org.eclipse.draw2d.FreeformViewport
 import org.eclipse.draw2d.Polyline
+import org.eclipse.draw2d.geometry.Point
 import org.eclipse.jface.dialogs.MessageDialog
+import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.text.source.Annotation
 import org.eclipse.swt.SWT
+import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.ui.IViewSite
 import org.eclipse.ui.part.ViewPart
+import org.eclipse.xtext.ui.PluginImageHelper
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.util.DisplayRunHelper
 import org.uqbar.hoope.lib.HoopeObject
 import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.hoope.lib.IHoopeObjectEvent
+import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.MoveEvent
 import org.uqbar.hoope.lib.TurnEvent
 import org.eclipse.core.resources.IResource
-import org.uqbar.hoope.lib.IHoopePlayground
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.draw2d.Figure.FigureIterator
-import org.eclipse.draw2d.geometry.Point
-import org.eclipse.xtext.ui.PluginImageHelper
-import org.eclipse.core.resources.IProject
-import org.eclipse.swt.widgets.Menu
-import org.eclipse.swt.events.MenuListener
-import org.eclipse.swt.events.MenuEvent
-import org.eclipse.draw2d.IFigure
-import org.eclipse.draw2d.Label
 
 @Singleton
 public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
@@ -43,7 +38,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 	
 	@Inject ToggleStopModeAction action
 	@Inject RootLayer rootFigure
-	@Inject HoopeGraphicObjectFigure hoopeGraphicObjectFigure 
+	//@Inject HoopeGraphicObjectFigure hoopeGraphicObjectFigure 
 	@Inject HoopeGraphicObjectPartListener listener
 	@Inject Animator animator
 	
@@ -66,10 +61,6 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 		canvas.setFocus
 	}
 
-	def getHoopeGraphicObjectFigure() {
-		hoopeGraphicObjectFigure
-	}
-	
 	def getHoopeGraphicObjectPartListener() {
 		listener
 	}
@@ -142,24 +133,42 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 	
 	@Inject PluginImageHelper pluginImageHelper
 	
+	val String DEFAULT_IMAGE = "pepita_80.png"
+
+/**			
+ http://www.infaserver.com.ar/?gclid=CNWv3rf6kboCFdSd4AodySQAXw
+*/
+	
 	/**
 	 * esto es super provisorio. se arregla con una interfaz
 	 * 
 	 * se puede parametrizar con las imágenes del plugin
 	 */
 	override registerGraphicObject(String identifier, Object realObject) {
-		val imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(realObject)
+		val String imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(realObject) as String
 		val posicion = realObject.class.declaredMethods.filter[f| f.name == 'getPosition'].head
 
-		if (posicion != null && imagen != null){
+		if (posicion != null){
 			val java.awt.Point punto  = (posicion.invoke(realObject)) as java.awt.Point
-			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(pluginImageHelper, imagen as String, identifier, realObject)
+			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(getImage(imagen), identifier, realObject)				
 			rootFigure.add(hoopeGraphicObjectFigure)
 			hoopeGraphicObjectFigure.objectLocation = new Point(punto.x, punto.y)
 
 	
 		}
 		return;
+	}
+
+	def Image getImage(String imagen) {
+		val imagenResource = project.findMember("resources/"+imagen)
+		
+		if (imagenResource != null) {
+			// una provista por el usuario en el directorio resources de su Lesson
+			ImageDescriptor.createFromURL( imagenResource.rawLocationURI.toURL ).createImage
+		} else {
+			// la que viene embebida en el plugin
+			pluginImageHelper.getImage( DEFAULT_IMAGE )
+		}
 	}
 	
 }

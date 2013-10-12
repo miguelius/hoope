@@ -12,7 +12,6 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.uqbar.hoope.lib.views.Animation;
-import org.uqbar.hoope.lib.views.HoopeGraphicObjectFigure;
 import org.uqbar.hoope.lib.views.SampleView;
 
 @SuppressWarnings("all")
@@ -60,8 +59,6 @@ public class Animator extends UIJob {
         this.lastStart = _currentTimeMillis;
       }
     } else {
-      HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = this.view.getHoopeGraphicObjectFigure();
-      animation.set(_hoopeGraphicObjectFigure, 1);
     }
   }
   
@@ -137,9 +134,6 @@ public class Animator extends UIJob {
         boolean _while = _and;
         while (_while) {
           {
-            Animation _poll = this.animationQueue.poll();
-            HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = this.view.getHoopeGraphicObjectFigure();
-            _poll.set(_hoopeGraphicObjectFigure, 1);
             int _delay_1 = currentAnimation.getDelay();
             long _plus_1 = (this.lastStart + _delay_1);
             this.lastStart = _plus_1;
@@ -163,8 +157,6 @@ public class Animator extends UIJob {
           long _minus = (now - this.lastStart);
           int _delay_1 = currentAnimation.getDelay();
           final double alpha = (((double) _minus) / _delay_1);
-          HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = this.view.getHoopeGraphicObjectFigure();
-          currentAnimation.set(_hoopeGraphicObjectFigure, alpha);
           this.schedule(this.UPDATE_INTERVAL);
         } else {
           this.isScheduled = false;

@@ -35,7 +35,7 @@ class Animator extends UIJob {
 				lastStart = System.currentTimeMillis
 			}
 		} else {
-			animation.set(view.hoopeGraphicObjectFigure, 1)
+//			animation.set(view.hoopeGraphicObjectFigure, 1)
 		}
 	}
 	
@@ -65,13 +65,13 @@ class Animator extends UIJob {
 			val now = System.currentTimeMillis
 			var currentAnimation = animationQueue.peek
 			while (currentAnimation != null && now >= lastStart + currentAnimation.delay) {
-				animationQueue.poll.set(view.hoopeGraphicObjectFigure, 1)
+//				animationQueue.poll.set(view.hoopeGraphicObjectFigure, 1)
 				lastStart = lastStart + currentAnimation.delay
 				currentAnimation = animationQueue.peek
 			}
 			if (currentAnimation != null) {
 				val alpha = (now - lastStart) as double / currentAnimation.delay 
-				currentAnimation.set(view.hoopeGraphicObjectFigure, alpha)
+//				currentAnimation.set(view.hoopeGraphicObjectFigure, alpha)
 				schedule(UPDATE_INTERVAL)
 			} else {
 				isScheduled = false
