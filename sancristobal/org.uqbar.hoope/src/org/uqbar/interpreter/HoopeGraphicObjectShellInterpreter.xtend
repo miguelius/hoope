@@ -2,31 +2,24 @@ package org.uqbar.interpreter
 
 import com.google.inject.Inject
 import java.util.List
+import java.util.logging.Logger
+import org.eclipse.core.resources.IProject
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmOperation
 import org.eclipse.xtext.naming.QualifiedName
-import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.xbase.XExpression
-import org.eclipse.xtext.xbase.XMemberFeatureCall
+import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.interpreter.IEvaluationContext
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.eclipse.xtext.xbase.scoping.XbaseScopeProvider
+import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.lib.IHoopeInterpreter
-import org.uqbar.jvmmodel.HoopeJvmModelInferrer
-import org.uqbar.hoope.lib.HoopeObject
-import java.util.ArrayList
-import org.uqbar.hoope.lib.IProjectClassLoaderHelper
-import org.eclipse.core.resources.IProject
-import java.util.logging.Logger
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.xbase.interpreter.impl.DefaultEvaluationContext
-import org.eclipse.xtext.xbase.XAssignment
-import org.eclipse.xtext.xbase.XVariableDeclaration
-import java.awt.image.SampleModel
 import org.uqbar.hoope.lib.IHoopePlayground
+import org.uqbar.hoope.lib.IProjectClassLoaderHelper
+import org.uqbar.jvmmodel.HoopeJvmModelInferrer
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 	
@@ -45,17 +38,22 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 		val runningContext = context.fork
 
 		if (program != null) {
+			val declaredObjects = newLinkedHashMap()
 			(program as Program).expressions.forEach[
 				it.evaluate(runningContext,null)
+				switch (it) {
+					XVariableDeclaration: {
+						val objecto = runningContext.getValue(QualifiedName.create(it.name))
+						declaredObjects.put(it.name, objecto )
+
+						// determino si hay que dibujarlo, si es así lo registro como tal
+						if (objecto.positionable) {
+							playground.registerGraphicObject(it.name, objecto)
+						}
+
+					}
+				}
 			]
-			
-			// manera muy cabeza de obtener los elementos dibujables:
-			// son aquellos que son HoopeObject y tienen un field de position
-			val dibujables = 
-				(program as Program).expressions.filter(XVariableDeclaration).map[(it as XVariableDeclaration).right].filter(org.uqbar.hoope.HoopeObject).map[t|t -> t.features].filter[it.value.exists[f|f.name=='position']].map[it.key]
-			
-			dibujables.forEach[playground.registerGraphicObject((it.eContainer as XVariableDeclaration).name, it.doEvaluate(runningContext, null) )]
-			log.info(dibujables.fold("dibujables: ")[ x,t | x + t.doEvaluate(runningContext, null) ]);
 		}
 
 	}
@@ -66,7 +64,7 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 	override Object doEvaluate(XExpression expression, IEvaluationContext context, CancelIndicator indicator) {
 		log.info(''' evaluando: «expression.toString» ''')
 		switch expression {
-			org.uqbar.hoope.HoopeObject: {
+			HoopeObject: {
 				log.info(''' se comopne de: «getJvmElements(expression).head» ''')
 				loadClass(project, (getJvmElements(expression).head as JvmGenericType).identifier).newInstance
 			}
@@ -91,6 +89,9 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 		this.project = project
 	}
 
+	def boolean positionable(Object object) {
+		!object.class.declaredMethods.filter[f| f.name == 'getPosition'].empty
+	}
 }
 
 class StopLineReachedException extends RuntimeException {

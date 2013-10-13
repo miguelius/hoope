@@ -1,8 +1,9 @@
 package org.uqbar.interpreter;
 
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
+import java.lang.reflect.Method;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
@@ -13,21 +14,21 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.util.JavaReflectAccess;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XVariableDeclaration;
 import org.eclipse.xtext.xbase.interpreter.IEvaluationContext;
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.Functions.Function2;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
-import org.uqbar.hoope.Feature;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.hoope.Program;
 import org.uqbar.hoope.lib.IHoopeInterpreter;
@@ -62,71 +63,31 @@ public class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter impleme
     final IEvaluationContext runningContext = this.context.fork();
     boolean _notEquals = (!Objects.equal(program, null));
     if (_notEquals) {
+      final LinkedHashMap<String,Object> declaredObjects = CollectionLiterals.<String, Object>newLinkedHashMap();
       EList<XExpression> _expressions = ((Program) program).getExpressions();
       final Procedure1<XExpression> _function = new Procedure1<XExpression>() {
           public void apply(final XExpression it) {
             HoopeGraphicObjectShellInterpreter.this.evaluate(it, runningContext, null);
+            boolean _matched = false;
+            if (!_matched) {
+              if (it instanceof XVariableDeclaration) {
+                final XVariableDeclaration _xVariableDeclaration = (XVariableDeclaration)it;
+                _matched=true;
+                String _name = _xVariableDeclaration.getName();
+                QualifiedName _create = QualifiedName.create(_name);
+                final Object objecto = runningContext.getValue(_create);
+                String _name_1 = _xVariableDeclaration.getName();
+                declaredObjects.put(_name_1, objecto);
+                boolean _positionable = HoopeGraphicObjectShellInterpreter.this.positionable(objecto);
+                if (_positionable) {
+                  String _name_2 = _xVariableDeclaration.getName();
+                  playground.registerGraphicObject(_name_2, objecto);
+                }
+              }
+            }
           }
         };
       IterableExtensions.<XExpression>forEach(_expressions, _function);
-      EList<XExpression> _expressions_1 = ((Program) program).getExpressions();
-      Iterable<XVariableDeclaration> _filter = Iterables.<XVariableDeclaration>filter(_expressions_1, XVariableDeclaration.class);
-      final Function1<XVariableDeclaration,XExpression> _function_1 = new Function1<XVariableDeclaration,XExpression>() {
-          public XExpression apply(final XVariableDeclaration it) {
-            XExpression _right = ((XVariableDeclaration) it).getRight();
-            return _right;
-          }
-        };
-      Iterable<XExpression> _map = IterableExtensions.<XVariableDeclaration, XExpression>map(_filter, _function_1);
-      Iterable<HoopeObject> _filter_1 = Iterables.<HoopeObject>filter(_map, HoopeObject.class);
-      final Function1<HoopeObject,Pair<HoopeObject,EList<Feature>>> _function_2 = new Function1<HoopeObject,Pair<HoopeObject,EList<Feature>>>() {
-          public Pair<HoopeObject,EList<Feature>> apply(final HoopeObject t) {
-            EList<Feature> _features = t.getFeatures();
-            Pair<HoopeObject,EList<Feature>> _mappedTo = Pair.<HoopeObject, EList<Feature>>of(t, _features);
-            return _mappedTo;
-          }
-        };
-      Iterable<Pair<HoopeObject,EList<Feature>>> _map_1 = IterableExtensions.<HoopeObject, Pair<HoopeObject,EList<Feature>>>map(_filter_1, _function_2);
-      final Function1<Pair<HoopeObject,EList<Feature>>,Boolean> _function_3 = new Function1<Pair<HoopeObject,EList<Feature>>,Boolean>() {
-          public Boolean apply(final Pair<HoopeObject,EList<Feature>> it) {
-            EList<Feature> _value = it.getValue();
-            final Function1<Feature,Boolean> _function = new Function1<Feature,Boolean>() {
-                public Boolean apply(final Feature f) {
-                  String _name = f.getName();
-                  boolean _equals = Objects.equal(_name, "position");
-                  return Boolean.valueOf(_equals);
-                }
-              };
-            boolean _exists = IterableExtensions.<Feature>exists(_value, _function);
-            return Boolean.valueOf(_exists);
-          }
-        };
-      Iterable<Pair<HoopeObject,EList<Feature>>> _filter_2 = IterableExtensions.<Pair<HoopeObject,EList<Feature>>>filter(_map_1, _function_3);
-      final Function1<Pair<HoopeObject,EList<Feature>>,HoopeObject> _function_4 = new Function1<Pair<HoopeObject,EList<Feature>>,HoopeObject>() {
-          public HoopeObject apply(final Pair<HoopeObject,EList<Feature>> it) {
-            HoopeObject _key = it.getKey();
-            return _key;
-          }
-        };
-      final Iterable<HoopeObject> dibujables = IterableExtensions.<Pair<HoopeObject,EList<Feature>>, HoopeObject>map(_filter_2, _function_4);
-      final Procedure1<HoopeObject> _function_5 = new Procedure1<HoopeObject>() {
-          public void apply(final HoopeObject it) {
-            EObject _eContainer = it.eContainer();
-            String _name = ((XVariableDeclaration) _eContainer).getName();
-            Object _doEvaluate = HoopeGraphicObjectShellInterpreter.this.doEvaluate(it, runningContext, null);
-            playground.registerGraphicObject(_name, _doEvaluate);
-          }
-        };
-      IterableExtensions.<HoopeObject>forEach(dibujables, _function_5);
-      final Function2<String,HoopeObject,String> _function_6 = new Function2<String,HoopeObject,String>() {
-          public String apply(final String x, final HoopeObject t) {
-            Object _doEvaluate = HoopeGraphicObjectShellInterpreter.this.doEvaluate(t, runningContext, null);
-            String _plus = (x + _doEvaluate);
-            return _plus;
-          }
-        };
-      String _fold = IterableExtensions.<HoopeObject, String>fold(dibujables, "dibujables: ", _function_6);
-      HoopeGraphicObjectShellInterpreter.log.info(_fold);
     }
   }
   
@@ -203,5 +164,21 @@ public class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter impleme
   public IProject setProject(final IProject project) {
     IProject _project = this.project = project;
     return _project;
+  }
+  
+  public boolean positionable(final Object object) {
+    Class<? extends Object> _class = object.getClass();
+    Method[] _declaredMethods = _class.getDeclaredMethods();
+    final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
+        public Boolean apply(final Method f) {
+          String _name = f.getName();
+          boolean _equals = Objects.equal(_name, "getPosition");
+          return Boolean.valueOf(_equals);
+        }
+      };
+    Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
+    boolean _isEmpty = IterableExtensions.isEmpty(_filter);
+    boolean _not = (!_isEmpty);
+    return _not;
   }
 }
