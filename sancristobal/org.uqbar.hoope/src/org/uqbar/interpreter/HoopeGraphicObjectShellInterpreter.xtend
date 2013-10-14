@@ -20,6 +20,7 @@ import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.IProjectClassLoaderHelper
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
+import org.eclipse.xtext.xbase.XFeatureCall
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 	
@@ -92,7 +93,4 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 	def boolean positionable(Object object) {
 		!object.class.declaredMethods.filter[f| f.name == 'getPosition'].empty
 	}
-}
-
-class StopLineReachedException extends RuntimeException {
 }

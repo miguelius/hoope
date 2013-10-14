@@ -22,7 +22,7 @@ public class ParserTest {
   public void parseHOOPL() {
     try {
       Program hoopl = this.parser.parse(
-        "val pepita = object {\n\t\t\t }\n \t");
+        "val pepita = object {\n\n\t\t\t\t\n\n\t\t\t }\n \t");
       final Program pepita = ((Program) hoopl);
       EList<XExpression> _expressions = pepita.getExpressions();
       int _size = _expressions.size();

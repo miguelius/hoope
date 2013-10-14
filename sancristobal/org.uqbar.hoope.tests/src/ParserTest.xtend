@@ -20,6 +20,9 @@ class ParserTest {
 	def void parseHOOPL() {
 		var hoopl = parser.parse(
 			"val pepita = object {
+
+				
+
 			 }
  	")
 		val pepita = hoopl as Program

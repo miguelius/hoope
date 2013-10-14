@@ -1,5 +1,9 @@
 package org.uqbar.hoope.lib.views;
 
+import com.google.common.base.Objects;
+import java.lang.reflect.Method;
+import java.util.Observable;
+import java.util.Observer;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -9,29 +13,34 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
+import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
-public class HoopeGraphicObjectFigure extends ImageFigure {
+public class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
   private double _angle;
   
   public double getAngle() {
     return this._angle;
   }
   
-  private Object _observedObject;
+  private Observable _observedObject;
   
-  public Object getObservedObject() {
+  public Observable getObservedObject() {
     return this._observedObject;
   }
   
-  public void setObservedObject(final Object observedObject) {
+  public void setObservedObject(final Observable observedObject) {
     this._observedObject = observedObject;
   }
   
   public HoopeGraphicObjectFigure(final Image image, final String identifier, final Object object) {
     super(image, PositionConstants.NORTH_EAST);
-    Object _observedObject = this.getObservedObject();
-    this.setObservedObject(_observedObject);
+    this.setObservedObject(((Observable) object));
+    Observable _observedObject = this.getObservedObject();
+    _observedObject.addObserver(this);
     Label _label = new Label(identifier);
     this.toolTip = _label;
   }
@@ -90,5 +99,35 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
   public void setAngle(final double angle) {
     this._angle = angle;
     this.revalidate();
+  }
+  
+  public void update(final Observable o, final Object arg) {
+    try {
+      String _plus = (o + ": ");
+      String _plus_1 = (_plus + arg);
+      System.out.println(_plus_1);
+      Observable _observedObject = this.getObservedObject();
+      Class<? extends Observable> _class = _observedObject.getClass();
+      Method[] _declaredMethods = _class.getDeclaredMethods();
+      final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
+          public Boolean apply(final Method f) {
+            String _name = f.getName();
+            boolean _equals = Objects.equal(_name, "getPosition");
+            return Boolean.valueOf(_equals);
+          }
+        };
+      Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
+      final Method posicion = IterableExtensions.<Method>head(_filter);
+      boolean _notEquals = (!Objects.equal(posicion, null));
+      if (_notEquals) {
+        Observable _observedObject_1 = this.getObservedObject();
+        Object _invoke = posicion.invoke(_observedObject_1);
+        final java.awt.Point punto = ((java.awt.Point) _invoke);
+        Point _point = new Point(punto.x, punto.y);
+        this.setObjectLocation(_point);
+      }
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
   }
 }
