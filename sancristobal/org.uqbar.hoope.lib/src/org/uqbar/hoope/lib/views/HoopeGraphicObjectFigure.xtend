@@ -14,12 +14,15 @@ import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.ui.PluginImageHelper
 import org.eclipse.ui.internal.Workbench
+import com.google.inject.Inject
 
 class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
 
 	@Property double angle
 	
 	@Property Observable observedObject
+
+	@Property SampleView view
 
 	new(Image image, String identifier, Object object) {
 		super(image, PositionConstants.NORTH_EAST)
@@ -62,13 +65,13 @@ class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
 	override update(Observable o, Object arg) {
 		System.out.println(o+": "+arg);
 
-//		val String imagen = observedObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(observedObject) as String
+		val String imagen = observedObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(observedObject) as String
 		val posicion = observedObject.class.declaredMethods.filter[f| f.name == 'getPosition'].head
 
 		if (posicion != null){
 			val java.awt.Point punto  = (posicion.invoke(observedObject)) as java.awt.Point
 			this.objectLocation = new Point(punto.x, punto.y)
-//			this.image = getImage(imagen)
+			this.image = view.getImage(imagen)
 		}
 	}
 	

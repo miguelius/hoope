@@ -153,6 +153,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(getImage(imagen), identifier, realObject)				
 			rootFigure.add(hoopeGraphicObjectFigure)
 			hoopeGraphicObjectFigure.objectLocation = new Point(punto.x, punto.y)
+			hoopeGraphicObjectFigure.view = this
 		}
 		return;
 	}

@@ -41,6 +41,7 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 		if (program != null) {
 			val declaredObjects = newLinkedHashMap()
 			(program as Program).expressions.forEach[
+				
 				it.evaluate(runningContext,null)
 				switch (it) {
 					XVariableDeclaration: {

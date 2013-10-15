@@ -371,6 +371,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         this.rootFigure.add(hoopeGraphicObjectFigure);
         org.eclipse.draw2d.geometry.Point _point = new org.eclipse.draw2d.geometry.Point(punto.x, punto.y);
         hoopeGraphicObjectFigure.setObjectLocation(_point);
+        hoopeGraphicObjectFigure.setView(this);
       }
       return;
     } catch (Throwable _e) {
