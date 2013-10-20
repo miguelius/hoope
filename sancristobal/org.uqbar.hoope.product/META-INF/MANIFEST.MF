@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Happy Object Oriented Environment
+Bundle-SymbolicName: org.uqbar.hoope.product;singleton:=true
+Bundle-Version: 1.0.0.beta
+Bundle-Vendor: Uqbar Project
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.core.runtime;bundle-version="3.9.0"

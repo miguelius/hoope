@@ -44,7 +44,7 @@
                   commandId="org.uqbar.hoope.execution.run"
                   label="Run"
                   style="push"
-                  icon="icons/hoope-tr.gif"
+                  icon="icons/hoope32x32.png"
                   tooltip="Run Hoope Lesson!">
             </command>
          </menu>

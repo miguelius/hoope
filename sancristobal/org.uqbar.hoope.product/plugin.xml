@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="product2"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="HOOPE">
+         <property
+               name="appName"
+               value="HOOPE">
+         </property>
+         <property
+               name="windowImages"
+               value="platform:/plugin/org.uqbar.hoope.lib/icons/hoope16x16.png,platform:/plugin/org.uqbar.hoope.lib/icons/hoope32x32.png,platform:/plugin/org.uqbar.hoope.lib/icons/hoope48x48.png,platform:/plugin/org.uqbar.hoope.lib/icons/hoope64x64.png,platform:/plugin/org.uqbar.hoope.lib/icons/hoope128x128.png">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="E0F0FF">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,308,441,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="1,328,453,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+</plugin>
