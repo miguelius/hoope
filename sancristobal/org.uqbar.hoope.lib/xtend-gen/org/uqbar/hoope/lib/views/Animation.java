@@ -1,14 +1,18 @@
 package org.uqbar.hoope.lib.views;
 
 import com.google.common.base.Objects;
-import java.util.List;
-import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.Polyline;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.swt.graphics.Image;
+import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.views.HoopeGraphicObjectFigure;
+import org.uqbar.hoope.lib.views.SampleView;
 
 @SuppressWarnings("all")
 public class Animation {
+  private HoopeObject hoopeObject;
+  
+  private String image;
+  
   private Point startPosition;
   
   private Point delta;
@@ -17,16 +21,15 @@ public class Animation {
   
   private double deltaAngle;
   
-  private Polyline line;
-  
   private int delay;
   
-  public Animation(final Point startPosition, final Point endPosition, final Polyline line, final int delay) {
-    this(startPosition, endPosition, delay);
-    this.line = line;
+  public Animation(final HoopeObject hoopeObject, final String imagen, final int delay) {
+    this.hoopeObject = hoopeObject;
+    this.image = imagen;
   }
   
-  public Animation(final Point startPosition, final Point endPosition, final int delay) {
+  public Animation(final HoopeObject hoopeObject, final Point startPosition, final Point endPosition, final int delay) {
+    this.hoopeObject = hoopeObject;
     this.deltaAngle = 0.0;
     Point _copy = startPosition.getCopy();
     this.startPosition = _copy;
@@ -48,33 +51,22 @@ public class Animation {
     return this.delay;
   }
   
-  public void set(final HoopeGraphicObjectFigure figure, final double alpha) {
-    boolean _notEquals = (this.deltaAngle != 0.0);
+  public void set(final double alpha) {
+    boolean _notEquals = (!Objects.equal(this.startPosition, null));
     if (_notEquals) {
-      double _multiply = (alpha * this.deltaAngle);
-      double _plus = (this.startAngle + _multiply);
-      figure.setAngle(_plus);
-    }
-    boolean _notEquals_1 = (!Objects.equal(this.startPosition, null));
-    if (_notEquals_1) {
       Point _point = new Point(this.delta);
       Point _scale = _point.scale(alpha);
       final Point currentLocation = _scale.translate(this.startPosition);
-      figure.setObjectLocation(currentLocation);
-      boolean _notEquals_2 = (!Objects.equal(this.line, null));
-      if (_notEquals_2) {
-        this.line.setEnd(currentLocation);
-        IFigure _parent = this.line.getParent();
-        boolean _equals = Objects.equal(_parent, null);
-        if (_equals) {
-          IFigure _parent_1 = figure.getParent();
-          IFigure _parent_2 = figure.getParent();
-          List _children = _parent_2.getChildren();
-          int _size = _children.size();
-          int _minus = (_size - 2);
-          _parent_1.add(this.line, _minus);
-        }
-      }
+      HoopeGraphicObjectFigure _figure = this.hoopeObject.getFigure();
+      _figure.setObjectLocation(currentLocation);
+    }
+    boolean _notEquals_1 = (!Objects.equal(this.image, null));
+    if (_notEquals_1) {
+      HoopeGraphicObjectFigure _figure_1 = this.hoopeObject.getFigure();
+      HoopeGraphicObjectFigure _figure_2 = this.hoopeObject.getFigure();
+      SampleView _view = _figure_2.getView();
+      Image _image = _view.getImage(this.image);
+      _figure_1.setImage(_image);
     }
   }
 }

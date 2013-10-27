@@ -9,7 +9,6 @@ import org.eclipse.draw2d.FigureCanvas
 import org.eclipse.draw2d.FreeformLayeredPane
 import org.eclipse.draw2d.FreeformViewport
 import org.eclipse.draw2d.Polyline
-import org.eclipse.draw2d.geometry.Point
 import org.eclipse.jface.dialogs.MessageDialog
 import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.text.source.Annotation
@@ -27,7 +26,7 @@ import org.uqbar.hoope.lib.IHoopeObjectEvent
 import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.MoveEvent
 import org.uqbar.hoope.lib.TurnEvent
-import org.eclipse.core.resources.IResource
+import org.uqbar.hoope.lib.ChangeLookEvent
 
 @Singleton
 public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
@@ -80,8 +79,6 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 
 		hooplEditor.document.readOnly [
 			if(it != null && !hooplEditor.hasError) {
-				val hoopeObject = new HoopeObject
-				hoopeObject.addListener(this)
 				val interpreter = resourceServiceProvider.get(IHoopeInterpreter)
 				if(interpreter != null && !contents.empty) {
 					try {
@@ -96,7 +93,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 						LOGGER.error("Error executing Hoopl Interpreter", e)
 					}
 				}
-				hoopeObject.removeListener(this)
+				this
 			}
 		]
 	}
@@ -115,18 +112,10 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 	override void handleObjectEvent(IHoopeObjectEvent event) {
 		switch event {
 			MoveEvent: { 
-				if(event.hoopeObject.paint) {
-					val line = new Polyline
-					line.foregroundColor = event.hoopeObject.lineColor
-					line.lineWidth = event.hoopeObject.lineWidth
-					line.setEndpoints(event.oldPosition, event.oldPosition)
-					animator.addAnimation(new Animation(event.oldPosition, event.hoopeObject.position, line, event.hoopeObject.delay)) 					
-				} else {
-					animator.addAnimation(new Animation(event.oldPosition, event.hoopeObject.position, event.hoopeObject.delay))
-				}
+				animator.addAnimation(new Animation(event.hoopeObject, event.oldPosition, event.hoopeObject.position, event.hoopeObject.delay))
 			}
-			TurnEvent: {
-				animator.addAnimation(new Animation(event.oldAngle, event.hoopeObject.angleInRadians, event.hoopeObject.delay))
+			ChangeLookEvent: {
+				animator.addAnimation(new Animation(event.hoopeObject, event.image, event.hoopeObject.delay))
 			} 
 		}
 	}
@@ -146,15 +135,12 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 	 */
 	override registerGraphicObject(String identifier, Object realObject) {
 		val String imagen = realObject.class.declaredMethods.filter[f| f.name == 'getImage'].head?.invoke(realObject) as String
-		val posicion = realObject.class.declaredMethods.filter[f| f.name == 'getPosition'].head
+		val figure = new HoopeGraphicObjectFigure(getImage(imagen), identifier)
+		rootFigure.add(figure)
+		figure.view = this
+		
+		new HoopeObject(figure, realObject).addListener(this)
 
-		if (posicion != null){
-			val java.awt.Point punto  = (posicion.invoke(realObject)) as java.awt.Point
-			val hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(getImage(imagen), identifier, realObject)				
-			rootFigure.add(hoopeGraphicObjectFigure)
-			hoopeGraphicObjectFigure.objectLocation = new Point(punto.x, punto.y)
-			hoopeGraphicObjectFigure.view = this
-		}
 		return;
 	}
 

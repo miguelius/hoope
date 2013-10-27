@@ -59,6 +59,7 @@ public class Animator extends UIJob {
         this.lastStart = _currentTimeMillis;
       }
     } else {
+      animation.set(1);
     }
   }
   
@@ -134,6 +135,8 @@ public class Animator extends UIJob {
         boolean _while = _and;
         while (_while) {
           {
+            Animation _poll = this.animationQueue.poll();
+            _poll.set(1);
             int _delay_1 = currentAnimation.getDelay();
             long _plus_1 = (this.lastStart + _delay_1);
             this.lastStart = _plus_1;
@@ -157,6 +160,7 @@ public class Animator extends UIJob {
           long _minus = (now - this.lastStart);
           int _delay_1 = currentAnimation.getDelay();
           final double alpha = (((double) _minus) / _delay_1);
+          currentAnimation.set(alpha);
           this.schedule(this.UPDATE_INTERVAL);
         } else {
           this.isScheduled = false;

@@ -1,9 +1,5 @@
 package org.uqbar.hoope.lib.views;
 
-import com.google.common.base.Objects;
-import java.lang.reflect.Method;
-import java.util.Observable;
-import java.util.Observer;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.ImageFigure;
@@ -13,28 +9,14 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.uqbar.hoope.lib.views.SampleView;
 
 @SuppressWarnings("all")
-public class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
+public class HoopeGraphicObjectFigure extends ImageFigure {
   private double _angle;
   
   public double getAngle() {
     return this._angle;
-  }
-  
-  private Observable _observedObject;
-  
-  public Observable getObservedObject() {
-    return this._observedObject;
-  }
-  
-  public void setObservedObject(final Observable observedObject) {
-    this._observedObject = observedObject;
   }
   
   private SampleView _view;
@@ -47,11 +29,11 @@ public class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
     this._view = view;
   }
   
-  public HoopeGraphicObjectFigure(final Image image, final String identifier, final Object object) {
+  public HoopeGraphicObjectFigure() {
+  }
+  
+  public HoopeGraphicObjectFigure(final Image image, final String identifier) {
     super(image, PositionConstants.NORTH_EAST);
-    this.setObservedObject(((Observable) object));
-    Observable _observedObject = this.getObservedObject();
-    _observedObject.addObserver(this);
     Label _label = new Label(identifier);
     this.toolTip = _label;
   }
@@ -110,56 +92,5 @@ public class HoopeGraphicObjectFigure extends ImageFigure implements Observer {
   public void setAngle(final double angle) {
     this._angle = angle;
     this.revalidate();
-  }
-  
-  public void update(final Observable o, final Object arg) {
-    try {
-      String _plus = (o + ": ");
-      String _plus_1 = (_plus + arg);
-      System.out.println(_plus_1);
-      Observable _observedObject = this.getObservedObject();
-      Class<? extends Observable> _class = _observedObject.getClass();
-      Method[] _declaredMethods = _class.getDeclaredMethods();
-      final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getImage");
-            return Boolean.valueOf(_equals);
-          }
-        };
-      Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
-      Method _head = IterableExtensions.<Method>head(_filter);
-      Object _invoke = null;
-      if (_head!=null) {
-        Observable _observedObject_1 = this.getObservedObject();
-        _invoke=_head.invoke(_observedObject_1);
-      }
-      final String imagen = ((String) _invoke);
-      Observable _observedObject_2 = this.getObservedObject();
-      Class<? extends Observable> _class_1 = _observedObject_2.getClass();
-      Method[] _declaredMethods_1 = _class_1.getDeclaredMethods();
-      final Function1<Method,Boolean> _function_1 = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getPosition");
-            return Boolean.valueOf(_equals);
-          }
-        };
-      Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods_1)), _function_1);
-      final Method posicion = IterableExtensions.<Method>head(_filter_1);
-      boolean _notEquals = (!Objects.equal(posicion, null));
-      if (_notEquals) {
-        Observable _observedObject_3 = this.getObservedObject();
-        Object _invoke_1 = posicion.invoke(_observedObject_3);
-        final java.awt.Point punto = ((java.awt.Point) _invoke_1);
-        Point _point = new Point(punto.x, punto.y);
-        this.setObjectLocation(_point);
-        SampleView _view = this.getView();
-        Image _image = _view.getImage(imagen);
-        this.setImage(_image);
-      }
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
   }
 }

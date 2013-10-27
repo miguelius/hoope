@@ -14,7 +14,6 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.FreeformLayeredPane;
 import org.eclipse.draw2d.FreeformViewport;
-import org.eclipse.draw2d.Polyline;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.IToolBarManager;
@@ -23,7 +22,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.source.Annotation;
 import org.eclipse.jface.text.source.IAnnotationModel;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -49,13 +47,13 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.uqbar.hoope.lib.ChangeLookEvent;
 import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.IHoopeInterpreter;
 import org.uqbar.hoope.lib.IHoopeObjectEvent;
 import org.uqbar.hoope.lib.IHoopeObjectEvent.Listener;
 import org.uqbar.hoope.lib.IHoopePlayground;
 import org.uqbar.hoope.lib.MoveEvent;
-import org.uqbar.hoope.lib.TurnEvent;
 import org.uqbar.hoope.lib.views.Animation;
 import org.uqbar.hoope.lib.views.Animator;
 import org.uqbar.hoope.lib.views.HoopeGraphicObjectFigure;
@@ -129,8 +127,8 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
     this.canvas.scrollTo(_divide, _divide_1);
   }
   
-  public Boolean show(final XtextEditor hooplEditor, final int stopAtLine) {
-    Boolean _xblockexpression = null;
+  public SampleView show(final XtextEditor hooplEditor, final int stopAtLine) {
+    SampleView _xblockexpression = null;
     {
       boolean _lessThan = (stopAtLine < 0);
       this.animator.setAnimated(_lessThan);
@@ -141,9 +139,9 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         };
       DisplayRunHelper.runSyncInDisplayThread(_function);
       IXtextDocument _document = hooplEditor.getDocument();
-      final IUnitOfWork<Boolean,XtextResource> _function_1 = new IUnitOfWork<Boolean,XtextResource>() {
-          public Boolean exec(final XtextResource it) throws Exception {
-            Boolean _xifexpression = null;
+      final IUnitOfWork<SampleView,XtextResource> _function_1 = new IUnitOfWork<SampleView,XtextResource>() {
+          public SampleView exec(final XtextResource it) throws Exception {
+            SampleView _xifexpression = null;
             boolean _and = false;
             boolean _notEquals = (!Objects.equal(it, null));
             if (!_notEquals) {
@@ -154,11 +152,8 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
               _and = (_notEquals && _not);
             }
             if (_and) {
-              boolean _xblockexpression = false;
+              SampleView _xblockexpression = null;
               {
-                HoopeObject _hoopeObject = new HoopeObject();
-                final HoopeObject hoopeObject = _hoopeObject;
-                hoopeObject.addListener(SampleView.this);
                 IResourceServiceProvider _resourceServiceProvider = it.getResourceServiceProvider();
                 final IHoopeInterpreter interpreter = _resourceServiceProvider.<IHoopeInterpreter>get(IHoopeInterpreter.class);
                 boolean _and_1 = false;
@@ -202,15 +197,14 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
                     }
                   }
                 }
-                boolean _removeListener = hoopeObject.removeListener(SampleView.this);
-                _xblockexpression = (_removeListener);
+                _xblockexpression = (SampleView.this);
               }
-              _xifexpression = Boolean.valueOf(_xblockexpression);
+              _xifexpression = _xblockexpression;
             }
             return _xifexpression;
           }
         };
-      Boolean _readOnly = _document.<Boolean>readOnly(_function_1);
+      SampleView _readOnly = _document.<SampleView>readOnly(_function_1);
       _xblockexpression = (_readOnly);
     }
     return _xblockexpression;
@@ -276,47 +270,24 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         final MoveEvent _moveEvent = (MoveEvent)event;
         _matched=true;
         HoopeObject _hoopeObject = _moveEvent.getHoopeObject();
-        boolean _isPaint = _hoopeObject.isPaint();
-        if (_isPaint) {
-          Polyline _polyline = new Polyline();
-          final Polyline line = _polyline;
-          HoopeObject _hoopeObject_1 = _moveEvent.getHoopeObject();
-          Color _lineColor = _hoopeObject_1.getLineColor();
-          line.setForegroundColor(_lineColor);
-          HoopeObject _hoopeObject_2 = _moveEvent.getHoopeObject();
-          int _lineWidth = _hoopeObject_2.getLineWidth();
-          line.setLineWidth(_lineWidth);
-          org.eclipse.draw2d.geometry.Point _oldPosition = _moveEvent.getOldPosition();
-          org.eclipse.draw2d.geometry.Point _oldPosition_1 = _moveEvent.getOldPosition();
-          line.setEndpoints(_oldPosition, _oldPosition_1);
-          org.eclipse.draw2d.geometry.Point _oldPosition_2 = _moveEvent.getOldPosition();
-          HoopeObject _hoopeObject_3 = _moveEvent.getHoopeObject();
-          org.eclipse.draw2d.geometry.Point _position = _hoopeObject_3.getPosition();
-          HoopeObject _hoopeObject_4 = _moveEvent.getHoopeObject();
-          int _delay = _hoopeObject_4.getDelay();
-          Animation _animation = new Animation(_oldPosition_2, _position, line, _delay);
-          this.animator.addAnimation(_animation);
-        } else {
-          org.eclipse.draw2d.geometry.Point _oldPosition_3 = _moveEvent.getOldPosition();
-          HoopeObject _hoopeObject_5 = _moveEvent.getHoopeObject();
-          org.eclipse.draw2d.geometry.Point _position_1 = _hoopeObject_5.getPosition();
-          HoopeObject _hoopeObject_6 = _moveEvent.getHoopeObject();
-          int _delay_1 = _hoopeObject_6.getDelay();
-          Animation _animation_1 = new Animation(_oldPosition_3, _position_1, _delay_1);
-          this.animator.addAnimation(_animation_1);
-        }
+        org.eclipse.draw2d.geometry.Point _oldPosition = _moveEvent.getOldPosition();
+        HoopeObject _hoopeObject_1 = _moveEvent.getHoopeObject();
+        org.eclipse.draw2d.geometry.Point _position = _hoopeObject_1.getPosition();
+        HoopeObject _hoopeObject_2 = _moveEvent.getHoopeObject();
+        int _delay = _hoopeObject_2.getDelay();
+        Animation _animation = new Animation(_hoopeObject, _oldPosition, _position, _delay);
+        this.animator.addAnimation(_animation);
       }
     }
     if (!_matched) {
-      if (event instanceof TurnEvent) {
-        final TurnEvent _turnEvent = (TurnEvent)event;
+      if (event instanceof ChangeLookEvent) {
+        final ChangeLookEvent _changeLookEvent = (ChangeLookEvent)event;
         _matched=true;
-        double _oldAngle = _turnEvent.getOldAngle();
-        HoopeObject _hoopeObject = _turnEvent.getHoopeObject();
-        double _angleInRadians = _hoopeObject.getAngleInRadians();
-        HoopeObject _hoopeObject_1 = _turnEvent.getHoopeObject();
+        HoopeObject _hoopeObject = _changeLookEvent.getHoopeObject();
+        String _image = _changeLookEvent.getImage();
+        HoopeObject _hoopeObject_1 = _changeLookEvent.getHoopeObject();
         int _delay = _hoopeObject_1.getDelay();
-        Animation _animation = new Animation(_oldAngle, _angleInRadians, _delay);
+        Animation _animation = new Animation(_hoopeObject, _image, _delay);
         this.animator.addAnimation(_animation);
       }
     }
@@ -350,29 +321,13 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
         _invoke=_head.invoke(realObject);
       }
       final String imagen = ((String) _invoke);
-      Class<? extends Object> _class_1 = realObject.getClass();
-      Method[] _declaredMethods_1 = _class_1.getDeclaredMethods();
-      final Function1<Method,Boolean> _function_1 = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getPosition");
-            return Boolean.valueOf(_equals);
-          }
-        };
-      Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods_1)), _function_1);
-      final Method posicion = IterableExtensions.<Method>head(_filter_1);
-      boolean _notEquals = (!Objects.equal(posicion, null));
-      if (_notEquals) {
-        Object _invoke_1 = posicion.invoke(realObject);
-        final java.awt.Point punto = ((java.awt.Point) _invoke_1);
-        Image _image = this.getImage(imagen);
-        HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(_image, identifier, realObject);
-        final HoopeGraphicObjectFigure hoopeGraphicObjectFigure = _hoopeGraphicObjectFigure;
-        this.rootFigure.add(hoopeGraphicObjectFigure);
-        org.eclipse.draw2d.geometry.Point _point = new org.eclipse.draw2d.geometry.Point(punto.x, punto.y);
-        hoopeGraphicObjectFigure.setObjectLocation(_point);
-        hoopeGraphicObjectFigure.setView(this);
-      }
+      Image _image = this.getImage(imagen);
+      HoopeGraphicObjectFigure _hoopeGraphicObjectFigure = new HoopeGraphicObjectFigure(_image, identifier);
+      final HoopeGraphicObjectFigure figure = _hoopeGraphicObjectFigure;
+      this.rootFigure.add(figure);
+      figure.setView(this);
+      HoopeObject _hoopeObject = new HoopeObject(figure, realObject);
+      _hoopeObject.addListener(this);
       return;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
