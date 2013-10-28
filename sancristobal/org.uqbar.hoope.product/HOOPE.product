@@ -3,7 +3,6 @@
 
 <product name="HOOPE" id="org.uqbar.hoope.product.product2" application="org.eclipse.ui.ide.workbench" version="1.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -15,8 +14,8 @@
 
    <splash
       location="org.uqbar.hoope.product"
-      startupProgressRect="1,328,453,15"
-      startupMessageRect="7,308,441,20"
+      startupProgressRect="1,282,453,20"
+      startupMessageRect="7,255,441,20"
       startupForegroundColor="E0F0FF" />
    <launcher>
       <solaris/>
@@ -25,11 +24,9 @@
       </win>
    </launcher>
 
-
    <vm>
       <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7</windows>
    </vm>
-
 
    <plugins>
       <plugin id="com.ibm.icu"/>

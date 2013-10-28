@@ -54,6 +54,9 @@ val coquita = object {
 
 val donde = new java.awt.Point(200,100)
 val otroDonde = new java.awt.Point(100,200)
+val donde = new java.awt.Point(200,100)
+val otroDonde = new java.awt.Point(100,200)
+val otroDondeMas = new java.awt.Point(300,300)
 
 coquita.come(1)
 
@@ -63,11 +66,14 @@ pepita.vola(donde)
 
 pepita.come(1)
 
+coquita.vola(otroDonde)
+
+coquita.vola(otroDondeMas)
+
 pepita.vola(otroDonde)
 
-pepita.vola(donde)
+coquita.vola(donde)
 
-pepita.come(1)
 
 «ENDFILE»
 «ENDDEFINE»
