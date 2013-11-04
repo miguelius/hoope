@@ -29,8 +29,12 @@
          point="org.eclipse.ui.handlers">
    	<handler
             class="org.uqbar.hoope.lib.HoopeExecutionHandler"
-            commandId="org.uqbar.hoope.execution.run"
-            >
+            commandId="org.uqbar.hoope.execution.run">
+         <activeWhen>
+            <reference
+                    definitionId="org.uqbar.Hoope.Editor.opened">
+            </reference>
+         </activeWhen>
    	</handler>
    </extension>
     <extension
