@@ -1672,5 +1672,45 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+
+   <plugin
+         id="org.eclipse.compare.win32"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         os="OS_WIN32"
+         arch="x86_64"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.resources.win32.x86_64"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         os="OS_WIN32"
+         arch="x86_64"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.security.win32.x86_64"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         os="OS_WIN32"
+         arch="x86_64"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.win32"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         os="OS_WIN32"
+         arch="x86_64"
+         unpack="false"/>
 
 </feature>
