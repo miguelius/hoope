@@ -301,7 +301,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, Listener {
   /**
    * esto es super provisorio. se arregla con una interfaz
    * 
-   * se puede parametrizar con las im?genes del plugin
+   * se puede parametrizar con las imágenes del plugin
    */
   public void registerGraphicObject(final String identifier, final Object realObject) {
     try {
