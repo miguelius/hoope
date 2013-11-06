@@ -16,8 +16,8 @@
 
    <splash
       location="org.uqbar.hoope.product"
-      startupProgressRect="1,282,453,20"
-      startupMessageRect="7,255,441,20"
+      startupProgressRect="1,275,453,20"
+      startupMessageRect="7,260,441,20"
       startupForegroundColor="E0F0FF" />
    <launcher>
       <solaris/>

@@ -968,29 +968,29 @@
 
    <plugin
          id="org.eclipse.swt.win32.win32.x86_64"
+         os="OS_WIN32"
+         arch="x86_64"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_WIN32"
-         arch="x86_64"
          fragment="true"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.swt.cocoa.macosx.x86_64"
+         os="OS_MACOSX"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_MACOSX"
          fragment="true"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.swt.gtk.linux.x86_64"
+         os="OS_LINUX"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_LINUX"
          fragment="true"
          unpack="false"/>
 
@@ -1124,45 +1124,42 @@
 
    <plugin
          id="org.eclipse.equinox.launcher.win32.win32.x86_64"
+         os="OS_WIN32"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_WIN32"
-         fragment="true"
-         />
+         fragment="true"/>
 
    <plugin
          id="org.eclipse.equinox.launcher.gtk.linux.x86_64"
+         os="OS_LINUX"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_LINUX"
-         fragment="true"
-         />
+         fragment="true"/>
 
    <plugin
          id="org.eclipse.equinox.launcher.cocoa.macosx.x86_64"
+         os="OS_MACOSX"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_MACOSX"
-         fragment="true"
-         />
+         fragment="true"/>
 
    <plugin
          id="org.eclipse.jdt.launching.win32.win32"
+         os="OS_WIN32"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_WIN32"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.jdt.launching.macosx"
+         os="OS_MACOSX"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_MACOSX"
          unpack="false"/>
 
    <plugin
@@ -1672,45 +1669,59 @@
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-         
 
    <plugin
          id="org.eclipse.compare.win32"
+         os="OS_WIN32"
+         arch="x86_64"
          download-size="0"
          install-size="0"
          version="0.0.0"
-         os="OS_WIN32"
-         arch="x86_64"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.core.resources.win32.x86_64"
+         os="OS_WIN32"
+         arch="x86_64"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"
-         os="OS_WIN32"
-         arch="x86_64"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.equinox.security.win32.x86_64"
+         os="OS_WIN32"
+         arch="x86_64"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"
-         os="OS_WIN32"
-         arch="x86_64"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.ui.win32"
+         os="OS_WIN32"
+         arch="x86_64"
          download-size="0"
          install-size="0"
          version="0.0.0"
          fragment="true"
-         os="OS_WIN32"
-         arch="x86_64"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.e4.ui.workbench.renderers.swt.cocoa"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.swt.cocoa.macosx.x86_64.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
