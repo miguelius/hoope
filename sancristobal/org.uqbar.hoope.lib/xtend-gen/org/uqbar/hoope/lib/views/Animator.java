@@ -12,14 +12,14 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.uqbar.hoope.lib.views.Animation;
-import org.uqbar.hoope.lib.views.SampleView;
+import org.uqbar.hoope.lib.views.HoopeRuntimeView;
 
 @SuppressWarnings("all")
 public class Animator extends UIJob {
   private final int UPDATE_INTERVAL = 20;
   
   @Inject
-  private SampleView view;
+  private HoopeRuntimeView view;
   
   private long lastStart;
   

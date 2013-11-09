@@ -9,7 +9,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Rectangle;
-import org.uqbar.hoope.lib.views.SampleView;
+import org.uqbar.hoope.lib.views.HoopeRuntimeView;
 
 @SuppressWarnings("all")
 public class HoopeGraphicObjectFigure extends ImageFigure {
@@ -19,13 +19,13 @@ public class HoopeGraphicObjectFigure extends ImageFigure {
     return this._angle;
   }
   
-  private SampleView _view;
+  private HoopeRuntimeView _view;
   
-  public SampleView getView() {
+  public HoopeRuntimeView getView() {
     return this._view;
   }
   
-  public void setView(final SampleView view) {
+  public void setView(final HoopeRuntimeView view) {
     this._view = view;
   }
   

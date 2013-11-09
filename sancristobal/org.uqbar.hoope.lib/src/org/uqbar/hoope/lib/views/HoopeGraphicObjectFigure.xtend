@@ -13,7 +13,7 @@ class HoopeGraphicObjectFigure extends ImageFigure {
 
 	@Property double angle
 
-	@Property SampleView view
+	@Property HoopeRuntimeView view
 
 	new() {
 	}

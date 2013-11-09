@@ -7,13 +7,12 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.Status
 import org.eclipse.swt.widgets.Display
 import org.eclipse.ui.progress.UIJob
-import org.uqbar.hoope.lib.views.SampleView
 
 class Animator extends UIJob {
 	
 	val int UPDATE_INTERVAL = 20
 	
-	@Inject SampleView view
+	@Inject HoopeRuntimeView view
 	
 	long lastStart
 	boolean isScheduled

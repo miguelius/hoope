@@ -22,7 +22,7 @@ import org.uqbar.hoope.lib.IHoopeObjectEvent.Listener;
 import org.uqbar.hoope.lib.MoveEvent;
 import org.uqbar.hoope.lib.TurnEvent;
 import org.uqbar.hoope.lib.views.HoopeGraphicObjectFigure;
-import org.uqbar.hoope.lib.views.SampleView;
+import org.uqbar.hoope.lib.views.HoopeRuntimeView;
 
 @SuppressWarnings("all")
 public class HoopeObject implements Observer {
@@ -80,7 +80,7 @@ public class HoopeObject implements Observer {
     this.image = imagen;
     HoopeGraphicObjectFigure _figure = this.getFigure();
     HoopeGraphicObjectFigure _figure_1 = this.getFigure();
-    SampleView _view = _figure_1.getView();
+    HoopeRuntimeView _view = _figure_1.getView();
     Image _image = _view.getImage(imagen);
     _figure.setImage(_image);
   }

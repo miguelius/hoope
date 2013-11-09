@@ -16,7 +16,7 @@ class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeLi
 	
 	XtextEditor currentEditor
 	
-	@Inject SampleView view
+	@Inject HoopeRuntimeView view
 	
 	boolean isStopMode
 	

@@ -24,14 +24,14 @@ import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.uqbar.hoope.lib.views.SampleView;
+import org.uqbar.hoope.lib.views.HoopeRuntimeView;
 
 @SuppressWarnings("all")
 public class HoopeGraphicObjectPartListener implements IPartListener, IResourceChangeListener, CaretListener {
   private XtextEditor currentEditor;
   
   @Inject
-  private SampleView view;
+  private HoopeRuntimeView view;
   
   private boolean isStopMode;
   

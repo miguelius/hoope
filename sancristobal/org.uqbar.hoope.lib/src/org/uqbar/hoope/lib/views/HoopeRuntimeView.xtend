@@ -8,34 +8,31 @@ import org.eclipse.draw2d.ColorConstants
 import org.eclipse.draw2d.FigureCanvas
 import org.eclipse.draw2d.FreeformLayeredPane
 import org.eclipse.draw2d.FreeformViewport
-import org.eclipse.draw2d.Polyline
 import org.eclipse.jface.dialogs.MessageDialog
 import org.eclipse.jface.resource.ImageDescriptor
 import org.eclipse.jface.text.source.Annotation
 import org.eclipse.swt.SWT
 import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.widgets.Composite
-import org.eclipse.ui.IViewSite
 import org.eclipse.ui.part.ViewPart
 import org.eclipse.xtext.ui.PluginImageHelper
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.util.DisplayRunHelper
+import org.uqbar.hoope.lib.ChangeLookEvent
 import org.uqbar.hoope.lib.HoopeObject
 import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.hoope.lib.IHoopeObjectEvent
 import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.MoveEvent
-import org.uqbar.hoope.lib.TurnEvent
-import org.uqbar.hoope.lib.ChangeLookEvent
+import org.eclipse.ui.IViewSite
 
 @Singleton
-public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
+public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
 	
-	static val LOGGER = Logger::getLogger(SampleView)
+	static val LOGGER = Logger::getLogger(HoopeRuntimeView)
 	 
 	FigureCanvas canvas
 	
-	@Inject ToggleStopModeAction action
 	@Inject RootLayer rootFigure
 	//@Inject HoopeGraphicObjectFigure hoopeGraphicObjectFigure 
 	@Inject HoopeGraphicObjectPartListener listener
@@ -53,7 +50,7 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 		pane.add(rootFigure, 'primary')
 		reset
 		site.page.addPartListener(listener) 
-		(site as IViewSite).actionBars.toolBarManager.add(action)
+//		(site as IViewSite).actionBars.toolBarManager.add(action)
 	}
 
 	override setFocus() {
@@ -73,13 +70,15 @@ public class SampleView extends ViewPart implements IHoopePlayground, IHoopeObje
 		canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
 	}
 	
+	@Inject IHoopeInterpreter interpreter
+		
 	def show(XtextEditor hooplEditor, int stopAtLine) {
 		animator.setAnimated(stopAtLine < 0)
 		DisplayRunHelper.runSyncInDisplayThread[|reset]
 
 		hooplEditor.document.readOnly [
 			if(it != null && !hooplEditor.hasError) {
-				val interpreter = resourceServiceProvider.get(IHoopeInterpreter)
+//				val interpreter = resourceServiceProvider.get(IHoopeInterpreter)
 				if(interpreter != null && !contents.empty) {
 					try {
 						System.out.println(contents)

@@ -5,7 +5,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.swt.graphics.Image;
 import org.uqbar.hoope.lib.HoopeObject;
 import org.uqbar.hoope.lib.views.HoopeGraphicObjectFigure;
-import org.uqbar.hoope.lib.views.SampleView;
+import org.uqbar.hoope.lib.views.HoopeRuntimeView;
 
 @SuppressWarnings("all")
 public class Animation {
@@ -64,7 +64,7 @@ public class Animation {
     if (_notEquals_1) {
       HoopeGraphicObjectFigure _figure_1 = this.hoopeObject.getFigure();
       HoopeGraphicObjectFigure _figure_2 = this.hoopeObject.getFigure();
-      SampleView _view = _figure_2.getView();
+      HoopeRuntimeView _view = _figure_2.getView();
       Image _image = _view.getImage(this.image);
       _figure_1.setImage(_image);
     }

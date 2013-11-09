@@ -5,9 +5,9 @@
         point="org.eclipse.ui.views">
      <view
            category="org.eclipse.xtext.viewCategory"
-           class="org.uqbar.hoope.lib.ExecutableExtensionFactory:org.uqbar.hoope.lib.views.SampleView"
+           class="org.uqbar.hoope.lib.ExecutableExtensionFactory:org.uqbar.hoope.lib.views.HoopeRuntimeView"
            icon="icons/hoope-tr.gif"
-           id="org.uqbar.hoope.lib.SampleView"
+           id="org.uqbar.hoope.lib.HoopeRuntimeView"
            name="Hoope View"
            restorable="true">
      </view>
@@ -44,6 +44,11 @@
          <menu
                id="hoopeMenu"
                label="Hoope">
+            <visibleWhen checkEnabled="false">
+	            <reference
+	                    definitionId="org.uqbar.Hoope.Editor.opened">
+	            </reference>
+            </visibleWhen>
             <command
                   commandId="org.uqbar.hoope.execution.run"
                   label="Run"

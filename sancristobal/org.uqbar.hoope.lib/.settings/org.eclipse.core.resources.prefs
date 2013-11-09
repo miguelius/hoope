@@ -1,2 +1,3 @@
 eclipse.preferences.version=1
-encoding//src/org/uqbar/hoope/lib/views/SampleView.xtend=UTF-8
+encoding//src/org/uqbar/hoope/interpreter/HoopeGraphicObjectShellInterpreter.xtend=UTF-8
+encoding//src/org/uqbar/hoope/lib/views/HoopeRuntimeView.xtend=UTF-8

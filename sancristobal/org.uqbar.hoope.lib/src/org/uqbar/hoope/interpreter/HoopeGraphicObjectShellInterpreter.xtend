@@ -1,4 +1,4 @@
-package org.uqbar.interpreter
+package org.uqbar.hoope.interpreter
 
 import com.google.inject.Inject
 import java.util.List
@@ -14,13 +14,12 @@ import org.eclipse.xtext.xbase.XVariableDeclaration
 import org.eclipse.xtext.xbase.interpreter.IEvaluationContext
 import org.eclipse.xtext.xbase.interpreter.impl.XbaseInterpreter
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
-import org.uqbar.hoope.HoopeObject
 import org.uqbar.hoope.Program
 import org.uqbar.hoope.lib.IHoopeInterpreter
 import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.IProjectClassLoaderHelper
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
-import org.eclipse.xtext.xbase.XFeatureCall
+import org.uqbar.hoope.HoopeObject
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 	
@@ -48,7 +47,7 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 						val objecto = runningContext.getValue(QualifiedName.create(it.name))
 						declaredObjects.put(it.name, objecto )
 
-						// determino si hay que dibujarlo, si es así lo registro como tal
+						// determino si hay que dibujarlo, si es as�� lo registro como tal
 						if (objecto.positionable) {
 							playground.registerGraphicObject(it.name, objecto)
 						}
