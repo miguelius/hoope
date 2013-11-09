@@ -1,8 +1,11 @@
 package org.uqbar;
 
 import com.google.inject.Inject;
+import java.awt.Point;
 import java.util.Arrays;
 import org.eclipse.xtext.common.types.JvmGenericType;
+import org.eclipse.xtext.common.types.JvmType;
+import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XAbstractWhileExpression;
 import org.eclipse.xtext.xbase.XAssignment;
@@ -32,6 +35,7 @@ import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputationState;
 import org.eclipse.xtext.xbase.typesystem.computation.XbaseTypeComputer;
 import org.eclipse.xtext.xbase.typesystem.references.ITypeReferenceOwner;
 import org.eclipse.xtext.xbase.typesystem.references.ParameterizedTypeReference;
+import org.uqbar.hoope.Coordinates;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer;
 
@@ -40,6 +44,18 @@ public class HoopeTypeComputer extends XbaseTypeComputer {
   @Inject
   @Extension
   private HoopeJvmModelInferrer _hoopeJvmModelInferrer;
+  
+  @Inject
+  @Extension
+  private TypeReferences _typeReferences;
+  
+  protected void _computeTypes(final Coordinates coordinates, final ITypeComputationState state) {
+    ITypeReferenceOwner _referenceOwner = state.getReferenceOwner();
+    JvmType _findDeclaredType = this._typeReferences.findDeclaredType(Point.class, coordinates);
+    ParameterizedTypeReference _parameterizedTypeReference = new ParameterizedTypeReference(_referenceOwner, _findDeclaredType);
+    final ParameterizedTypeReference type = _parameterizedTypeReference;
+    state.acceptActualType(type);
+  }
   
   protected void _computeTypes(final HoopeObject hoopObject, final ITypeComputationState state) {
     ITypeReferenceOwner _referenceOwner = state.getReferenceOwner();
@@ -118,6 +134,9 @@ public class HoopeTypeComputer extends XbaseTypeComputer {
       return;
     } else if (assignment instanceof XVariableDeclaration) {
       _computeTypes((XVariableDeclaration)assignment, state);
+      return;
+    } else if (assignment instanceof Coordinates) {
+      _computeTypes((Coordinates)assignment, state);
       return;
     } else if (assignment instanceof HoopeObject) {
       _computeTypes((HoopeObject)assignment, state);

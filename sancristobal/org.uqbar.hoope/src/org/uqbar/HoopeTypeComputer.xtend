@@ -15,10 +15,20 @@ import org.eclipse.xtext.xbase.typesystem.references.UnknownTypeReference
 import org.eclipse.xtext.xbase.typing.ITypeProvider
 import org.uqbar.hoope.HoopeObject
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
+import org.uqbar.hoope.Coordinates
+import java.awt.Point
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class HoopeTypeComputer extends XbaseTypeComputer {
 
 	@Inject extension HoopeJvmModelInferrer
+
+	@Inject extension TypeReferences
+
+	def dispatch void computeTypes(Coordinates coordinates, ITypeComputationState state) {
+		val type = new ParameterizedTypeReference(state.referenceOwner, java.awt.Point.findDeclaredType(coordinates))
+		state.acceptActualType(type);
+	}
 
 	def dispatch void computeTypes(HoopeObject hoopObject, ITypeComputationState state) {
 		val type = new ParameterizedTypeReference(state.referenceOwner, getType(hoopObject))

@@ -3,6 +3,7 @@ package org.uqbar;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.Arrays;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.xbase.XAbstractFeatureCall;
 import org.eclipse.xtext.xbase.XBlockExpression;
@@ -32,6 +33,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotationElementValueB
 import org.eclipse.xtext.xbase.compiler.XbaseCompiler;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.uqbar.hoope.Coordinates;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer;
 
@@ -49,15 +51,30 @@ public class HoopeCompiler extends XbaseCompiler {
   protected void _toJavaStatement(final HoopeObject object, final ITreeAppendable appendable, final boolean isReferenced) {
   }
   
+  protected void _toJavaStatement(final Coordinates object, final ITreeAppendable appendable, final boolean isReferenced) {
+  }
+  
   @Inject
   @Extension
   private HoopeJvmModelInferrer _hoopeJvmModelInferrer;
+  
+  protected void _toJavaExpression(final Coordinates object, final ITreeAppendable b) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("new java.awt.Point(");
+    int _x = object.getX();
+    _builder.append(_x, "");
+    _builder.append(",");
+    int _y = object.getY();
+    _builder.append(_y, "");
+    _builder.append(")");
+    b.append(_builder);
+  }
   
   protected void _toJavaExpression(final HoopeObject object, final ITreeAppendable b) {
     ITreeAppendable _append = b.append("new ");
     JvmGenericType _type = this._hoopeJvmModelInferrer.getType(object);
     ITreeAppendable _append_1 = _append.append(_type);
-    _append_1.append("();");
+    _append_1.append("()");
   }
   
   public void toJavaStatement(final XExpression expr, final ITreeAppendable b, final boolean isReferenced) {
@@ -133,6 +150,9 @@ public class HoopeCompiler extends XbaseCompiler {
     } else if (expr instanceof XAnnotationElementValueBinaryOperation) {
       _toJavaStatement((XAnnotationElementValueBinaryOperation)expr, b, isReferenced);
       return;
+    } else if (expr instanceof Coordinates) {
+      _toJavaStatement((Coordinates)expr, b, isReferenced);
+      return;
     } else if (expr instanceof HoopeObject) {
       _toJavaStatement((HoopeObject)expr, b, isReferenced);
       return;
@@ -196,6 +216,9 @@ public class HoopeCompiler extends XbaseCompiler {
       return;
     } else if (literal instanceof XAnnotationElementValueBinaryOperation) {
       _toJavaExpression((XAnnotationElementValueBinaryOperation)literal, b);
+      return;
+    } else if (literal instanceof Coordinates) {
+      _toJavaExpression((Coordinates)literal, b);
       return;
     } else if (literal instanceof HoopeObject) {
       _toJavaExpression((HoopeObject)literal, b);

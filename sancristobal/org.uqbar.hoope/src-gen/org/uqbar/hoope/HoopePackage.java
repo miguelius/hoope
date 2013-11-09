@@ -252,6 +252,43 @@ public interface HoopePackage extends EPackage
    */
   int HOOPE_OBJECT_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
 
+  /**
+   * The meta object id for the '{@link org.uqbar.hoope.impl.CoordinatesImpl <em>Coordinates</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.uqbar.hoope.impl.CoordinatesImpl
+   * @see org.uqbar.hoope.impl.HoopePackageImpl#getCoordinates()
+   * @generated
+   */
+  int COORDINATES = 5;
+
+  /**
+   * The feature id for the '<em><b>X</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COORDINATES__X = XbasePackage.XEXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Y</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COORDINATES__Y = XbasePackage.XEXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Coordinates</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COORDINATES_FEATURE_COUNT = XbasePackage.XEXPRESSION_FEATURE_COUNT + 2;
+
 
   /**
    * Returns the meta object for class '{@link org.uqbar.hoope.Feature <em>Feature</em>}'.
@@ -368,6 +405,38 @@ public interface HoopePackage extends EPackage
    * @generated
    */
   EReference getHoopeObject_Features();
+
+  /**
+   * Returns the meta object for class '{@link org.uqbar.hoope.Coordinates <em>Coordinates</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Coordinates</em>'.
+   * @see org.uqbar.hoope.Coordinates
+   * @generated
+   */
+  EClass getCoordinates();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.Coordinates#getX <em>X</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>X</em>'.
+   * @see org.uqbar.hoope.Coordinates#getX()
+   * @see #getCoordinates()
+   * @generated
+   */
+  EAttribute getCoordinates_X();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.uqbar.hoope.Coordinates#getY <em>Y</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Y</em>'.
+   * @see org.uqbar.hoope.Coordinates#getY()
+   * @see #getCoordinates()
+   * @generated
+   */
+  EAttribute getCoordinates_Y();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -489,6 +558,32 @@ public interface HoopePackage extends EPackage
      * @generated
      */
     EReference HOOPE_OBJECT__FEATURES = eINSTANCE.getHoopeObject_Features();
+
+    /**
+     * The meta object literal for the '{@link org.uqbar.hoope.impl.CoordinatesImpl <em>Coordinates</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.uqbar.hoope.impl.CoordinatesImpl
+     * @see org.uqbar.hoope.impl.HoopePackageImpl#getCoordinates()
+     * @generated
+     */
+    EClass COORDINATES = eINSTANCE.getCoordinates();
+
+    /**
+     * The meta object literal for the '<em><b>X</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COORDINATES__X = eINSTANCE.getCoordinates_X();
+
+    /**
+     * The meta object literal for the '<em><b>Y</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COORDINATES__Y = eINSTANCE.getCoordinates_Y();
 
   }
 

@@ -141,6 +141,34 @@ finally {
 
 
 
+// Entry rule entryRuleCoordinates
+entryRuleCoordinates 
+:
+{ before(grammarAccess.getCoordinatesRule()); }
+	 ruleCoordinates
+{ after(grammarAccess.getCoordinatesRule()); } 
+	 EOF 
+;
+
+// Rule Coordinates
+ruleCoordinates
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getCoordinatesAccess().getGroup()); }
+(rule__Coordinates__Group__0)
+{ after(grammarAccess.getCoordinatesAccess().getGroup()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleFeature
 entryRuleFeature 
 :
@@ -2234,9 +2262,15 @@ rule__XPrimaryExpression__Alternatives
 )
 
     |(
-{ before(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_13()); }
+{ before(grammarAccess.getXPrimaryExpressionAccess().getCoordinatesParserRuleCall_13()); }
+	ruleCoordinates
+{ after(grammarAccess.getXPrimaryExpressionAccess().getCoordinatesParserRuleCall_13()); }
+)
+
+    |(
+{ before(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_14()); }
 	ruleHoopeObject
-{ after(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_13()); }
+{ after(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_14()); }
 )
 
 ;
@@ -3541,6 +3575,133 @@ finally {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+rule__Coordinates__Group__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Coordinates__Group__0__Impl
+	rule__Coordinates__Group__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__Group__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getCoordinatesAction_0()); }
+(
+
+)
+{ after(grammarAccess.getCoordinatesAccess().getCoordinatesAction_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Coordinates__Group__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Coordinates__Group__1__Impl
+	rule__Coordinates__Group__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__Group__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getXAssignment_1()); }
+(rule__Coordinates__XAssignment_1)
+{ after(grammarAccess.getCoordinatesAccess().getXAssignment_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Coordinates__Group__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Coordinates__Group__2__Impl
+	rule__Coordinates__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__Group__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getCommercialAtKeyword_2()); }
+
+	'@' 
+
+{ after(grammarAccess.getCoordinatesAccess().getCommercialAtKeyword_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Coordinates__Group__3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__Coordinates__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__Group__3__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getYAssignment_3()); }
+(rule__Coordinates__YAssignment_3)
+{ after(grammarAccess.getCoordinatesAccess().getYAssignment_3()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
 
 
 
@@ -15769,6 +15930,36 @@ rule__HoopeObject__FeaturesAssignment_3
 (
 { before(grammarAccess.getHoopeObjectAccess().getFeaturesFeatureParserRuleCall_3_0()); }
 	ruleFeature{ after(grammarAccess.getHoopeObjectAccess().getFeaturesFeatureParserRuleCall_3_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__XAssignment_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getXINTTerminalRuleCall_1_0()); }
+	RULE_INT{ after(grammarAccess.getCoordinatesAccess().getXINTTerminalRuleCall_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Coordinates__YAssignment_3
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getCoordinatesAccess().getYINTTerminalRuleCall_3_0()); }
+	RULE_INT{ after(grammarAccess.getCoordinatesAccess().getYINTTerminalRuleCall_3_0()); }
 )
 
 ;

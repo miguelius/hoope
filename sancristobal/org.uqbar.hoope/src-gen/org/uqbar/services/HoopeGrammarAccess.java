@@ -67,17 +67,18 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cXReturnExpressionParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		private final RuleCall cXTryCatchFinallyExpressionParserRuleCall_11 = (RuleCall)cAlternatives.eContents().get(11);
 		private final RuleCall cXParenthesizedExpressionParserRuleCall_12 = (RuleCall)cAlternatives.eContents().get(12);
-		private final RuleCall cHoopeObjectParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
+		private final RuleCall cCoordinatesParserRuleCall_13 = (RuleCall)cAlternatives.eContents().get(13);
+		private final RuleCall cHoopeObjectParserRuleCall_14 = (RuleCall)cAlternatives.eContents().get(14);
 		
 		//XPrimaryExpression returns xbase::XExpression:
 		//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 		//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-		//	XParenthesizedExpression | HoopeObject;
+		//	XParenthesizedExpression | Coordinates | HoopeObject;
 		public ParserRule getRule() { return rule; }
 
 		//XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression |
 		//XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-		//XParenthesizedExpression | HoopeObject
+		//XParenthesizedExpression | Coordinates | HoopeObject
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//XConstructorCall
@@ -119,8 +120,11 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 		//XParenthesizedExpression
 		public RuleCall getXParenthesizedExpressionParserRuleCall_12() { return cXParenthesizedExpressionParserRuleCall_12; }
 
+		//Coordinates
+		public RuleCall getCoordinatesParserRuleCall_13() { return cCoordinatesParserRuleCall_13; }
+
 		//HoopeObject
-		public RuleCall getHoopeObjectParserRuleCall_13() { return cHoopeObjectParserRuleCall_13; }
+		public RuleCall getHoopeObjectParserRuleCall_14() { return cHoopeObjectParserRuleCall_14; }
 	}
 
 	public class HoopeObjectElements extends AbstractParserRuleElementFinder {
@@ -157,6 +161,42 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+	}
+
+	public class CoordinatesElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Coordinates");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCoordinatesAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cXAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cXINTTerminalRuleCall_1_0 = (RuleCall)cXAssignment_1.eContents().get(0);
+		private final Keyword cCommercialAtKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cYAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cYINTTerminalRuleCall_3_0 = (RuleCall)cYAssignment_3.eContents().get(0);
+		
+		//Coordinates returns xbase::XExpression:
+		//	{Coordinates} x=INT "@" y=INT;
+		public ParserRule getRule() { return rule; }
+
+		//{Coordinates} x=INT "@" y=INT
+		public Group getGroup() { return cGroup; }
+
+		//{Coordinates}
+		public Action getCoordinatesAction_0() { return cCoordinatesAction_0; }
+
+		//x=INT
+		public Assignment getXAssignment_1() { return cXAssignment_1; }
+
+		//INT
+		public RuleCall getXINTTerminalRuleCall_1_0() { return cXINTTerminalRuleCall_1_0; }
+
+		//"@"
+		public Keyword getCommercialAtKeyword_2() { return cCommercialAtKeyword_2; }
+
+		//y=INT
+		public Assignment getYAssignment_3() { return cYAssignment_3; }
+
+		//INT
+		public RuleCall getYINTTerminalRuleCall_3_0() { return cYINTTerminalRuleCall_3_0; }
 	}
 
 	public class FeatureElements extends AbstractParserRuleElementFinder {
@@ -321,6 +361,7 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 	private ProgramElements pProgram;
 	private XPrimaryExpressionElements pXPrimaryExpression;
 	private HoopeObjectElements pHoopeObject;
+	private CoordinatesElements pCoordinates;
 	private FeatureElements pFeature;
 	private PropertyElements pProperty;
 	private MessageElements pMessage;
@@ -376,7 +417,7 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 	//XPrimaryExpression returns xbase::XExpression:
 	//	XConstructorCall | XBlockExpression | XSwitchExpression | XFeatureCall | XLiteral | XIfExpression | XForLoopExpression
 	//	| XWhileExpression | XDoWhileExpression | XThrowExpression | XReturnExpression | XTryCatchFinallyExpression |
-	//	XParenthesizedExpression | HoopeObject;
+	//	XParenthesizedExpression | Coordinates | HoopeObject;
 	public XPrimaryExpressionElements getXPrimaryExpressionAccess() {
 		return (pXPrimaryExpression != null) ? pXPrimaryExpression : (pXPrimaryExpression = new XPrimaryExpressionElements());
 	}
@@ -393,6 +434,16 @@ public class HoopeGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getHoopeObjectRule() {
 		return getHoopeObjectAccess().getRule();
+	}
+
+	//Coordinates returns xbase::XExpression:
+	//	{Coordinates} x=INT "@" y=INT;
+	public CoordinatesElements getCoordinatesAccess() {
+		return (pCoordinates != null) ? pCoordinates : (pCoordinates = new CoordinatesElements());
+	}
+	
+	public ParserRule getCoordinatesRule() {
+		return getCoordinatesAccess().getRule();
 	}
 
 	//Feature:

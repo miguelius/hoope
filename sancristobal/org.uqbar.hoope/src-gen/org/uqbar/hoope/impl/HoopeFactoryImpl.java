@@ -69,6 +69,7 @@ public class HoopeFactoryImpl extends EFactoryImpl implements HoopeFactory
       case HoopePackage.MESSAGE: return createMessage();
       case HoopePackage.PROGRAM: return createProgram();
       case HoopePackage.HOOPE_OBJECT: return createHoopeObject();
+      case HoopePackage.COORDINATES: return createCoordinates();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -127,6 +128,17 @@ public class HoopeFactoryImpl extends EFactoryImpl implements HoopeFactory
   {
     HoopeObjectImpl hoopeObject = new HoopeObjectImpl();
     return hoopeObject;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Coordinates createCoordinates()
+  {
+    CoordinatesImpl coordinates = new CoordinatesImpl();
+    return coordinates;
   }
 
   /**

@@ -29,6 +29,9 @@ import org.eclipse.xtext.common.types.JvmIdentifiableElement
 import java.lang.ProcessBuilder.Redirect.Type
 import org.eclipse.emf.common.util.EList
 import org.eclipse.xtext.common.types.JvmFormalParameter
+import org.uqbar.services.HoopeGrammarAccess.CoordinatesElements
+import java.awt.Point
+import org.uqbar.hoope.Coordinates
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -67,6 +70,10 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 		for (expression : element.expressions) {
 			expression.infer(acceptor, isPrelinkingPhase)
 		}
+	}
+
+	def dispatch void infer(Coordinates element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
+		element.newTypeRef(typeof(Point))
 	}
 
 	def dispatch void infer(HoopeObject element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {

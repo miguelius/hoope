@@ -133,11 +133,6 @@ public abstract class AbstractHoopeUiModule extends DefaultUiModule {
 		binder.bind(org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.ui.LexerUIBindings.CONTENT_ASSIST)).to(org.uqbar.ui.contentassist.antlr.internal.InternalHoopeLexer.class);
 	}
 
-	// contributed by org.eclipse.xtext.ui.generator.projectWizard.SimpleProjectWizardFragment
-	public Class<? extends org.eclipse.xtext.ui.wizard.IProjectCreator> bindIProjectCreator() {
-		return org.uqbar.ui.wizard.HoopeProjectCreator.class;
-	}
-
 	// contributed by org.eclipse.xtext.ui.generator.refactoring.RefactorElementNameFragment
 	public void configureIPreferenceStoreInitializer(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.xtext.ui.editor.preferences.IPreferenceStoreInitializer.class).annotatedWith(com.google.inject.name.Names.named("RefactoringPreferences")).to(org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences.Initializer.class);

@@ -20,6 +20,7 @@ import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.IProjectClassLoaderHelper
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
 import org.uqbar.hoope.HoopeObject
+import org.uqbar.hoope.Coordinates
 
 class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHoopeInterpreter {
 	
@@ -65,6 +66,9 @@ class HoopeGraphicObjectShellInterpreter extends XbaseInterpreter implements IHo
 	override Object doEvaluate(XExpression expression, IEvaluationContext context, CancelIndicator indicator) {
 		log.info(''' evaluando: «expression.toString» ''')
 		switch expression {
+			Coordinates: {
+				new java.awt.Point(expression.x, expression.y);
+			}
 			HoopeObject: {
 				log.info(''' se comopne de: «getJvmElements(expression).head» ''')
 				loadClass(project, (getJvmElements(expression).head as JvmGenericType).identifier).newInstance

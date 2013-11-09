@@ -2,6 +2,7 @@ package org.uqbar.jvmmodel;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.awt.Point;
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Set;
@@ -30,6 +31,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.typing.ITypeProvider;
 import org.eclipse.xtext.xbase.util.XExpressionHelper;
 import org.uqbar.HoopeCompiler;
+import org.uqbar.hoope.Coordinates;
 import org.uqbar.hoope.Feature;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.hoope.Message;
@@ -105,6 +107,10 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
     for (final XExpression expression : _expressions) {
       this.infer(expression, acceptor, isPrelinkingPhase);
     }
+  }
+  
+  protected void _infer(final Coordinates element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
+    this._hoopeTypesBuilder.newTypeRef(element, Point.class);
   }
   
   protected void _infer(final HoopeObject element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
@@ -294,6 +300,9 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
   public void infer(final EObject element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPrelinkingPhase) {
     if (element instanceof Program) {
       _infer((Program)element, acceptor, isPrelinkingPhase);
+      return;
+    } else if (element instanceof Coordinates) {
+      _infer((Coordinates)element, acceptor, isPrelinkingPhase);
       return;
     } else if (element instanceof HoopeObject) {
       _infer((HoopeObject)element, acceptor, isPrelinkingPhase);

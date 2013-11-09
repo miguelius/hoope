@@ -2,12 +2,15 @@ package org.uqbar;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.awt.Point;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.xbase.XExpression;
+import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.typing.XbaseTypeProvider;
+import org.uqbar.hoope.Coordinates;
 import org.uqbar.hoope.HoopeObject;
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer;
 
@@ -18,9 +21,21 @@ public class HoopeTypeProvider extends XbaseTypeProvider {
   @Extension
   private HoopeJvmModelInferrer _hoopeJvmModelInferrer;
   
+  @Inject
+  @Extension
+  private JvmTypesBuilder _jvmTypesBuilder;
+  
   public JvmTypeReference type(final XExpression expression, final JvmTypeReference rawExpectation, final boolean rawType) {
     JvmTypeReference _switchResult = null;
     boolean _matched = false;
+    if (!_matched) {
+      if (expression instanceof Coordinates) {
+        final Coordinates _coordinates = (Coordinates)expression;
+        _matched=true;
+        JvmTypeReference _newTypeRef = this._jvmTypesBuilder.newTypeRef(_coordinates, Point.class);
+        _switchResult = _newTypeRef;
+      }
+    }
     if (!_matched) {
       if (expression instanceof HoopeObject) {
         final HoopeObject _hoopeObject = (HoopeObject)expression;

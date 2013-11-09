@@ -340,17 +340,6 @@
             </attribute>
         </markerResolutionGenerator>
     </extension>
-
-   <extension
-         point="org.eclipse.ui.newWizards">
-      <wizard
-            category="org.eclipse.xtext.projectwiz"
-            class="org.uqbar.ui.HoopeExecutableExtensionFactory:org.uqbar.ui.wizard.HoopeNewProjectWizard"
-            id="org.uqbar.ui.wizard.HoopeNewProjectWizard"
-            name="Hoope Project"
-            project="true">
-      </wizard>
-   </extension>
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 

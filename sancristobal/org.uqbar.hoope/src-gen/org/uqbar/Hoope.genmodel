@@ -22,5 +22,9 @@
     <genClasses ecoreClass="Hoope.ecore#//HoopeObject">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Hoope.ecore#//HoopeObject/features"/>
     </genClasses>
+    <genClasses ecoreClass="Hoope.ecore#//Coordinates">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hoope.ecore#//Coordinates/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Hoope.ecore#//Coordinates/y"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -103,6 +103,11 @@ public class HoopeAdapterFactory extends AdapterFactoryImpl
         return createHoopeObjectAdapter();
       }
       @Override
+      public Adapter caseCoordinates(Coordinates object)
+      {
+        return createCoordinatesAdapter();
+      }
+      @Override
       public Adapter caseXExpression(XExpression object)
       {
         return createXExpressionAdapter();
@@ -205,6 +210,21 @@ public class HoopeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createHoopeObjectAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.uqbar.hoope.Coordinates <em>Coordinates</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.uqbar.hoope.Coordinates
+   * @generated
+   */
+  public Adapter createCoordinatesAdapter()
   {
     return null;
   }

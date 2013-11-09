@@ -68,6 +68,15 @@ public interface HoopeFactory extends EFactory
   HoopeObject createHoopeObject();
 
   /**
+   * Returns a new object of class '<em>Coordinates</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Coordinates</em>'.
+   * @generated
+   */
+  Coordinates createCoordinates();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

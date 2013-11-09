@@ -78,6 +78,7 @@ public class HoopeParser extends AbstractContentAssistParser {
 					put(grammarAccess.getProgramAccess().getGroup(), "rule__Program__Group__0");
 					put(grammarAccess.getProgramAccess().getGroup_1(), "rule__Program__Group_1__0");
 					put(grammarAccess.getHoopeObjectAccess().getGroup(), "rule__HoopeObject__Group__0");
+					put(grammarAccess.getCoordinatesAccess().getGroup(), "rule__Coordinates__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup_3(), "rule__Property__Group_3__0");
 					put(grammarAccess.getMessageAccess().getGroup(), "rule__Message__Group__0");
@@ -238,6 +239,8 @@ public class HoopeParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 					put(grammarAccess.getProgramAccess().getExpressionsAssignment_1_0(), "rule__Program__ExpressionsAssignment_1_0");
 					put(grammarAccess.getHoopeObjectAccess().getFeaturesAssignment_3(), "rule__HoopeObject__FeaturesAssignment_3");
+					put(grammarAccess.getCoordinatesAccess().getXAssignment_1(), "rule__Coordinates__XAssignment_1");
+					put(grammarAccess.getCoordinatesAccess().getYAssignment_3(), "rule__Coordinates__YAssignment_3");
 					put(grammarAccess.getPropertyAccess().getNameAssignment_0(), "rule__Property__NameAssignment_0");
 					put(grammarAccess.getPropertyAccess().getTypeAssignment_2(), "rule__Property__TypeAssignment_2");
 					put(grammarAccess.getPropertyAccess().getValueAssignment_3_1(), "rule__Property__ValueAssignment_3_1");

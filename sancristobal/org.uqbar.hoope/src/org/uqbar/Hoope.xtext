@@ -22,6 +22,7 @@ XPrimaryExpression returns xbase::XExpression:
        XReturnExpression |
        XTryCatchFinallyExpression |
        XParenthesizedExpression |
+       Coordinates |
        HoopeObject;
 
 HoopeObject returns xbase::XExpression:
@@ -29,6 +30,11 @@ HoopeObject returns xbase::XExpression:
        'object' '{'
        features+=Feature*
        '}';
+
+Coordinates returns xbase::XExpression:
+	{Coordinates}
+	x=INT'@'y=INT
+;
  
 Feature:
  Property | Message;

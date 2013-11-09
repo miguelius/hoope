@@ -13,6 +13,7 @@ import org.eclipse.xtext.common.types.TypesPackage;
 
 import org.eclipse.xtext.xbase.XbasePackage;
 
+import org.uqbar.hoope.Coordinates;
 import org.uqbar.hoope.Feature;
 import org.uqbar.hoope.HoopeFactory;
 import org.uqbar.hoope.HoopeObject;
@@ -63,6 +64,13 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
    * @generated
    */
   private EClass hoopeObjectEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass coordinatesEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -245,6 +253,36 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getCoordinates()
+  {
+    return coordinatesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCoordinates_X()
+  {
+    return (EAttribute)coordinatesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCoordinates_Y()
+  {
+    return (EAttribute)coordinatesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public HoopeFactory getHoopeFactory()
   {
     return (HoopeFactory)getEFactoryInstance();
@@ -285,6 +323,10 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
 
     hoopeObjectEClass = createEClass(HOOPE_OBJECT);
     createEReference(hoopeObjectEClass, HOOPE_OBJECT__FEATURES);
+
+    coordinatesEClass = createEClass(COORDINATES);
+    createEAttribute(coordinatesEClass, COORDINATES__X);
+    createEAttribute(coordinatesEClass, COORDINATES__Y);
   }
 
   /**
@@ -324,6 +366,7 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
     messageEClass.getESuperTypes().add(this.getFeature());
     programEClass.getESuperTypes().add(theXbasePackage.getXBlockExpression());
     hoopeObjectEClass.getESuperTypes().add(theXbasePackage.getXExpression());
+    coordinatesEClass.getESuperTypes().add(theXbasePackage.getXExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -341,6 +384,10 @@ public class HoopePackageImpl extends EPackageImpl implements HoopePackage
 
     initEClass(hoopeObjectEClass, HoopeObject.class, "HoopeObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getHoopeObject_Features(), this.getFeature(), null, "features", null, 0, -1, HoopeObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(coordinatesEClass, Coordinates.class, "Coordinates", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getCoordinates_X(), ecorePackage.getEInt(), "x", null, 0, 1, Coordinates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCoordinates_Y(), ecorePackage.getEInt(), "y", null, 0, 1, Coordinates.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

@@ -258,11 +258,21 @@ ruleXPrimaryExpression returns [EObject current=null]
 
     |
     { 
-        newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_13()); 
+        newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getCoordinatesParserRuleCall_13()); 
     }
-    this_HoopeObject_13=ruleHoopeObject
+    this_Coordinates_13=ruleCoordinates
     { 
-        $current = $this_HoopeObject_13.current; 
+        $current = $this_Coordinates_13.current; 
+        afterParserOrEnumRuleCall();
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getXPrimaryExpressionAccess().getHoopeObjectParserRuleCall_14()); 
+    }
+    this_HoopeObject_14=ruleHoopeObject
+    { 
+        $current = $this_HoopeObject_14.current; 
         afterParserOrEnumRuleCall();
     }
 )
@@ -323,6 +333,73 @@ ruleHoopeObject returns [EObject current=null]
     	newLeafNode(otherlv_4, grammarAccess.getHoopeObjectAccess().getRightCurlyBracketKeyword_4());
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleCoordinates
+entryRuleCoordinates returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getCoordinatesRule()); }
+	 iv_ruleCoordinates=ruleCoordinates 
+	 { $current=$iv_ruleCoordinates.current; } 
+	 EOF 
+;
+
+// Rule Coordinates
+ruleCoordinates returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getCoordinatesAccess().getCoordinatesAction_0(),
+            $current);
+    }
+)(
+(
+		lv_x_1_0=RULE_INT
+		{
+			newLeafNode(lv_x_1_0, grammarAccess.getCoordinatesAccess().getXINTTerminalRuleCall_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCoordinatesRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"x",
+        		lv_x_1_0, 
+        		"INT");
+	    }
+
+)
+)	otherlv_2='@' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getCoordinatesAccess().getCommercialAtKeyword_2());
+    }
+(
+(
+		lv_y_3_0=RULE_INT
+		{
+			newLeafNode(lv_y_3_0, grammarAccess.getCoordinatesAccess().getYINTTerminalRuleCall_3_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCoordinatesRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"y",
+        		lv_y_3_0, 
+        		"INT");
+	    }
+
+)
+))
 ;
 
 

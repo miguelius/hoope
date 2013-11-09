@@ -7,6 +7,7 @@ import org.eclipse.xtext.xbase.compiler.XbaseCompiler
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable
 import org.uqbar.hoope.HoopeObject
 import org.uqbar.jvmmodel.HoopeJvmModelInferrer
+import org.uqbar.hoope.Coordinates
 
 @Singleton
 class HoopeCompiler extends XbaseCompiler {
@@ -23,10 +24,20 @@ class HoopeCompiler extends XbaseCompiler {
 		// DO nothing but empty body is required
 	}
 
+	def dispatch void toJavaStatement(Coordinates object, ITreeAppendable appendable, boolean isReferenced) {
+		// DO nothing but empty body is required
+	}
+
 	@Inject extension HoopeJvmModelInferrer;
+
+	def dispatch void toJavaExpression(Coordinates object, ITreeAppendable b) {
+		b.append('''new java.awt.Point(«object.x»,«object.y»)''');
+	}
+	
+
 	def dispatch void toJavaExpression(HoopeObject object, ITreeAppendable b) {
-		
-		b.append("new ").append(getType(object)).append("();")
+
+		b.append("new ").append(getType(object)).append("()")
 
 		// String body = func.getValue()
 		// .substring(2, func.getValue().length() - 2);
