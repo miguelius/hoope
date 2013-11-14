@@ -4,6 +4,8 @@
 package org.uqbar.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.wizard.IProjectCreator;
+import org.uqbar.ui.wizard.HoopeProjectCreator;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -12,4 +14,9 @@ public class HoopeUiModule extends org.uqbar.ui.AbstractHoopeUiModule {
 	public HoopeUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+	
+	public Class<? extends IProjectCreator> bindProjectCreator() {
+		return HoopeProjectCreator.class;
+	}
+
 }
