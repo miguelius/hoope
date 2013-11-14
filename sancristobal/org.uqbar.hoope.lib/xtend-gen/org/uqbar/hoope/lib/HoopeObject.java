@@ -98,12 +98,12 @@ public class HoopeObject implements Observer {
       Class<? extends Object> _class = realObject.getClass();
       Method[] _declaredMethods = _class.getDeclaredMethods();
       final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getPosition");
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final Method f) {
+          String _name = f.getName();
+          boolean _equals = Objects.equal(_name, "getPosition");
+          return Boolean.valueOf(_equals);
+        }
+      };
       Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
       final Method posicion = IterableExtensions.<Method>head(_filter);
       boolean _notEquals = (!Objects.equal(posicion, null));
@@ -242,12 +242,12 @@ public class HoopeObject implements Observer {
       Class<? extends Observable> _class = observedObject.getClass();
       Method[] _declaredMethods = _class.getDeclaredMethods();
       final Function1<Method,Boolean> _function = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getImage");
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final Method f) {
+          String _name = f.getName();
+          boolean _equals = Objects.equal(_name, "getImage");
+          return Boolean.valueOf(_equals);
+        }
+      };
       Iterable<Method> _filter = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods)), _function);
       Method _head = IterableExtensions.<Method>head(_filter);
       Object _invoke = null;
@@ -258,12 +258,12 @@ public class HoopeObject implements Observer {
       Class<? extends Observable> _class_1 = observedObject.getClass();
       Method[] _declaredMethods_1 = _class_1.getDeclaredMethods();
       final Function1<Method,Boolean> _function_1 = new Function1<Method,Boolean>() {
-          public Boolean apply(final Method f) {
-            String _name = f.getName();
-            boolean _equals = Objects.equal(_name, "getPosition");
-            return Boolean.valueOf(_equals);
-          }
-        };
+        public Boolean apply(final Method f) {
+          String _name = f.getName();
+          boolean _equals = Objects.equal(_name, "getPosition");
+          return Boolean.valueOf(_equals);
+        }
+      };
       Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(((Iterable<Method>)Conversions.doWrapArray(_declaredMethods_1)), _function_1);
       final Method posicion = IterableExtensions.<Method>head(_filter_1);
       boolean _and = false;

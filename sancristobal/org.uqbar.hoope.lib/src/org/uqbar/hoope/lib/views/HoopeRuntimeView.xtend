@@ -25,6 +25,10 @@ import org.uqbar.hoope.lib.IHoopeObjectEvent
 import org.uqbar.hoope.lib.IHoopePlayground
 import org.uqbar.hoope.lib.MoveEvent
 import org.eclipse.ui.IViewSite
+import org.eclipse.swt.graphics.Point
+import javax.swing.BorderFactory
+import org.eclipse.draw2d.SimpleRaisedBorder
+import org.eclipse.draw2d.geometry.Dimension
 
 @Singleton
 public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoopeObjectEvent.Listener {
@@ -41,9 +45,12 @@ public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoo
 	var IProject project
 	
 	override createPartControl(Composite parent) {
-		canvas = new FigureCanvas(parent, SWT.DOUBLE_BUFFERED)
-		canvas.viewport = new FreeformViewport
-		canvas.background = ColorConstants.white
+		canvas = new FigureCanvas(parent, SWT.DOUBLE_BUFFERED )
+		
+		canvas.viewport = new FreeformViewport()
+//		canvas.viewport.horizontalRangeModel.minimum = 0
+//		canvas.viewport.verticalRangeModel.minimum = 0
+		canvas.background = ColorConstants.orange
 		val pane = new FreeformLayeredPane
 		pane.font = parent.font
 		canvas.contents = pane
@@ -66,8 +73,8 @@ public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoo
 //		rootFigure.add(hoopeGraphicObjectFigure)
 //		hoopeGraphicObjectFigure.objectLocation = new Point(0,0)
 //		hoopeGraphicObjectFigure.angle = 0
-		val viewportSize = canvas.size	
-		canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
+		//val viewportSize = canvas.size	
+		//canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
 	}
 	
 	@Inject IHoopeInterpreter interpreter
