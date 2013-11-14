@@ -14,12 +14,10 @@ import org.eclipse.xtext.common.types.JvmGenericArrayTypeReference;
 import org.eclipse.xtext.common.types.JvmGenericType;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.xbase.XExpression;
-import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor.IPostIndexingInitializing;
@@ -174,77 +172,9 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
               final Message _message = (Message)feature;
               _matched=true;
               String methodName = _message.getName();
-              XExpression _body = _message.getBody();
-              boolean _hasSideEffects = HoopeJvmModelInferrer.this._xExpressionHelper.hasSideEffects(_body);
-              if (_hasSideEffects) {
-                String _name = _message.getName();
-                String _plus = (_name + "Observed");
-                final String mn = methodName = _plus;
-                EList<JvmMember> _members = it.getMembers();
-                String _name_1 = _message.getName();
-                JvmTypeReference _type = _message.getType();
-                final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
-                  public void apply(final JvmOperation it) {
-                    String _documentation = HoopeJvmModelInferrer.this._hoopeTypesBuilder.getDocumentation(_message);
-                    HoopeJvmModelInferrer.this._hoopeTypesBuilder.setDocumentation(it, _documentation);
-                    EList<JvmFormalParameter> _params = _message.getParams();
-                    for (final JvmFormalParameter p : _params) {
-                      EList<JvmFormalParameter> _parameters = it.getParameters();
-                      String _name = p.getName();
-                      JvmTypeReference _parameterType = p.getParameterType();
-                      JvmFormalParameter _parameter = HoopeJvmModelInferrer.this._hoopeTypesBuilder.toParameter(p, _name, _parameterType);
-                      HoopeJvmModelInferrer.this._hoopeTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
-                    }
-                    final Procedure1<ITreeAppendable> _function = new Procedure1<ITreeAppendable>() {
-                      public void apply(final ITreeAppendable it) {
-                        JvmTypeReference _newTypeRef = HoopeJvmModelInferrer.this._hoopeTypesBuilder.newTypeRef(_message, Void.TYPE);
-                        JvmType _type = _newTypeRef.getType();
-                        JvmTypeReference _type_1 = _message.getType();
-                        JvmTypeReference _cloneWithProxies = HoopeJvmModelInferrer.this._hoopeTypesBuilder.cloneWithProxies(_type_1);
-                        JvmType _type_2 = _cloneWithProxies.getType();
-                        boolean _equals = _type.equals(_type_2);
-                        boolean _not = (!_equals);
-                        if (_not) {
-                          JvmTypeReference _type_3 = _message.getType();
-                          JvmTypeReference _cloneWithProxies_1 = HoopeJvmModelInferrer.this._hoopeTypesBuilder.cloneWithProxies(_type_3);
-                          JvmType _type_4 = _cloneWithProxies_1.getType();
-                          it.append(_type_4);
-                          it.append(" retorname = ");
-                          EList<JvmFormalParameter> _params = _message.getParams();
-                          String _methodCall = HoopeJvmModelInferrer.this.methodCall(mn, _params);
-                          it.append(_methodCall);
-                          it.append("\n");
-                        } else {
-                          EList<JvmFormalParameter> _params_1 = _message.getParams();
-                          String _methodCall_1 = HoopeJvmModelInferrer.this.methodCall(mn, _params_1);
-                          it.append(_methodCall_1);
-                        }
-                        it.append("setChanged();\n");
-                        it.append("notifyObservers(\"");
-                        String _name = _message.getName();
-                        it.append(_name);
-                        it.append("\");\n");
-                        JvmTypeReference _newTypeRef_1 = HoopeJvmModelInferrer.this._hoopeTypesBuilder.newTypeRef(_message, Void.TYPE);
-                        JvmType _type_5 = _newTypeRef_1.getType();
-                        JvmTypeReference _type_6 = _message.getType();
-                        JvmTypeReference _cloneWithProxies_2 = HoopeJvmModelInferrer.this._hoopeTypesBuilder.cloneWithProxies(_type_6);
-                        JvmType _type_7 = _cloneWithProxies_2.getType();
-                        boolean _equals_1 = _type_5.equals(_type_7);
-                        boolean _not_1 = (!_equals_1);
-                        if (_not_1) {
-                          it.append("return retorname;");
-                        }
-                      }
-                    };
-                    HoopeJvmModelInferrer.this._hoopeTypesBuilder.setBody(it, _function);
-                  }
-                };
-                JvmOperation _method = HoopeJvmModelInferrer.this._hoopeTypesBuilder.toMethod(_message, _name_1, _type, _function);
-                HoopeJvmModelInferrer.this._hoopeTypesBuilder.<JvmOperation>operator_add(_members, _method);
-              }
-              EList<JvmMember> _members_1 = it.getMembers();
-              JvmTypeReference _type_1 = _message.getType();
-              final Procedure1<JvmOperation> _function_1 = new Procedure1<JvmOperation>() {
+              EList<JvmMember> _members = it.getMembers();
+              JvmTypeReference _type = _message.getType();
+              final Procedure1<JvmOperation> _function = new Procedure1<JvmOperation>() {
                 public void apply(final JvmOperation it) {
                   String _documentation = HoopeJvmModelInferrer.this._hoopeTypesBuilder.getDocumentation(_message);
                   HoopeJvmModelInferrer.this._hoopeTypesBuilder.setDocumentation(it, _documentation);
@@ -260,8 +190,8 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
                   HoopeJvmModelInferrer.this._hoopeTypesBuilder.setBody(it, _body);
                 }
               };
-              JvmOperation _method_1 = HoopeJvmModelInferrer.this._hoopeTypesBuilder.toMethod(_message, methodName, _type_1, _function_1);
-              HoopeJvmModelInferrer.this._hoopeTypesBuilder.<JvmOperation>operator_add(_members_1, _method_1);
+              JvmOperation _method = HoopeJvmModelInferrer.this._hoopeTypesBuilder.toMethod(_message, methodName, _type, _function);
+              HoopeJvmModelInferrer.this._hoopeTypesBuilder.<JvmOperation>operator_add(_members, _method);
             }
           }
         }

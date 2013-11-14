@@ -99,33 +99,33 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 					}
 					Message: {
 						var methodName = feature.name
-						if (feature.body.hasSideEffects) {
-							val mn = methodName = feature.name + 'Observed'
-							members += feature.toMethod(feature.name, feature.type) [
-								documentation = feature.documentation
-								for (p : feature.params) {
-									parameters += p.toParameter(p.name, p.parameterType)
-								}
-								body = [
-									if (!feature.newTypeRef(Void::TYPE).type.equals( cloneWithProxies(feature.type).type ) ) {
-										it.append(cloneWithProxies(feature.type).type)
-										it.append(" retorname = ");
-										it.append( methodCall( mn , feature.params ) );
-										it.append("\n")
-									}
-									else {
-										it.append( methodCall(mn, feature.params))
-									}
-									it.append("setChanged();\n")
-									it.append("notifyObservers(\"");
-									it.append(feature.name);
-									it.append("\");\n");
-									if (!feature.newTypeRef(Void::TYPE).type.equals( cloneWithProxies(feature.type).type ) ) {
-										it.append("return retorname;")
-									}
-								]
-							]
-						}				
+//						if (feature.body.hasSideEffects) {
+//							val mn = methodName = feature.name + 'Observed'
+//							members += feature.toMethod(feature.name, feature.type) [
+//								documentation = feature.documentation
+//								for (p : feature.params) {
+//									parameters += p.toParameter(p.name, p.parameterType)
+//								}
+//								body = [
+//									if (!feature.newTypeRef(Void::TYPE).type.equals( cloneWithProxies(feature.type).type ) ) {
+//										it.append(cloneWithProxies(feature.type).type)
+//										it.append(" retorname = ");
+//										it.append( methodCall( mn , feature.params ) );
+//										it.append("\n")
+//									}
+//									else {
+//										it.append( methodCall(mn, feature.params))
+//									}
+//									it.append("setChanged();\n")
+//									it.append("notifyObservers(\"");
+//									it.append(feature.name);
+//									it.append("\");\n");
+//									if (!feature.newTypeRef(Void::TYPE).type.equals( cloneWithProxies(feature.type).type ) ) {
+//										it.append("return retorname;")
+//									}
+//								]
+//							]
+//						}				
 						members += feature.toMethod(methodName, feature.type) [
 							documentation = feature.documentation
 							for (p : feature.params) {
