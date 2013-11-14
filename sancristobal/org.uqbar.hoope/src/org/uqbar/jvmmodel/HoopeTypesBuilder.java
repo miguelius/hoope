@@ -1,9 +1,11 @@
 package org.uqbar.jvmmodel;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jdt.annotation.Nullable;
+import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
@@ -12,17 +14,17 @@ import org.eclipse.xtext.common.types.util.AnnotationLookup;
 import org.eclipse.xtext.common.types.util.TypeReferences;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.util.Strings;
-import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.annotations.interpreter.ConstantExpressionsInterpreter;
 import org.eclipse.xtext.xbase.compiler.output.ITreeAppendable;
+import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations;
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociator;
 import org.eclipse.xtext.xbase.jvmmodel.ILogicalContainerProvider;
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder;
 import org.eclipse.xtext.xbase.lib.Procedures;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.typesystem.InferredTypeIndicator;
 import org.eclipse.xtext.xbase.typesystem.util.CommonTypeComputationServices;
 import org.eclipse.xtext.xtype.XtypeFactory;
-import org.uqbar.hoope.Feature;
 
 import com.google.inject.Inject;
 
@@ -39,7 +41,7 @@ public class HoopeTypesBuilder extends JvmTypesBuilder {
 
 	@Inject
 	private TypeReferences references;
-	
+
 	@Inject
 	private IEObjectDocumentationProvider documentationProvider;
 	
@@ -90,7 +92,7 @@ public class HoopeTypesBuilder extends JvmTypesBuilder {
 				if(p != null) {
 					p = p.trace(sourceElement);
 					p.append("this.");
-					p.append(fieldName);
+					p.append('_'+fieldName);
 					p.append(" = ");
 					p.append(propertyName);
 					p.append(";\nsetChanged();\n");
@@ -102,5 +104,68 @@ public class HoopeTypesBuilder extends JvmTypesBuilder {
 		});
 		return associate(sourceElement, result);
 	}
+	
+	@Nullable	
+	public JvmField toField(@Nullable EObject sourceElement, @Nullable String name, @Nullable JvmTypeReference typeRef, 
+			@Nullable Procedure1<? super JvmField> initializer) {
+		if(sourceElement == null || name == null) 
+			return null;
+		JvmField result = typesFactory.createJvmField();
+		result.setSimpleName('_'+name);
+		result.setVisibility(JvmVisibility.PRIVATE);
+		result.setType(cloneWithProxies(typeRef));
+		associate(sourceElement, result);
+		return initializeSafely(result, initializer);
+	}
+
+	@Nullable
+	public JvmOperation toGetter(@Nullable final EObject sourceElement, @Nullable final String propertyName, @Nullable final String fieldName, @Nullable JvmTypeReference typeRef) {
+		if(sourceElement == null || propertyName == null || fieldName == null) 
+			return null;
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		String prefix = "get";
+		if (typeRef != null && !typeRef.eIsProxy() && !InferredTypeIndicator.isInferred(typeRef) 
+				&& typeRef.getType()!=null 
+				&& !typeRef.getType().eIsProxy() && "boolean".equals(typeRef.getType().getIdentifier())) {
+			prefix = "is";
+		}
+		result.setSimpleName(prefix + Strings.toFirstUpper(propertyName));
+		result.setReturnType(cloneWithProxies(typeRef));
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if(p != null) {
+					p = p.trace(sourceElement);
+					p.append("return this.");
+					p.append('_'+fieldName);
+					p.append(";");
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+	
+	@Inject IJvmModelAssociations associations;
+
+
+	@Nullable
+	public JvmOperation addCopyMe(@Nullable final EObject sourceElement, JvmTypeReference typeRef) {
+		JvmOperation result = typesFactory.createJvmOperation();
+		result.setVisibility(JvmVisibility.PUBLIC);
+		result.setReturnType(cloneWithProxies(typeRef));
+		result.setSimpleName("copyMe");
+		setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
+			public void apply(@Nullable ITreeAppendable p) {
+				if(p != null) {
+					p = p.trace(sourceElement);
+					p.append("return this.clone();");
+					p.append("\n");
+				}
+			}
+		});
+		return associate(sourceElement, result);
+	}
+	
+
 	
 }

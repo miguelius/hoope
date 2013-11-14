@@ -79,6 +79,7 @@ class HoopeJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(HoopeObject element, IJvmDeclaredTypeAcceptor acceptor, boolean isPrelinkingPhase) {
 		var jvmGenericType = element.toClass("examples.hoope.HoopeObject" + count)
 		jvmGenericType.superTypes.add(element.newTypeRef(typeof(Observable)))
+		jvmGenericType.superTypes+=element.newTypeRef(typeof(Cloneable))
 		count = count + 1
 		acceptor.accept(jvmGenericType).initializeLater [
 			documentation = element.documentation

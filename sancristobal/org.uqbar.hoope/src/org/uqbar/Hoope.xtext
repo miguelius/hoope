@@ -33,7 +33,7 @@ HoopeObject returns xbase::XExpression:
 
 Coordinates returns xbase::XExpression:
 	{Coordinates}
-	x=INT'@'y=INT
+	x=INT'@'y=INT 
 ;
  
 Feature:

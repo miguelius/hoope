@@ -73,8 +73,8 @@ public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoo
 //		rootFigure.add(hoopeGraphicObjectFigure)
 //		hoopeGraphicObjectFigure.objectLocation = new Point(0,0)
 //		hoopeGraphicObjectFigure.angle = 0
-		//val viewportSize = canvas.size	
-		//canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
+		val viewportSize = canvas.size	
+		canvas.scrollTo(-viewportSize.x / 2, -viewportSize.y/ 2)
 	}
 	
 	@Inject IHoopeInterpreter interpreter

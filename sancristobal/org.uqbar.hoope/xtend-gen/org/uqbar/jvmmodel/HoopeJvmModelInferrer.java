@@ -119,6 +119,9 @@ public class HoopeJvmModelInferrer extends AbstractModelInferrer {
     EList<JvmTypeReference> _superTypes = jvmGenericType.getSuperTypes();
     JvmTypeReference _newTypeRef = this._hoopeTypesBuilder.newTypeRef(element, Observable.class);
     _superTypes.add(_newTypeRef);
+    EList<JvmTypeReference> _superTypes_1 = jvmGenericType.getSuperTypes();
+    JvmTypeReference _newTypeRef_1 = this._hoopeTypesBuilder.newTypeRef(element, Cloneable.class);
+    this._hoopeTypesBuilder.<JvmTypeReference>operator_add(_superTypes_1, _newTypeRef_1);
     int _plus_1 = (this.count + 1);
     this.count = _plus_1;
     IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(jvmGenericType);
