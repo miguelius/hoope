@@ -128,7 +128,7 @@ public class HoopeRuntimeView extends ViewPart implements IHoopePlayground, IHoo
 	
 	@Inject PluginImageHelper pluginImageHelper
 	
-	val String DEFAULT_IMAGE = "pepita_80.png"
+	val String DEFAULT_IMAGE = "manzana80.png"
 
 /**			
  http://www.infaserver.com.ar/?gclid=CNWv3rf6kboCFdSd4AodySQAXw
